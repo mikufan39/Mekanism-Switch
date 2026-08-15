@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "BCB",
+    "DED"
+  ],
+  "key": {
+    "A": { "item": "mekanism:teleportation_core" },
+    "B": { "item": "mekanism:ultimate_control_circuit" },
+    "C": { "item": "mekanism:quantum_entangloporter" },
+    "D": { "item": "mekanism:alloy_atomic" },
+    "E": { "item": "mekanism:ingot_refined_obsidian" }
+  },
+  "result": {
+    "id": "meks:exchange_switch",
+    "count": 1
+  }
+}

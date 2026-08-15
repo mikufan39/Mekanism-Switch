@@ -1,0 +1,11 @@
+{
+  "itemGroup.meks.main": "Mekanism Switch",
+  "block.meks.exchange_switch": "Exchange Switch",
+  "item.meks.channel_upgrade": "Channel Upgrade",
+  "item.meks.channel_upgrade.desc": "Adds a second upload/download slot to the Exchange Switch.",
+  "gui.meks.sv_value": "SV: %s",
+  "gui.meks.channel_upgrade.installed": "Channel upgrade installed.",
+  "gui.meks.channel_upgrade.already": "Channel upgrade already installed.",
+  "commands.meks.dev.requires_player": "Only players can run this command.",
+  "commands.meks.dev.success": "Developer mode applied: SV set and all knowledge unlocked."
+}

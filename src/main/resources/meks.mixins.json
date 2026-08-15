@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.mikufan.meks.mixin",
+  "mixins": [
+    "EnchantmentMenuMixin",
+    "ItemSpecialArmorMixin",
+    "PlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SAS",
+    "UTU",
+    "SAS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:shulker_shell"
+    },
+    "A": {
+      "item": "mekanism:alloy_atomic"
+    },
+    "U": {
+      "item": "mekanism:ultimate_control_circuit"
+    },
+    "T": {
+      "item": "mekanism:teleportation_core"
+    }
+  },
+  "result": {
+    "id": "meks:channel_upgrade",
+    "count": 1
+  }
+}

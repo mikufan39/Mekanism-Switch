@@ -1,0 +1,11 @@
+{
+  "itemGroup.meks.main": "Mekanism 交换",
+  "block.meks.exchange_switch": "交换机",
+  "item.meks.channel_upgrade": "通道升级",
+  "item.meks.channel_upgrade.desc": "为交换机增加一个上传/下载格子。",
+  "gui.meks.sv_value": "SV：%s",
+  "gui.meks.channel_upgrade.installed": "通道升级已安装。",
+  "gui.meks.channel_upgrade.already": "通道升级已安装。",
+  "commands.meks.dev.requires_player": "只有玩家才能使用该命令。",
+  "commands.meks.dev.success": "已应用开发者模式：SV 已设置，并解锁全部知识。"
+}

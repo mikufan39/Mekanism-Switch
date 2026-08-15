@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "facing=north,active=false": { "model": "meks:block/exchange_switch" },
+    "facing=south,active=false": { "model": "meks:block/exchange_switch", "y": 180 },
+    "facing=east,active=false": { "model": "meks:block/exchange_switch", "y": 90 },
+    "facing=west,active=false": { "model": "meks:block/exchange_switch", "y": -90 },
+    "facing=north,active=true": { "model": "meks:block/exchange_switch_active" },
+    "facing=south,active=true": { "model": "meks:block/exchange_switch_active", "y": 180 },
+    "facing=east,active=true": { "model": "meks:block/exchange_switch_active", "y": 90 },
+    "facing=west,active=true": { "model": "meks:block/exchange_switch_active", "y": -90 }
+  }
+}

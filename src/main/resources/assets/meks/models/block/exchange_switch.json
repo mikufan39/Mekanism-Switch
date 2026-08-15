@@ -1,0 +1,12 @@
+{
+  "parent": "mekanism:block/machine",
+  "textures": {
+    "sides": "meks:block/exchange_switch/side",
+    "front": "meks:block/exchange_switch/front",
+    "west": "meks:block/exchange_switch/side",
+    "east": "meks:block/exchange_switch/side",
+    "south": "meks:block/exchange_switch/back",
+    "up": "meks:block/exchange_switch/top",
+    "down": "meks:block/exchange_switch/bottom"
+  }
+}
