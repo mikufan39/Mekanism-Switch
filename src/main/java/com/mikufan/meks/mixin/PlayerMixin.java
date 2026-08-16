@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 @Mixin(Player.class)
 public abstract class PlayerMixin {
 
-    private static final int MEKA_SUIT_ENCHANT_COST = 60;
+    private static final int MEKA_SUIT_ENCHANT_COST = 30;
 
     @Redirect(method = "onEnchantmentPerformed", remap = false,
           at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/player/Player;giveExperienceLevels(I)V"))

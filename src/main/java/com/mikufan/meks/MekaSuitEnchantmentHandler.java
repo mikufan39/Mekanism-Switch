@@ -5,7 +5,7 @@ import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
 
 public final class MekaSuitEnchantmentHandler {
 
-    public static final int MEKA_SUIT_ENCHANT_COST = 60;
+    public static final int MEKA_SUIT_ENCHANT_COST = 30;
     public static final int MEKA_SUIT_ENCHANT_ROW = 2;
 
     private MekaSuitEnchantmentHandler() {
