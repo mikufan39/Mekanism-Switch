@@ -2,6 +2,8 @@ package com.mikufan.meks.mixin.client;
 
 import com.mikufan.meks.flight.MeksFlightController;
 import com.mikufan.meks.flight.MeksRollState;
+import com.mikufan.meks.soul.SoulOutController;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.util.Mth;
 import org.spongepowered.asm.mixin.Mixin;
@@ -9,6 +11,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LocalPlayer.class)
 public abstract class LocalPlayerMixin implements MeksRollState {
@@ -28,6 +31,15 @@ public abstract class LocalPlayerMixin implements MeksRollState {
     @Inject(method = "tick", at = @At("HEAD"), remap = false)
     private void meks$tickFlightControls(CallbackInfo ci) {
         MeksFlightController.tick((LocalPlayer) (Object) this);
+    }
+
+    // The soul camera replaces the controlled camera, but rendering/HUD helpers
+    // should still treat the real player as the controlled camera.
+    @Inject(method = "isControlledCamera", at = @At("HEAD"), cancellable = true, remap = false)
+    private void meks$soulControlledCamera(CallbackInfoReturnable<Boolean> cir) {
+        if (SoulOutController.isActive() && (Object) this == Minecraft.getInstance().player) {
+            cir.setReturnValue(true);
+        }
     }
 
     @Override

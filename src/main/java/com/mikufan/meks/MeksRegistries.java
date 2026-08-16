@@ -57,6 +57,21 @@ public final class MeksRegistries {
 
     public static final ContainerTypeRegistryObject<ExchangeSwitchContainer> EXCHANGE_SWITCH_CONTAINER = registerExchangeSwitchContainer();
 
+    public static final BlockRegistryObject<BlockRestorationSwitch, BlockItem> RESTORATION_SWITCH_BLOCK =
+            BLOCKS.register("restoration_switch", () -> new BlockRestorationSwitch(getRestorationSwitchType()),
+                  (block, properties) -> new BlockItem(block, properties
+                        .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
+                        .component(MekanismDataComponents.SIDE_CONFIG, AttachedSideConfig.ELECTRIC_MACHINE)));
+
+    public static final TileEntityTypeRegistryObject<RestorationSwitchTile> RESTORATION_SWITCH_TILE =
+            TILE_ENTITY_TYPES.mekBuilder(RESTORATION_SWITCH_BLOCK, RestorationSwitchTile::new)
+                  .clientTicker(TileEntityMekanism::tickClient)
+                  .serverTicker(TileEntityMekanism::tickServer)
+                  .withSimple(Capabilities.CONFIG_CARD)
+                  .build();
+
+    public static final ContainerTypeRegistryObject<RestorationSwitchContainer> RESTORATION_SWITCH_CONTAINER = registerRestorationSwitchContainer();
+
     private static Machine<ExchangeSwitchTile> exchangeSwitchType;
 
     private static Machine<ExchangeSwitchTile> getExchangeSwitchType() {
@@ -80,14 +95,37 @@ public final class MeksRegistries {
         return registryObject;
     }
 
+    private static Machine<RestorationSwitchTile> restorationSwitchType;
+
+    private static Machine<RestorationSwitchTile> getRestorationSwitchType() {
+        if (restorationSwitchType == null) {
+            restorationSwitchType = MachineBuilder
+                    .createMachine(() -> RESTORATION_SWITCH_TILE, new MeksLang("block.meks.restoration_switch"))
+                    .withGui(() -> RESTORATION_SWITCH_CONTAINER)
+                    .withEnergyConfig(() -> 100L, () -> 1_000_000L)
+                    .with(AttributeSideConfig.ELECTRIC_MACHINE)
+                    .withSupportedUpgrades(Upgrade.SPEED, Upgrade.ENERGY)
+                    .build();
+        }
+        return restorationSwitchType;
+    }
+
+    private static ContainerTypeRegistryObject<RestorationSwitchContainer> registerRestorationSwitchContainer() {
+        ContainerTypeRegistryObject<RestorationSwitchContainer> registryObject =
+                new ContainerTypeRegistryObject<>(ResourceLocation.fromNamespaceAndPath(MekanismSwitch.MODID, "restoration_switch"));
+        CONTAINER_TYPES.registerMenu("restoration_switch", () -> MekanismContainerType.tile(
+              RestorationSwitchTile.class, (id, inv, tile) -> new RestorationSwitchContainer(registryObject, id, inv, tile)));
+        return registryObject;
+    }
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.meks.main"))
             .withTabsBefore(CreativeModeTabs.FUNCTIONAL_BLOCKS)
             .icon(() -> EXCHANGE_SWITCH_BLOCK.asItem().getDefaultInstance())
-            .displayItems((parameters, output) -> output.accept(EXCHANGE_SWITCH_BLOCK.asItem()))
             .displayItems((parameters, output) -> {
                 output.accept(EXCHANGE_SWITCH_BLOCK.asItem());
                 output.accept(CHANNEL_UPGRADE.get());
+                output.accept(RESTORATION_SWITCH_BLOCK.asItem());
             })
             .build());
 

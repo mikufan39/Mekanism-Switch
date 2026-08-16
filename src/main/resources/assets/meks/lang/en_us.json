@@ -1,11 +1,22 @@
 {
   "itemGroup.meks.main": "Mekanism Switch",
   "block.meks.exchange_switch": "Exchange Switch",
+  "block.meks.restoration_switch": "Restoration Switch",
   "item.meks.channel_upgrade": "Channel Upgrade",
   "item.meks.channel_upgrade.desc": "Adds a second upload/download slot to the Exchange Switch.",
   "gui.meks.sv_value": "SV: %s",
+  "gui.meks.exchange_switch.title": "%s's Exchange Switch",
+  "gui.meks.restoration_switch.title": "%s's Restoration Switch",
   "gui.meks.channel_upgrade.installed": "Channel upgrade installed.",
   "gui.meks.channel_upgrade.already": "Channel upgrade already installed.",
   "commands.meks.dev.requires_player": "Only players can run this command.",
-  "commands.meks.dev.success": "Developer mode applied: SV set and all knowledge unlocked."
+  "commands.meks.dev.success": "Developer mode applied: SV set and all knowledge unlocked.",
+  "commands.meks.dev.k.success": "Received an Iron Pickaxe with 1 durability left.",
+  "key.categories.meks": "Mekanism Switch",
+  "key.meks.soul_out": "Soul Out of Body",
+  "msg.meks.soul.enabled": "Soul left your body.",
+  "msg.meks.soul.disabled": "Soul returned to your body.",
+  "msg.meks.soul.requires_helmet": "You need a MekaSuit helmet to leave your body.",
+  "msg.meks.soul.no_energy": "Not enough energy: soul returned to your body.",
+  "msg.meks.soul.auto_return": "Soul returned to your body."
 }

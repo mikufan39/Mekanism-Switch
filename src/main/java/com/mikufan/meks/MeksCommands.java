@@ -7,6 +7,8 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -19,7 +21,10 @@ public final class MeksCommands {
         event.getDispatcher().register(Commands.literal("mek")
               .then(Commands.literal("dev")
                     .requires(source -> source.hasPermission(2))
-                    .executes(context -> runDev(context.getSource()))));
+                    .executes(context -> runDev(context.getSource()))
+                    .then(Commands.literal("k")
+                          .requires(source -> source.hasPermission(2))
+                          .executes(context -> runDevK(context.getSource())))));
     }
 
     private static int runDev(CommandSourceStack source) {
@@ -34,6 +39,20 @@ public final class MeksCommands {
         PacketDistributor.sendToPlayer(player, new MeksPayloads.SyncExchangePayload(
               new ArrayList<>(data.getKnowledge()), data.getSv()));
         source.sendSuccess(() -> Component.translatable("commands.meks.dev.success"), false);
+        return Command.SINGLE_SUCCESS;
+    }
+
+    private static int runDevK(CommandSourceStack source) {
+        if (!(source.getEntity() instanceof ServerPlayer player)) {
+            source.sendFailure(Component.translatable("commands.meks.dev.requires_player"));
+            return 0;
+        }
+        ItemStack pickaxe = new ItemStack(Items.IRON_PICKAXE);
+        pickaxe.setDamageValue(pickaxe.getMaxDamage() - 1);
+        if (!player.getInventory().add(pickaxe)) {
+            player.drop(pickaxe, false);
+        }
+        source.sendSuccess(() -> Component.translatable("commands.meks.dev.k.success"), false);
         return Command.SINGLE_SUCCESS;
     }
 }

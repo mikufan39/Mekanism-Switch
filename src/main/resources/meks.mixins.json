@@ -8,9 +8,19 @@
     "PlayerMixin"
   ],
   "client": [
+    "client.BlockStateBaseMixin",
     "client.CameraMixin",
+    "client.ClientPacketListenerMixin",
+    "client.EntityMixin",
+    "client.EntityRenderDispatcherMixin",
+    "client.GameRendererMixin",
+    "client.GuiMixin",
+    "client.LivingEntityMixin",
     "client.LocalPlayerMixin",
-    "client.MouseHandlerMixin"
+    "client.MinecraftMixin",
+    "client.MouseHandlerMixin",
+    "client.MultiPlayerGameModeMixin",
+    "client.OptionsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

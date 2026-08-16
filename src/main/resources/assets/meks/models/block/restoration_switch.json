@@ -1,0 +1,12 @@
+{
+  "parent": "mekanism:block/machine",
+  "textures": {
+    "sides": "meks:block/restoration_switch/side",
+    "front": "meks:block/restoration_switch/front",
+    "west": "meks:block/restoration_switch/side",
+    "east": "meks:block/restoration_switch/side",
+    "south": "meks:block/restoration_switch/back",
+    "up": "meks:block/restoration_switch/top",
+    "down": "meks:block/restoration_switch/bottom"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ABA",
+    "CDC",
+    "EFE"
+  ],
+  "key": {
+    "A": { "item": "mekanism:ingot_refined_obsidian" },
+    "B": { "item": "mekanism:ultimate_control_circuit" },
+    "C": { "item": "mekanism:alloy_atomic" },
+    "D": { "item": "mekanism:steel_casing" },
+    "E": { "item": "minecraft:netherite_ingot" },
+    "F": { "item": "mekanism:alloy_atomic" }
+  },
+  "result": {
+    "id": "meks:restoration_switch",
+    "count": 1
+  }
+}

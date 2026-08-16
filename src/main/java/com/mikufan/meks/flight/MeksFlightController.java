@@ -2,8 +2,9 @@ package com.mikufan.meks.flight;
 
 import com.mikufan.meks.Config;
 import mekanism.api.Action;
-import mekanism.api.energy.IStrictEnergyHandler;
-import mekanism.common.capabilities.Capabilities;
+import mekanism.api.AutomationType;
+import mekanism.api.energy.IEnergyContainer;
+import mekanism.common.util.StorageUtils;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.player.LocalPlayer;
@@ -22,11 +23,11 @@ public final class MeksFlightController {
     /** Energy drained from the MekaSuit chestplate every tick while the controls are active. */
     public static final long ENERGY_PER_TICK = 100L;
 
-    /** Extra multiplier applied on top of the vanilla mouse sensitivity for roll input. */
-    private static final float ROLL_SENSITIVITY = 1.6F;
+    /** Roll sensitivity multiplier, matching the fixed feel used by the reference flight mod. */
+    private static final float ROLL_SENSITIVITY = 1.0F;
 
     /** Degrees per frame added while holding A or D. */
-    private static final float KEY_YAW_STEP = 2.5F;
+    private static final float KEY_YAW_STEP = 1.8F;
 
     /** How quickly the roll follows the mouse target. */
     private static final float ROLL_LERP = 0.45F;
@@ -67,8 +68,14 @@ public final class MeksFlightController {
         if (!(player instanceof MeksRollState state) || !state.meks$isRolling()) {
             return false;
         }
-        // Mouse X feeds the roll target; Entity.turn applies a 0.15 factor, so match that scale.
-        state.meks$setTargetRoll(state.meks$getTargetRoll() + (float) (deltaYaw * 0.15F * ROLL_SENSITIVITY));
+        // Undo vanilla's sensitivity scaling so roll speed stays fixed, like the reference flight mod.
+        // MouseHandler.turnPlayer scales raw deltas by 8 * (0.6 * sensitivity + 0.2)^3 (or the square when scoping).
+        double sensitivity = Minecraft.getInstance().options.sensitivity().get();
+        double base = 0.6D * sensitivity + 0.2D;
+        double scale = player.isScoping() ? base * base : 8.0D * base * base * base;
+        double rawYaw = scale <= 0.0D ? 0.0D : deltaYaw / scale;
+        // Entity.turn applies a 0.15 factor, so keep the same scale for the roll input.
+        state.meks$setTargetRoll(state.meks$getTargetRoll() + (float) (rawYaw * 0.15F * ROLL_SENSITIVITY));
 
         // Mouse Y keeps vanilla pitch control, and A/D replaces mouse X as the yaw input.
         player.turn(0.0D, deltaPitch);
@@ -92,11 +99,11 @@ public final class MeksFlightController {
 
     private static boolean drainEnergy(LocalPlayer player, long amount) {
         ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
-        IStrictEnergyHandler handler = Capabilities.STRICT_ENERGY.item().getCapability(chest, null);
-        if (handler == null || handler.extractEnergy(0, amount, Action.SIMULATE) < amount) {
+        IEnergyContainer container = StorageUtils.getEnergyContainer(chest, 0);
+        if (container == null || container.extract(amount, Action.SIMULATE, AutomationType.MANUAL) < amount) {
             return false;
         }
-        handler.extractEnergy(0, amount, Action.EXECUTE);
+        container.extract(amount, Action.EXECUTE, AutomationType.MANUAL);
         return true;
     }
 }

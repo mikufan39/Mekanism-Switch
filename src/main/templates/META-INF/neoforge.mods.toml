@@ -45,7 +45,7 @@ credits="Built with the Mekanism API"
 authors="Mikufan"
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''Mekanism-Switch adds the Exchange Switch, a Mekanism-styled machine for trading items with SV values. Upload items to earn SV, download what you have learned, and forget items to free knowledge. The Channel Upgrade adds a second upload/download channel.
+description='''Mekanism-Switch is a Mekanism addon for Minecraft 1.21.1 / NeoForge. It adds the Exchange Switch, where you upload items to earn SV, download items you have learned, and forget items to free knowledge, plus the Restoration Switch, which spends SV and power to restore item durability. It also adds a Channel Upgrade, MekaSuit Protection V enchanting, elytra flight controls, a soul-out-of-body experience, and creeper explosion protection.
 
 Preview build: SV values, recipes and balance are still experimental.'''
 

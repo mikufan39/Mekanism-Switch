@@ -69,6 +69,14 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
     }
 
     @Override
+    protected void renderTitleText(@NotNull GuiGraphics guiGraphics) {
+        Minecraft minecraft = Minecraft.getInstance();
+        Component title = Component.translatable("gui.meks.exchange_switch.title", minecraft.player.getDisplayName());
+        int x = imageWidth / 2 - font.width(title) / 2;
+        guiGraphics.drawString(font(), title, x, titleLabelY, 0x404040, false);
+    }
+
+    @Override
     public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
         if (dragSource == null) {

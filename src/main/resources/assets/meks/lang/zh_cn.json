@@ -1,11 +1,22 @@
 {
   "itemGroup.meks.main": "Mekanism 交换",
   "block.meks.exchange_switch": "交换机",
+  "block.meks.restoration_switch": "复位机",
   "item.meks.channel_upgrade": "通道升级",
   "item.meks.channel_upgrade.desc": "为交换机增加一个上传/下载格子。",
   "gui.meks.sv_value": "SV：%s",
+  "gui.meks.exchange_switch.title": "%s的交换机",
+  "gui.meks.restoration_switch.title": "%s的复位机",
   "gui.meks.channel_upgrade.installed": "通道升级已安装。",
   "gui.meks.channel_upgrade.already": "通道升级已安装。",
   "commands.meks.dev.requires_player": "只有玩家才能使用该命令。",
-  "commands.meks.dev.success": "已应用开发者模式：SV 已设置，并解锁全部知识。"
+  "commands.meks.dev.success": "已应用开发者模式：SV 已设置，并解锁全部知识。",
+  "commands.meks.dev.k.success": "已获得耐久度仅剩 1 的铁镐。",
+  "key.categories.meks": "Mekanism 交换",
+  "key.meks.soul_out": "灵魂出窍",
+  "msg.meks.soul.enabled": "灵魂已离开身体。",
+  "msg.meks.soul.disabled": "灵魂已回到身体。",
+  "msg.meks.soul.requires_helmet": "需要穿戴 MekaSuit 头盔才能灵魂出窍。",
+  "msg.meks.soul.no_energy": "能量不足，灵魂已回到身体。",
+  "msg.meks.soul.auto_return": "灵魂已自动回到身体。"
 }
