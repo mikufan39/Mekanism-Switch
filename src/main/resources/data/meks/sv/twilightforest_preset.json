@@ -1,0 +1,606 @@
+[
+  {
+    "item": "twilightforest:acacia_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:acacia_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:alpha_yeti_banner_pattern",
+    "emc": 24608
+  },
+  {
+    "item": "twilightforest:alpha_yeti_fur",
+    "emc": 4096
+  },
+  {
+    "item": "twilightforest:alpha_yeti_trophy",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:arctic_boots",
+    "emc": 2048
+  },
+  {
+    "item": "twilightforest:arctic_chestplate",
+    "emc": 4096
+  },
+  {
+    "item": "twilightforest:arctic_fur",
+    "emc": 512
+  },
+  {
+    "item": "twilightforest:arctic_fur_block",
+    "emc": 4608
+  },
+  {
+    "item": "twilightforest:arctic_helmet",
+    "emc": 2560
+  },
+  {
+    "item": "twilightforest:arctic_leggings",
+    "emc": 3584
+  },
+  {
+    "item": "twilightforest:armor_shard",
+    "emc": 910
+  },
+  {
+    "item": "twilightforest:armor_shard_cluster",
+    "emc": 8190
+  },
+  {
+    "item": "twilightforest:bamboo_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:bamboo_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:birch_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:birch_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:borer_essence",
+    "emc": 512
+  },
+  {
+    "item": "twilightforest:carminite",
+    "emc": 6400
+  },
+  {
+    "item": "twilightforest:charm_of_keeping_3",
+    "emc": 131072
+  },
+  {
+    "item": "twilightforest:cherry_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:cherry_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:cooked_meef",
+    "emc": 128
+  },
+  {
+    "item": "twilightforest:cooked_venison",
+    "emc": 128
+  },
+  {
+    "item": "twilightforest:copper_nugget",
+    "emc": 14
+  },
+  {
+    "item": "twilightforest:crimson_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:crimson_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:crumble_horn",
+    "emc": 49152
+  },
+  {
+    "item": "twilightforest:dark_oak_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:dark_oak_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:diamond_minotaur_axe",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:ender_bow",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:essence_berry",
+    "emc": 256
+  },
+  {
+    "item": "twilightforest:exanimate_essence",
+    "emc": 1024
+  },
+  {
+    "item": "twilightforest:fiery_block",
+    "emc": 76032
+  },
+  {
+    "item": "twilightforest:fiery_blood",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:fiery_boots",
+    "emc": 33792
+  },
+  {
+    "item": "twilightforest:fiery_chestplate",
+    "emc": 67584
+  },
+  {
+    "item": "twilightforest:fiery_helmet",
+    "emc": 42240
+  },
+  {
+    "item": "twilightforest:fiery_ingot",
+    "emc": 8448
+  },
+  {
+    "item": "twilightforest:fiery_leggings",
+    "emc": 59136
+  },
+  {
+    "item": "twilightforest:fiery_pickaxe",
+    "emc": 28424
+  },
+  {
+    "item": "twilightforest:fiery_sword",
+    "emc": 18436
+  },
+  {
+    "item": "twilightforest:fiery_tears",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:fortification_scepter",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:glass_sword",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:hydra_banner_pattern",
+    "emc": 24608
+  },
+  {
+    "item": "twilightforest:hydra_chop",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:hydra_trophy",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:ice_bomb",
+    "emc": 2048
+  },
+  {
+    "item": "twilightforest:ice_bow",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:ice_sword",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:ironwood_axe",
+    "emc": 2888
+  },
+  {
+    "item": "twilightforest:ironwood_block",
+    "emc": 8640
+  },
+  {
+    "item": "twilightforest:ironwood_boots",
+    "emc": 3840
+  },
+  {
+    "item": "twilightforest:ironwood_chestplate",
+    "emc": 7680
+  },
+  {
+    "item": "twilightforest:ironwood_helmet",
+    "emc": 4800
+  },
+  {
+    "item": "twilightforest:ironwood_hoe",
+    "emc": 1928
+  },
+  {
+    "item": "twilightforest:ironwood_ingot",
+    "emc": 960
+  },
+  {
+    "item": "twilightforest:ironwood_leggings",
+    "emc": 6720
+  },
+  {
+    "item": "twilightforest:ironwood_pickaxe",
+    "emc": 2888
+  },
+  {
+    "item": "twilightforest:ironwood_shovel",
+    "emc": 968
+  },
+  {
+    "item": "twilightforest:ironwood_sword",
+    "emc": 1924
+  },
+  {
+    "item": "twilightforest:jungle_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:jungle_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:knight_phantom_banner_pattern",
+    "emc": 24608
+  },
+  {
+    "item": "twilightforest:knight_phantom_trophy",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:knightmetal_axe",
+    "emc": 24584
+  },
+  {
+    "item": "twilightforest:knightmetal_block",
+    "emc": 73728
+  },
+  {
+    "item": "twilightforest:knightmetal_boots",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:knightmetal_chestplate",
+    "emc": 65536
+  },
+  {
+    "item": "twilightforest:knightmetal_helmet",
+    "emc": 40960
+  },
+  {
+    "item": "twilightforest:knightmetal_ingot",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:knightmetal_leggings",
+    "emc": 57344
+  },
+  {
+    "item": "twilightforest:knightmetal_pickaxe",
+    "emc": 24584
+  },
+  {
+    "item": "twilightforest:knightmetal_ring",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:knightmetal_sword",
+    "emc": 16388
+  },
+  {
+    "item": "twilightforest:lamp_of_cinders",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:lich_banner_pattern",
+    "emc": 12320
+  },
+  {
+    "item": "twilightforest:lich_trophy",
+    "emc": 12288
+  },
+  {
+    "item": "twilightforest:lifedrain_scepter",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:liveroot",
+    "emc": 512
+  },
+  {
+    "item": "twilightforest:magic_beans",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:magic_map",
+    "emc": 1024
+  },
+  {
+    "item": "twilightforest:magic_map_focus",
+    "emc": 768
+  },
+  {
+    "item": "twilightforest:maze_wafer",
+    "emc": 256
+  },
+  {
+    "item": "twilightforest:meef_stroganoff",
+    "emc": 2048
+  },
+  {
+    "item": "twilightforest:minoshroom_banner_pattern",
+    "emc": 12320
+  },
+  {
+    "item": "twilightforest:minoshroom_trophy",
+    "emc": 12288
+  },
+  {
+    "item": "twilightforest:moon_dial",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:moonworm_queen",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:music_disc_findings",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_home",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_maker",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_motion",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_radiance",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_steps",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_superstitious",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_thread",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:music_disc_wayfarer",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:naga_banner_pattern",
+    "emc": 8224
+  },
+  {
+    "item": "twilightforest:naga_chestplate",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:naga_leggings",
+    "emc": 28672
+  },
+  {
+    "item": "twilightforest:naga_scale",
+    "emc": 4096
+  },
+  {
+    "item": "twilightforest:naga_trophy",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:oak_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:oak_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:ore_magnet",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:ore_meter",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:peacock_feather_fan",
+    "emc": 49152
+  },
+  {
+    "item": "twilightforest:phantom_chestplate",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:phantom_helmet",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:pocket_watch",
+    "emc": 8192
+  },
+  {
+    "item": "twilightforest:quest_ram_trophy",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:raven_feather",
+    "emc": 256
+  },
+  {
+    "item": "twilightforest:raw_meef",
+    "emc": 128
+  },
+  {
+    "item": "twilightforest:raw_venison",
+    "emc": 128
+  },
+  {
+    "item": "twilightforest:red_thread",
+    "emc": 32
+  },
+  {
+    "item": "twilightforest:seeker_bow",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:shika_senbei",
+    "emc": 256
+  },
+  {
+    "item": "twilightforest:snow_queen_banner_pattern",
+    "emc": 24608
+  },
+  {
+    "item": "twilightforest:snow_queen_trophy",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:spruce_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:spruce_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:steeleaf_axe",
+    "emc": 12296
+  },
+  {
+    "item": "twilightforest:steeleaf_block",
+    "emc": 36864
+  },
+  {
+    "item": "twilightforest:steeleaf_boots",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:steeleaf_chestplate",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:steeleaf_helmet",
+    "emc": 20480
+  },
+  {
+    "item": "twilightforest:steeleaf_hoe",
+    "emc": 8200
+  },
+  {
+    "item": "twilightforest:steeleaf_ingot",
+    "emc": 4096
+  },
+  {
+    "item": "twilightforest:steeleaf_leggings",
+    "emc": 28672
+  },
+  {
+    "item": "twilightforest:steeleaf_pickaxe",
+    "emc": 12296
+  },
+  {
+    "item": "twilightforest:steeleaf_shovel",
+    "emc": 4104
+  },
+  {
+    "item": "twilightforest:steeleaf_sword",
+    "emc": 8196
+  },
+  {
+    "item": "twilightforest:torchberries",
+    "emc": 128
+  },
+  {
+    "item": "twilightforest:tower_key",
+    "emc": 4096
+  },
+  {
+    "item": "twilightforest:transformation_powder",
+    "emc": 512
+  },
+  {
+    "item": "twilightforest:triple_bow",
+    "emc": 49152
+  },
+  {
+    "item": "twilightforest:twilight_scepter",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:ur_ghast_banner_pattern",
+    "emc": 24608
+  },
+  {
+    "item": "twilightforest:ur_ghast_trophy",
+    "emc": 24576
+  },
+  {
+    "item": "twilightforest:vangrove_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:vangrove_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:warped_banister",
+    "emc": 6
+  },
+  {
+    "item": "twilightforest:warped_drying_rack",
+    "emc": 12
+  },
+  {
+    "item": "twilightforest:yeti_boots",
+    "emc": 16384
+  },
+  {
+    "item": "twilightforest:yeti_chestplate",
+    "emc": 32768
+  },
+  {
+    "item": "twilightforest:yeti_helmet",
+    "emc": 20480
+  },
+  {
+    "item": "twilightforest:yeti_leggings",
+    "emc": 28672
+  },
+  {
+    "item": "twilightforest:zombie_scepter",
+    "emc": 24576
+  }
+]

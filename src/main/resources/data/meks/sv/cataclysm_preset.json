@@ -1,0 +1,606 @@
+[
+  {
+    "item": "cataclysm:abyss_eye",
+    "emc": 4736
+  },
+  {
+    "item": "cataclysm:abyssal_egg",
+    "emc": 196608
+  },
+  {
+    "item": "cataclysm:abyssal_sacrifice",
+    "emc": 284032
+  },
+  {
+    "item": "cataclysm:amethyst_crab_meat",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:amethyst_crab_shell",
+    "emc": 2048
+  },
+  {
+    "item": "cataclysm:ancient_metal_block",
+    "emc": 36864
+  },
+  {
+    "item": "cataclysm:ancient_metal_ingot",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:ancient_metal_nugget",
+    "emc": 455
+  },
+  {
+    "item": "cataclysm:ancient_spear",
+    "emc": 16384
+  },
+  {
+    "item": "cataclysm:astrape",
+    "emc": 45056
+  },
+  {
+    "item": "cataclysm:athame",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:azure_sea_shield",
+    "emc": 19340
+  },
+  {
+    "item": "cataclysm:azure_seastone",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_brick_slab",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:azure_seastone_brick_stairs",
+    "emc": 769
+  },
+  {
+    "item": "cataclysm:azure_seastone_brick_wall",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_bricks",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_mural_empty",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:azure_seastone_pillar",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_pillar_wall",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_slab",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:azure_seastone_stairs",
+    "emc": 769
+  },
+  {
+    "item": "cataclysm:azure_seastone_tiles",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:azure_seastone_wall",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:belt_of_beginner",
+    "emc": 384
+  },
+  {
+    "item": "cataclysm:black_steel_axe",
+    "emc": 24584
+  },
+  {
+    "item": "cataclysm:black_steel_block",
+    "emc": 73728
+  },
+  {
+    "item": "cataclysm:black_steel_fence",
+    "emc": 51882
+  },
+  {
+    "item": "cataclysm:black_steel_hoe",
+    "emc": 16392
+  },
+  {
+    "item": "cataclysm:black_steel_ingot",
+    "emc": 8192
+  },
+  {
+    "item": "cataclysm:black_steel_nugget",
+    "emc": 910
+  },
+  {
+    "item": "cataclysm:black_steel_pickaxe",
+    "emc": 24584
+  },
+  {
+    "item": "cataclysm:black_steel_shovel",
+    "emc": 8200
+  },
+  {
+    "item": "cataclysm:black_steel_sword",
+    "emc": 16388
+  },
+  {
+    "item": "cataclysm:black_steel_targe",
+    "emc": 11864
+  },
+  {
+    "item": "cataclysm:black_steel_wall",
+    "emc": 73728
+  },
+  {
+    "item": "cataclysm:blackstone_pillar",
+    "emc": 4
+  },
+  {
+    "item": "cataclysm:blazing_grips",
+    "emc": 49160
+  },
+  {
+    "item": "cataclysm:blessed_amethyst_crab_meat",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:bloom_stone_pauldrons",
+    "emc": 16384
+  },
+  {
+    "item": "cataclysm:bone_reptile_chestplate",
+    "emc": 20480
+  },
+  {
+    "item": "cataclysm:brontes",
+    "emc": 307200
+  },
+  {
+    "item": "cataclysm:bulwark_of_the_flame",
+    "emc": 101684
+  },
+  {
+    "item": "cataclysm:burning_ashes",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:ceraunus",
+    "emc": 45056
+  },
+  {
+    "item": "cataclysm:chiseled_azure_seastone",
+    "emc": 512
+  },
+  {
+    "item": "cataclysm:chiseled_azure_seastone_pillar",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:chiseled_azure_seastone_pillar_wall",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:chiseled_end_stone_bricks",
+    "emc": 4
+  },
+  {
+    "item": "cataclysm:chiseled_obsidian_bricks",
+    "emc": 64
+  },
+  {
+    "item": "cataclysm:chiseled_purpur_block",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:chiseled_stone_brick_pillar",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:chitin_claw",
+    "emc": 1024
+  },
+  {
+    "item": "cataclysm:chorus_fence",
+    "emc": 514
+  },
+  {
+    "item": "cataclysm:chorus_planks",
+    "emc": 384
+  },
+  {
+    "item": "cataclysm:chorus_slab",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:chorus_stairs",
+    "emc": 576
+  },
+  {
+    "item": "cataclysm:chorus_stem",
+    "emc": 768
+  },
+  {
+    "item": "cataclysm:chorus_trapdoor",
+    "emc": 1152
+  },
+  {
+    "item": "cataclysm:coral_chunk",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:crystallized_coral",
+    "emc": 2048
+  },
+  {
+    "item": "cataclysm:crystallized_coral_fragments",
+    "emc": 512
+  },
+  {
+    "item": "cataclysm:cursed_bow",
+    "emc": 106532
+  },
+  {
+    "item": "cataclysm:cursed_eye",
+    "emc": 10160
+  },
+  {
+    "item": "cataclysm:cursium_block",
+    "emc": 442368
+  },
+  {
+    "item": "cataclysm:cursium_boots",
+    "emc": 175738
+  },
+  {
+    "item": "cataclysm:cursium_chestplate",
+    "emc": 208506
+  },
+  {
+    "item": "cataclysm:cursium_helmet",
+    "emc": 183930
+  },
+  {
+    "item": "cataclysm:cursium_ingot",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:cursium_leggings",
+    "emc": 200314
+  },
+  {
+    "item": "cataclysm:cursium_upgrade_smithing_template",
+    "emc": 36169
+  },
+  {
+    "item": "cataclysm:desert_eye",
+    "emc": 20033
+  },
+  {
+    "item": "cataclysm:dying_ember",
+    "emc": 1024
+  },
+  {
+    "item": "cataclysm:end_stone_pillar",
+    "emc": 2
+  },
+  {
+    "item": "cataclysm:essence_of_the_storm",
+    "emc": 16384
+  },
+  {
+    "item": "cataclysm:flame_eye",
+    "emc": 27283
+  },
+  {
+    "item": "cataclysm:frosted_stone_brick_stairs",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:frosted_stone_brick_wall",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:frosted_stone_bricks",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:gauntlet_of_bulwark",
+    "emc": 232756
+  },
+  {
+    "item": "cataclysm:gauntlet_of_guard",
+    "emc": 131072
+  },
+  {
+    "item": "cataclysm:gauntlet_of_maelstrom",
+    "emc": 262144
+  },
+  {
+    "item": "cataclysm:ignitium_block",
+    "emc": 442368
+  },
+  {
+    "item": "cataclysm:ignitium_boots",
+    "emc": 148618
+  },
+  {
+    "item": "cataclysm:ignitium_chestplate",
+    "emc": 181386
+  },
+  {
+    "item": "cataclysm:ignitium_elytra_chestplate",
+    "emc": 279690
+  },
+  {
+    "item": "cataclysm:ignitium_helmet",
+    "emc": 156810
+  },
+  {
+    "item": "cataclysm:ignitium_ingot",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:ignitium_leggings",
+    "emc": 173194
+  },
+  {
+    "item": "cataclysm:ignitium_upgrade_smithing_template",
+    "emc": 9049
+  },
+  {
+    "item": "cataclysm:infernal_forge",
+    "emc": 262144
+  },
+  {
+    "item": "cataclysm:koboleton_bone",
+    "emc": 1024
+  },
+  {
+    "item": "cataclysm:lacrima",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:laser_gatling",
+    "emc": 50560
+  },
+  {
+    "item": "cataclysm:lava_power_cell",
+    "emc": 16384
+  },
+  {
+    "item": "cataclysm:lionfish",
+    "emc": 128
+  },
+  {
+    "item": "cataclysm:meat_shredder",
+    "emc": 51584
+  },
+  {
+    "item": "cataclysm:mech_eye",
+    "emc": 4736
+  },
+  {
+    "item": "cataclysm:mechanical_fusion_anvil",
+    "emc": 156544
+  },
+  {
+    "item": "cataclysm:monstrous_eye",
+    "emc": 29320
+  },
+  {
+    "item": "cataclysm:monstrous_helm",
+    "emc": 138874
+  },
+  {
+    "item": "cataclysm:monstrous_horn",
+    "emc": 32768
+  },
+  {
+    "item": "cataclysm:music_disc_ancient_remnant",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:music_disc_ender_guardian",
+    "emc": 32768
+  },
+  {
+    "item": "cataclysm:music_disc_ignis",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:music_disc_maledictus",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:music_disc_netherite_monstrosity",
+    "emc": 32768
+  },
+  {
+    "item": "cataclysm:music_disc_scylla",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:music_disc_the_harbinger",
+    "emc": 49152
+  },
+  {
+    "item": "cataclysm:music_disc_the_leviathan",
+    "emc": 65536
+  },
+  {
+    "item": "cataclysm:netherite_effigy",
+    "emc": 64044
+  },
+  {
+    "item": "cataclysm:obsidian_brick_slab",
+    "emc": 32
+  },
+  {
+    "item": "cataclysm:obsidian_brick_stairs",
+    "emc": 96
+  },
+  {
+    "item": "cataclysm:obsidian_brick_wall",
+    "emc": 64
+  },
+  {
+    "item": "cataclysm:obsidian_bricks",
+    "emc": 64
+  },
+  {
+    "item": "cataclysm:obsidian_pillar",
+    "emc": 64
+  },
+  {
+    "item": "cataclysm:polished_azure_seastone",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:polished_azure_seastone_slab",
+    "emc": 256
+  },
+  {
+    "item": "cataclysm:polished_azure_seastone_stairs",
+    "emc": 769
+  },
+  {
+    "item": "cataclysm:polished_azure_seastone_wall",
+    "emc": 513
+  },
+  {
+    "item": "cataclysm:prismarine_brick_fence",
+    "emc": 1621
+  },
+  {
+    "item": "cataclysm:prismarine_brick_wall",
+    "emc": 2304
+  },
+  {
+    "item": "cataclysm:purpur_tile_pillar",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:purpur_tile_slab",
+    "emc": 96
+  },
+  {
+    "item": "cataclysm:purpur_tile_stairs",
+    "emc": 288
+  },
+  {
+    "item": "cataclysm:purpur_tile_wall",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:purpur_tiles",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:purpur_wall",
+    "emc": 192
+  },
+  {
+    "item": "cataclysm:quartz_brick_wall",
+    "emc": 1024
+  },
+  {
+    "item": "cataclysm:remnant_skull",
+    "emc": 65536
+  },
+  {
+    "item": "cataclysm:sandstorm_in_a_bottle",
+    "emc": 131072
+  },
+  {
+    "item": "cataclysm:soul_render",
+    "emc": 163840
+  },
+  {
+    "item": "cataclysm:sticky_gloves",
+    "emc": 124
+  },
+  {
+    "item": "cataclysm:stone_pillar",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:stone_tiles",
+    "emc": 1
+  },
+  {
+    "item": "cataclysm:storm_eye",
+    "emc": 20480
+  },
+  {
+    "item": "cataclysm:strange_key",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:the_annihilator",
+    "emc": 106496
+  },
+  {
+    "item": "cataclysm:the_immolator",
+    "emc": 155648
+  },
+  {
+    "item": "cataclysm:the_incinerator",
+    "emc": 178485
+  },
+  {
+    "item": "cataclysm:tidal_claws",
+    "emc": 262144
+  },
+  {
+    "item": "cataclysm:void_assault_shoulder_weapon",
+    "emc": 83264
+  },
+  {
+    "item": "cataclysm:void_core",
+    "emc": 32768
+  },
+  {
+    "item": "cataclysm:void_eye",
+    "emc": 6274
+  },
+  {
+    "item": "cataclysm:void_forge",
+    "emc": 294912
+  },
+  {
+    "item": "cataclysm:void_jaw",
+    "emc": 4096
+  },
+  {
+    "item": "cataclysm:void_scatter_arrow",
+    "emc": 2435
+  },
+  {
+    "item": "cataclysm:wither_assault_shoulder_weapon",
+    "emc": 50496
+  },
+  {
+    "item": "cataclysm:witherite_block",
+    "emc": 221184
+  },
+  {
+    "item": "cataclysm:witherite_ingot",
+    "emc": 24576
+  },
+  {
+    "item": "cataclysm:wrath_of_the_desert",
+    "emc": 237604
+  }
+]

@@ -17,6 +17,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
+import org.lwjgl.glfw.GLFW;
 
 public class GuiRestorationSwitch extends GuiConfigurableTile<RestorationSwitchTile, RestorationSwitchContainer> {
 
@@ -85,6 +86,21 @@ public class GuiRestorationSwitch extends GuiConfigurableTile<RestorationSwitchT
         Component title = Component.translatable("gui.meks.restoration_switch.title", minecraft.player.getDisplayName());
         int x = imageWidth / 2 - font.width(title) / 2;
         guiGraphics.drawString(font(), title, x, titleLabelY, 0x404040, false);
+    }
+
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (button == GLFW.GLFW_MOUSE_BUTTON_RIGHT && isOverSlot(mouseX, mouseY)) {
+            menu.cancelRepair();
+            return true;
+        }
+        return super.mouseClicked(mouseX, mouseY, button);
+    }
+
+    private boolean isOverSlot(double mouseX, double mouseY) {
+        int x = getGuiLeft() + SLOT_X;
+        int y = getGuiTop() + SLOT_Y;
+        return mouseX >= x && mouseX < x + 16 && mouseY >= y && mouseY < y + 16;
     }
 
     private void drawRepairInfo(GuiGraphics guiGraphics, ItemStack stack) {

@@ -1,0 +1,377 @@
+{
+  "twilightforest:liveroot": {
+    "sv": 512,
+    "cat": "材料",
+    "logic": "锚点：2×铁锭(256)；活根/地下根须获取，铁木线基础材料。",
+    "note": "粗铁木合成原料。"
+  },
+  "twilightforest:raven_feather": {
+    "sv": 256,
+    "cat": "材料",
+    "logic": "锚点：1×铁锭；渡鸦掉落。",
+    "note": "魔法地图核心原料。"
+  },
+  "twilightforest:torchberries": {
+    "sv": 128,
+    "cat": "食物",
+    "logic": "锚点：0.5×铁锭；发光+食物，低价值。",
+    "note": ""
+  },
+  "twilightforest:naga_scale": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "锚点：16×铁锭；娜迦 BOSS 掉落，娜迦护甲原料。",
+    "note": "8 片做胸甲，7 片做护腿。"
+  },
+  "twilightforest:ironwood_ingot": {
+    "sv": 960,
+    "cat": "材料",
+    "logic": "粗铁木熔炼等值价 960；原料和≈955（活根 512 + 粗铁 216 + 金粒 227），避免熔炉造币。",
+    "note": "铁木工具/护甲上游材料。"
+  },
+  "twilightforest:steeleaf_ingot": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "锚点：16×铁锭；黑暗高塔/钢叶线材料。",
+    "note": ""
+  },
+  "twilightforest:knightmetal_ingot": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "锚点：1×钻石；装甲碎片堆熔炼，骑士金属线核心。",
+    "note": ""
+  },
+  "twilightforest:armor_shard": {
+    "sv": 910,
+    "cat": "材料",
+    "logic": "骑士金属锭 8192 ÷ 9 ≈ 910；哥布林/寄居蟹掉落。",
+    "note": "9 片合成碎片堆，再熔炼成锭。"
+  },
+  "twilightforest:fiery_blood": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "锚点：1×钻石；九头蛇 BOSS 掉落。",
+    "note": "炽铁瓶 tag 成员，用于炽铁合成。"
+  },
+  "twilightforest:fiery_tears": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "锚点：1×钻石；暮初恶魂 BOSS 掉落。",
+    "note": "炽铁瓶 tag 成员，与炽热血同价。"
+  },
+  "twilightforest:fiery_ingot": {
+    "sv": 8448,
+    "cat": "材料",
+    "logic": "炽铁瓶(8192) + 铁锭(256) = 8448；与合成价一致。",
+    "note": "显式写入以免炽铁瓶 tag 解析失败。"
+  },
+  "twilightforest:alpha_yeti_fur": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "锚点：16×铁锭；雪怪首领掉落，雪怪护甲原料。",
+    "note": ""
+  },
+  "twilightforest:arctic_fur": {
+    "sv": 512,
+    "cat": "材料",
+    "logic": "锚点：2×铁锭；极光宝箱获取，极地护甲原料。",
+    "note": ""
+  },
+  "twilightforest:borer_essence": {
+    "sv": 512,
+    "cat": "材料",
+    "logic": "锚点：2×铁锭；蛀木虫掉落。",
+    "note": ""
+  },
+  "twilightforest:exanimate_essence": {
+    "sv": 1024,
+    "cat": "材料",
+    "logic": "锚点：4×铁锭；巫妖/高塔宝箱获取。",
+    "note": ""
+  },
+  "twilightforest:essence_berry": {
+    "sv": 256,
+    "cat": "食物",
+    "logic": "锚点：1×铁锭；精华莓丛产物。",
+    "note": ""
+  },
+  "twilightforest:hydra_chop": {
+    "sv": 8192,
+    "cat": "食物",
+    "logic": "九头蛇 BOSS 掉落的高回复食物；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:raw_venison": {
+    "sv": 128,
+    "cat": "食物",
+    "logic": "鹿掉落生肉；低价值。",
+    "note": ""
+  },
+  "twilightforest:cooked_venison": {
+    "sv": 128,
+    "cat": "食物",
+    "logic": "与生鹿肉同价，避免熔炉造币。",
+    "note": ""
+  },
+  "twilightforest:raw_meef": {
+    "sv": 128,
+    "cat": "食物",
+    "logic": "牛头人掉落生肉；低价值。",
+    "note": ""
+  },
+  "twilightforest:cooked_meef": {
+    "sv": 128,
+    "cat": "食物",
+    "logic": "与生牛头人肉同价，避免熔炉造币。",
+    "note": ""
+  },
+  "twilightforest:meef_stroganoff": {
+    "sv": 2048,
+    "cat": "食物",
+    "logic": "米诺菇掉落的高效果食物；锚点 8×铁锭。",
+    "note": ""
+  },
+  "twilightforest:maze_wafer": {
+    "sv": 256,
+    "cat": "食物",
+    "logic": "迷宫薄饼；低价值。",
+    "note": ""
+  },
+  "twilightforest:shika_senbei": {
+    "sv": 256,
+    "cat": "食物",
+    "logic": "鹿仙贝；低价值。",
+    "note": ""
+  },
+  "twilightforest:charm_of_keeping_1": {
+    "sv": 8192,
+    "cat": "饰品",
+    "logic": "保管符咒 I：宝箱获取；锚点 1×钻石。",
+    "note": "II/III 由 4 个低级合成，自动推导。"
+  },
+  "twilightforest:charm_of_life_1": {
+    "sv": 8192,
+    "cat": "饰品",
+    "logic": "生命符咒 I：宝箱获取；锚点 1×钻石。",
+    "note": "II 由 4 个低级合成，自动推导。"
+  },
+  "twilightforest:naga_trophy": {
+    "sv": 8192,
+    "cat": "奖杯",
+    "logic": "娜迦奖杯；BOSS 档 = 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:lich_trophy": {
+    "sv": 12288,
+    "cat": "奖杯",
+    "logic": "巫妖奖杯；BOSS 档 = 1.5×钻石。",
+    "note": ""
+  },
+  "twilightforest:minoshroom_trophy": {
+    "sv": 12288,
+    "cat": "奖杯",
+    "logic": "米诺菇奖杯；BOSS 档 = 1.5×钻石。",
+    "note": ""
+  },
+  "twilightforest:hydra_trophy": {
+    "sv": 24576,
+    "cat": "奖杯",
+    "logic": "九头蛇奖杯；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:ur_ghast_trophy": {
+    "sv": 24576,
+    "cat": "奖杯",
+    "logic": "暮初恶魂奖杯；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:alpha_yeti_trophy": {
+    "sv": 24576,
+    "cat": "奖杯",
+    "logic": "雪怪首领奖杯；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:snow_queen_trophy": {
+    "sv": 24576,
+    "cat": "奖杯",
+    "logic": "冰雪女王奖杯；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:knight_phantom_trophy": {
+    "sv": 24576,
+    "cat": "奖杯",
+    "logic": "幻影骑士奖杯；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:quest_ram_trophy": {
+    "sv": 16384,
+    "cat": "奖杯",
+    "logic": "谜题羊奖杯；任务奖励档 = 2×钻石。",
+    "note": ""
+  },
+  "twilightforest:twilight_scepter": {
+    "sv": 24576,
+    "cat": "武器/工具",
+    "logic": "巫妖掉落权杖；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:lifedrain_scepter": {
+    "sv": 24576,
+    "cat": "武器/工具",
+    "logic": "巫妖掉落吸血权杖；同档 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:zombie_scepter": {
+    "sv": 24576,
+    "cat": "武器/工具",
+    "logic": "巫妖掉落僵尸权杖；同档 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:fortification_scepter": {
+    "sv": 24576,
+    "cat": "武器/工具",
+    "logic": "巫妖掉落护盾权杖；同档 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:ender_bow": {
+    "sv": 32768,
+    "cat": "武器/工具",
+    "logic": "极光宝箱获取；锚点 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:ice_bow": {
+    "sv": 32768,
+    "cat": "武器/工具",
+    "logic": "极光宝箱获取；同档 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:seeker_bow": {
+    "sv": 32768,
+    "cat": "武器/工具",
+    "logic": "冰雪女王掉落；同档 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:triple_bow": {
+    "sv": 49152,
+    "cat": "武器/工具",
+    "logic": "冰雪女王掉落；BOSS 档 = 6×钻石。",
+    "note": ""
+  },
+  "twilightforest:ice_sword": {
+    "sv": 24576,
+    "cat": "武器/工具",
+    "logic": "极光宝箱获取；锚点 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:glass_sword": {
+    "sv": 16384,
+    "cat": "武器/工具",
+    "logic": "极光房间获取；锚点 2×钻石。",
+    "note": ""
+  },
+  "twilightforest:diamond_minotaur_axe": {
+    "sv": 32768,
+    "cat": "武器/工具",
+    "logic": "米诺菇 BOSS 掉落；锚点 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:phantom_helmet": {
+    "sv": 24576,
+    "cat": "护甲",
+    "logic": "幻影骑士掉落；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "twilightforest:phantom_chestplate": {
+    "sv": 32768,
+    "cat": "护甲",
+    "logic": "幻影骑士掉落；BOSS 档 = 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:crumble_horn": {
+    "sv": 49152,
+    "cat": "武器/工具",
+    "logic": "谜题羊任务奖励；锚点 6×钻石。",
+    "note": ""
+  },
+  "twilightforest:peacock_feather_fan": {
+    "sv": 49152,
+    "cat": "武器/工具",
+    "logic": "山丘/高塔宝箱获取；锚点 6×钻石。",
+    "note": ""
+  },
+  "twilightforest:moonworm_queen": {
+    "sv": 32768,
+    "cat": "武器/工具",
+    "logic": "山丘/高塔宝箱获取；锚点 4×钻石。",
+    "note": ""
+  },
+  "twilightforest:ore_magnet": {
+    "sv": 16384,
+    "cat": "武器/工具",
+    "logic": "山丘宝箱获取；锚点 2×钻石。",
+    "note": ""
+  },
+  "twilightforest:ore_meter": {
+    "sv": 8192,
+    "cat": "武器/工具",
+    "logic": "山丘宝箱获取；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:pocket_watch": {
+    "sv": 8192,
+    "cat": "武器/工具",
+    "logic": "山丘宝箱获取；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:moon_dial": {
+    "sv": 8192,
+    "cat": "武器/工具",
+    "logic": "墓地获取；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:lamp_of_cinders": {
+    "sv": 16384,
+    "cat": "功能物品",
+    "logic": "巨魔宝库获取；锚点 2×钻石。",
+    "note": ""
+  },
+  "twilightforest:tower_key": {
+    "sv": 4096,
+    "cat": "功能物品",
+    "logic": "黑暗高塔钥匙；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:magic_beans": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "巨魔花园获取；锚点 1×钻石。",
+    "note": ""
+  },
+  "twilightforest:ice_bomb": {
+    "sv": 2048,
+    "cat": "武器/工具",
+    "logic": "极光房间/雪怪首领掉落；锚点 8×铁锭。",
+    "note": ""
+  },
+  "twilightforest:transformation_powder": {
+    "sv": 512,
+    "cat": "材料",
+    "logic": "井/墓地/山丘获取；低价值。",
+    "note": ""
+  },
+  "twilightforest:red_thread": {
+    "sv": 32,
+    "cat": "材料",
+    "logic": "迷宫获取；低价值。",
+    "note": ""
+  },
+  "twilightforest:music_disc_findings": {"sv": 8192, "cat": "唱片", "logic": "山丘宝箱唱片；锚点 1×钻石。", "note": ""},
+  "twilightforest:music_disc_home": {"sv": 8192, "cat": "唱片", "logic": "地窖宝箱唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_maker": {"sv": 8192, "cat": "唱片", "logic": "山丘宝箱唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_motion": {"sv": 8192, "cat": "唱片", "logic": "树篱迷宫唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_radiance": {"sv": 8192, "cat": "唱片", "logic": "地窖宝箱唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_steps": {"sv": 8192, "cat": "唱片", "logic": "井边唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_superstitious": {"sv": 8192, "cat": "唱片", "logic": "倒木宝箱唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_thread": {"sv": 8192, "cat": "唱片", "logic": "地窖唱片；同档 1×钻石。", "note": ""},
+  "twilightforest:music_disc_wayfarer": {"sv": 8192, "cat": "唱片", "logic": "山丘宝箱唱片；同档 1×钻石。", "note": ""}
+}

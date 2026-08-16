@@ -16,7 +16,8 @@ public class MekanismSwitch {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public MekanismSwitch(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC, Config.COMMON_FILE);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC, Config.CLIENT_FILE);
         MeksRegistries.register(modEventBus);
         modEventBus.addListener(MeksPayloads::registerPayloadHandlers);
         NeoForge.EVENT_BUS.addListener(MeksCommands::register);

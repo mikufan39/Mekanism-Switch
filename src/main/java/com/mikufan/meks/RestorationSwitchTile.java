@@ -34,6 +34,7 @@ import mekanism.common.util.MekanismUtils;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
@@ -42,17 +43,13 @@ import org.jetbrains.annotations.Nullable;
 
 public class RestorationSwitchTile extends TileEntityConfigurableMachine {
 
-    private static final int MIN_TICKS = 20;
-    private static final int MAX_TICKS = 600;
-    private static final long NO_SV_COST = 616L;
-    private static final long ENERGY_PER_SV = 2L;
-    private static final double TICK_PER_SV = 0.1D;
 
     private MachineEnergyContainer<RestorationSwitchTile> energyContainer;
     private BasicInventorySlot repairSlot;
     private EnergyInventorySlot energySlot;
     private final RepairJob job = new RepairJob();
     private ItemStack lastSeenStack = ItemStack.EMPTY;
+    private boolean repairCancelled;
 
     public RestorationSwitchTile(BlockPos pos, BlockState state) {
         super(MeksRegistries.RESTORATION_SWITCH_BLOCK, pos, state);
@@ -115,6 +112,10 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
             resetJob();
             lastSeenStack = current.copy();
         }
+        if (repairCancelled) {
+            setActive(false);
+            return;
+        }
         if (!job.active && !beginAttempt(owner)) {
             setActive(false);
             return;
@@ -130,14 +131,16 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
             return false;
         }
         long value = MeksValues.getValue(stack.getItem());
-        long svCost = value > 0 ? Math.max(1, (value + 99) / 100) : NO_SV_COST;
+        int minTicks = Config.RESTORATION_MIN_TICKS.get();
+        int maxTicks = Math.max(minTicks, Config.RESTORATION_MAX_TICKS.get());
+        long svCost = value > 0 ? Math.max(1, (value + 99) / 100) : Config.RESTORATION_FALLBACK_SV_COST.get();
         if (getData(owner).getSv() < svCost) {
             job.active = false;
             setActive(false);
             return false;
         }
-        long energyTotal = svCost * ENERGY_PER_SV;
-        int baseTicks = (int) Math.min(MAX_TICKS, Math.max(MIN_TICKS, 20 + (long) (svCost * TICK_PER_SV)));
+        long energyTotal = svCost * Config.RESTORATION_ENERGY_PER_SV.get();
+        int baseTicks = (int) Math.min(maxTicks, Math.max(minTicks, 20 + (long) (svCost * Config.RESTORATION_TICKS_PER_SV.get())));
         long baseEnergyPerTick = Math.max(1, energyTotal / Math.max(1, baseTicks));
         job.active = true;
         job.svCost = svCost;
@@ -273,7 +276,7 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
     }
 
     private boolean canExtractItem(ItemStack stack, AutomationType type) {
-        return type == AutomationType.MANUAL || !stack.isDamageableItem() || stack.getDamageValue() <= 0;
+        return type == AutomationType.INTERNAL || repairCancelled || stack.getDamageValue() <= 0;
     }
 
     @Nullable
@@ -292,6 +295,18 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
 
     private static void setData(Player player, PlayerExchangeData data) {
         player.setData(MeksAttachments.EXCHANGE_DATA, data);
+    }
+
+    @Override
+    public void saveAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider provider) {
+        super.saveAdditional(tag, provider);
+        tag.putBoolean("repairCancelled", repairCancelled);
+    }
+
+    @Override
+    public void loadAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider provider) {
+        super.loadAdditional(tag, provider);
+        repairCancelled = tag.getBoolean("repairCancelled");
     }
 
     @Override
@@ -318,10 +333,12 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
     public void recalculateUpgrades(Upgrade upgrade) {
         super.recalculateUpgrades(upgrade);
         if (job.active) {
-            int baseTicks = (int) Math.min(MAX_TICKS, Math.max(MIN_TICKS, 20 + (long) (job.svCost * TICK_PER_SV)));
+            int minTicks = Config.RESTORATION_MIN_TICKS.get();
+            int maxTicks = Math.max(minTicks, Config.RESTORATION_MAX_TICKS.get());
+            int baseTicks = (int) Math.min(maxTicks, Math.max(minTicks, 20 + (long) (job.svCost * Config.RESTORATION_TICKS_PER_SV.get())));
             job.ticksRequired = MekanismUtils.getTicks(this, baseTicks);
             job.energyPerTick = MekanismUtils.getEnergyPerTick(this,
-                  Math.max(1, (job.svCost * ENERGY_PER_SV) / Math.max(1, baseTicks)));
+                  Math.max(1, (job.svCost * Config.RESTORATION_ENERGY_PER_SV.get()) / Math.max(1, baseTicks)));
         }
         energyContainer.updateMaxEnergy();
     }
@@ -364,6 +381,17 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
         return job.active;
     }
 
+    public void cancelRepair() {
+        if (level == null || level.isClientSide) {
+            return;
+        }
+        resetJob();
+        clearStats();
+        repairCancelled = true;
+        setActive(false);
+        markForSave();
+    }
+
     public MachineEnergyContainer<RestorationSwitchTile> getEnergyContainer() {
         return energyContainer;
     }
@@ -373,7 +401,13 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
     }
 
     private IContentsListener contentsListener(IContentsListener outer) {
-        return outer::onContentsChanged;
+        return () -> {
+            ItemStack stack = repairSlot == null ? ItemStack.EMPTY : repairSlot.getStack();
+            if (stack.isEmpty() || stackChanged(stack)) {
+                repairCancelled = false;
+            }
+            outer.onContentsChanged();
+        };
     }
 
     private class RestorationInventoryHolder extends ConfigHolder<IInventorySlot> implements IInventorySlotHolder {

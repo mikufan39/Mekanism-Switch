@@ -25,6 +25,10 @@ public class RestorationSwitchContainer extends MekanismTileContainer<Restoratio
         sv = value;
     }
 
+    public void cancelRepair() {
+        MeksPayloads.sendCancelRepair(tile.getBlockPos());
+    }
+
     @Override
     protected int getInventoryYOffset() {
         return 124;

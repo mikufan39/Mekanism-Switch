@@ -45,13 +45,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
 
-    private static final int MIN_TICKS = 20;
-    private static final int MAX_TICKS = 600;
-    private static final long UPLOAD_FE_PER_SV = 2L;
-    private static final long DOWNLOAD_FE_PER_SV = 4L;
-    private static final double UPLOAD_TICK_PER_SV = 0.1D;
-    private static final double DOWNLOAD_TICK_PER_SV = 0.2D;
-
     private MachineEnergyContainer<ExchangeSwitchTile> energyContainer;
     private BasicInventorySlot processSlot;
     private BasicInventorySlot channelSlot;
@@ -86,10 +79,14 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         processJob = new ChannelJob();
         channelJob = new ChannelJob();
         forgetJob = new ChannelJob();
-        holder.addSlot(processSlot = BasicInventorySlot.at(ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(),
+        holder.addSlot(processSlot = BasicInventorySlot.at(
+              (stack, type) -> canExchangeExtract(processJob, processSlot, stack, type),
+              (stack, type) -> canExchangeInsert(processJob, processSlot, stack, type),
               this::canProcessItem, processContentsListener(listener, processJob), 29, 117));
         processSlot.setSlotType(ContainerSlotType.INPUT);
-        holder.addSlot(channelSlot = BasicInventorySlot.at(ConstantPredicates.alwaysTrueBi(), ConstantPredicates.alwaysTrueBi(),
+        holder.addSlot(channelSlot = BasicInventorySlot.at(
+              (stack, type) -> canExchangeExtract(channelJob, channelSlot, stack, type),
+              (stack, type) -> canExchangeInsert(channelJob, channelSlot, stack, type),
               this::canProcessItem, processContentsListener(listener, channelJob), 50, 117));
         channelSlot.setSlotType(ContainerSlotType.INPUT);
         holder.addSlot(forgetSlot = BasicInventorySlot.at(ConstantPredicates.manualOnly(), ConstantPredicates.internalOnly(),
@@ -208,9 +205,7 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
                     syncToOwner(owner);
                     return;
                 }
-                job.machineInserting = true;
                 ItemStack remainder = slot.insertItem(job.createTargetStack(), Action.EXECUTE, AutomationType.INTERNAL);
-                job.machineInserting = false;
                 if (!remainder.isEmpty()) {
                     data.addSv(value);
                     return;
@@ -292,12 +287,14 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         long value = Math.max(1, getTargetValue(job, slot));
         long totalEnergy;
         int baseTicks;
+        int minTicks = Config.EXCHANGE_MIN_TICKS.get();
+        int maxTicks = Math.max(minTicks, Config.EXCHANGE_MAX_TICKS.get());
         if (job.operation == ExchangeOperation.UPLOAD) {
-            baseTicks = (int) Math.min(MAX_TICKS, Math.max(MIN_TICKS, 20 + (long) (value * UPLOAD_TICK_PER_SV)));
-            totalEnergy = value * UPLOAD_FE_PER_SV;
+            baseTicks = (int) Math.min(maxTicks, Math.max(minTicks, 20 + (long) (value * Config.EXCHANGE_UPLOAD_TICKS_PER_SV.get())));
+            totalEnergy = value * Config.EXCHANGE_UPLOAD_FE_PER_SV.get();
         } else {
-            baseTicks = (int) Math.min(MAX_TICKS, Math.max(MIN_TICKS, 20 + (long) (value * DOWNLOAD_TICK_PER_SV)));
-            totalEnergy = value * DOWNLOAD_FE_PER_SV;
+            baseTicks = (int) Math.min(maxTicks, Math.max(minTicks, 20 + (long) (value * Config.EXCHANGE_DOWNLOAD_TICKS_PER_SV.get())));
+            totalEnergy = value * Config.EXCHANGE_DOWNLOAD_FE_PER_SV.get();
         }
         long baseEnergyPerTick = Math.max(1, totalEnergy / Math.max(1, baseTicks));
         job.ticksRequired = MekanismUtils.getTicks(this, baseTicks);
@@ -335,16 +332,13 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
     }
 
     private void checkForInterrupt(ChannelJob job, BasicInventorySlot slot) {
-        if (job.operation == ExchangeOperation.NONE || job.operation == ExchangeOperation.UPLOAD || slot.isEmpty()) {
+        if (job.operation != ExchangeOperation.DOWNLOAD || slot.isEmpty() || job.target == null) {
             return;
         }
-        boolean isDownloadOutput = job.operation == ExchangeOperation.DOWNLOAD && job.target != null
-              && ItemStack.isSameItemSameComponents(slot.getStack(), job.createTargetStack());
-        if (!isDownloadOutput) {
+        if (!ItemStack.isSameItemSameComponents(slot.getStack(), job.createTargetStack())) {
             resetJob(job, slot);
-            job.operation = ExchangeOperation.UPLOAD;
-            job.operatingTicks = 0;
-            recalculateRequirements(job);
+            job.suppressAutoStart = true;
+            markForSave();
         }
     }
 
@@ -365,34 +359,15 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         job.target = null;
         job.pendingCount = 0;
         job.operatingTicks = 0;
-        job.machineInserting = false;
-        job.previousEmpty = slot == null || slot.isEmpty();
     }
 
     private void onProcessSlotChanged(ChannelJob job, BasicInventorySlot slot) {
         if (level == null || level.isClientSide) {
             return;
         }
-        boolean empty = slot.isEmpty();
-        if (empty) {
+        if (slot.isEmpty()) {
             job.suppressAutoStart = false;
         }
-        if (job.operation != ExchangeOperation.DOWNLOAD) {
-            return;
-        }
-        if (job.machineInserting) {
-            job.previousEmpty = empty;
-            return;
-        }
-        if (job.previousEmpty && !empty) {
-            resetJob(job, slot);
-            job.operation = ExchangeOperation.UPLOAD;
-            job.operatingTicks = 0;
-            recalculateRequirements(job);
-            markForSave();
-            return;
-        }
-        job.previousEmpty = empty;
     }
 
     public void cancelOperation() {
@@ -403,10 +378,18 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
     }
 
     private void cancelJob(ChannelJob job, BasicInventorySlot slot) {
-        if (job.operation == ExchangeOperation.UPLOAD) {
+        if (job.operation != ExchangeOperation.NONE) {
             job.suppressAutoStart = true;
         }
         resetJob(job, slot);
+    }
+
+    private boolean canExchangeInsert(ChannelJob job, BasicInventorySlot slot, ItemStack stack, AutomationType type) {
+        return type == AutomationType.INTERNAL || (job.operation == ExchangeOperation.NONE && slot.isEmpty());
+    }
+
+    private boolean canExchangeExtract(ChannelJob job, BasicInventorySlot slot, ItemStack stack, AutomationType type) {
+        return type == AutomationType.INTERNAL || (job.operation == ExchangeOperation.NONE && !slot.isEmpty());
     }
 
     private boolean canProcessItem(ItemStack stack) {
@@ -676,8 +659,6 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         private int operatingTicks;
         private int ticksRequired;
         private long energyPerTick;
-        private boolean previousEmpty = true;
-        private boolean machineInserting;
         private boolean suppressAutoStart;
         private ItemStack targetStackSync = ItemStack.EMPTY;
 

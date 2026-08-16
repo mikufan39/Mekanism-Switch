@@ -35,22 +35,26 @@ MekaSuit 飞行控制为玩家在“穿着 MekaSuit 胸甲 + 鞘翅飞行”状�
 
 ## 4. 能量消耗
 
-- 飞行控制激活时，每个游戏刻从 MekaSuit 胸甲的能量容器抽取 `100 J`（常量 `ENERGY_PER_TICK`），即约 2000 J/秒。
+- 飞行控制激活时，每个游戏刻从 MekaSuit 胸甲的能量容器抽取 `flightEnergyPerTick` 配置值（默认 100 J），即默认约 2000 J/秒。
 - 能量不足一个 tick 的消耗量时，本次 tick 不扣能量，并立即退回原版操控。
 - 消耗使用 Mekanism 的 `IStrictEnergyHandler.extractEnergy`（`Action.EXECUTE`），先通过 `Action.SIMULATE` 预检。
 
 ## 5. 配置文件
 
-配置文件路径：`config/meks-common.toml`。
+配置文件路径：`config/Mekanism/meks-client.toml`。
 
 ```toml
+[client]
 mekaSuitFlightControls = true
+flightEnergyPerTick = 100
 ```
 
 - `true`：启用 MekaSuit 飞行控制。
 - `false`：禁用，鞘翅飞行完全保持原版操作。
 
-配置修改后需要重启游戏（NeoForge 通用配置在游戏启动时加载）。
+`flightEnergyPerTick` 为飞行控制激活时每游戏刻消耗的胸甲能量（J/t）。
+
+客户端配置在游戏启动时加载，修改后需要重启游戏。
 
 ## 6. 实现原理
 
@@ -109,14 +113,14 @@ mekaSuitFlightControls = true
 
 按顺序检查：
 
-1. `config/meks-common.toml` 中 `mekaSuitFlightControls = true`。
+1. `config/Mekanism/meks-client.toml` 中 `mekaSuitFlightControls = true`。
 2. 是否穿着 MekaSuit 胸甲（不是普通鞘翅）。
 3. 是否真的处于鞘翅飞行状态。
 4. 胸甲是否有能量（查看 HUD 能量显示）。
 
 **能量消耗太快**
 
-把 `MeksFlightController.ENERGY_PER_TICK` 调小（例如 50），重新编译即可。
+把 `config/Mekanism/meks-client.toml` 中的 `flightEnergyPerTick` 调小（例如 50），重启游戏即可。
 
 **横滚方向相反**
 

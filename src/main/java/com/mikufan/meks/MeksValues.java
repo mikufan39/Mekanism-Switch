@@ -1,12 +1,21 @@
 package com.mikufan.meks;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
@@ -28,118 +37,52 @@ public final class MeksValues {
 
     private static final int MAX_DERIVATION_PASSES = 64;
 
+    private static final String[] PRESET_FILES = {
+            "emc_preset.json",
+            "cataclysm_preset.json",
+            "twilightforest_preset.json",
+            "iceandfire_preset.json"
+    };
+
     private static final Map<ResourceLocation, Long> BASE_VALUES = new HashMap<>();
     private static final Map<ResourceLocation, Long> DERIVED_VALUES = new HashMap<>();
     private static final Set<ResourceLocation> MAPPED_ITEMS = new HashSet<>();
     private static boolean initialized;
 
     static {
-        add("minecraft:coal", 128);
-        add("minecraft:charcoal", 128);
-        add("minecraft:coal_block", 1152);
-        add("minecraft:iron_ingot", 256);
-        add("minecraft:iron_nugget", 28);
-        add("minecraft:iron_block", 2304);
-        add("minecraft:raw_iron", 192);
-        add("minecraft:iron_ore", 384);
-        add("minecraft:deepslate_iron_ore", 384);
-        add("minecraft:gold_ingot", 512);
-        add("minecraft:gold_nugget", 57);
-        add("minecraft:gold_block", 4608);
-        add("minecraft:raw_gold", 384);
-        add("minecraft:gold_ore", 768);
-        add("minecraft:deepslate_gold_ore", 768);
-        add("minecraft:diamond", 8192);
-        add("minecraft:diamond_block", 73728);
-        add("minecraft:diamond_ore", 12288);
-        add("minecraft:deepslate_diamond_ore", 12288);
-        add("minecraft:emerald", 16384);
-        add("minecraft:emerald_block", 147456);
-        add("minecraft:redstone", 64);
-        add("minecraft:redstone_block", 576);
-        add("minecraft:lapis_lazuli", 864);
-        add("minecraft:lapis_block", 7776);
-        add("minecraft:quartz", 256);
-        add("minecraft:quartz_block", 2304);
-        add("minecraft:copper_ingot", 85);
-        add("minecraft:copper_block", 765);
-        add("minecraft:raw_copper", 64);
-        add("minecraft:copper_ore", 128);
-        add("minecraft:deepslate_copper_ore", 128);
-        add("minecraft:netherite_scrap", 4096);
-        add("minecraft:netherite_ingot", 73728);
-        add("minecraft:netherite_block", 663552);
-        add("minecraft:stick", 4);
-        add("minecraft:oak_planks", 8);
-        add("minecraft:spruce_planks", 8);
-        add("minecraft:birch_planks", 8);
-        add("minecraft:jungle_planks", 8);
-        add("minecraft:acacia_planks", 8);
-        add("minecraft:dark_oak_planks", 8);
-        add("minecraft:mangrove_planks", 8);
-        add("minecraft:cherry_planks", 8);
-        add("minecraft:bamboo_planks", 8);
-        add("minecraft:oak_log", 32);
-        add("minecraft:spruce_log", 32);
-        add("minecraft:birch_log", 32);
-        add("minecraft:jungle_log", 32);
-        add("minecraft:acacia_log", 32);
-        add("minecraft:dark_oak_log", 32);
-        add("minecraft:mangrove_log", 32);
-        add("minecraft:cherry_log", 32);
-        add("minecraft:bamboo_block", 32);
-        add("minecraft:cobblestone", 1);
-        add("minecraft:stone", 1);
-        add("minecraft:dirt", 1);
-        add("minecraft:sand", 1);
-        add("minecraft:gravel", 1);
-        add("minecraft:wheat", 24);
-        add("minecraft:bread", 64);
-        add("minecraft:apple", 128);
-        add("minecraft:carrot", 64);
-        add("minecraft:potato", 64);
-        add("minecraft:beef", 128);
-        add("minecraft:cooked_beef", 512);
-        add("minecraft:porkchop", 128);
-        add("minecraft:cooked_porkchop", 512);
-        add("minecraft:chicken", 128);
-        add("minecraft:cooked_chicken", 512);
-        add("minecraft:mutton", 128);
-        add("minecraft:cooked_mutton", 512);
-        add("minecraft:cod", 128);
-        add("minecraft:cooked_cod", 256);
-        add("minecraft:salmon", 128);
-        add("minecraft:cooked_salmon", 256);
-        add("minecraft:ender_pearl", 1024);
-        add("minecraft:blaze_rod", 1536);
-        add("minecraft:ghast_tear", 4096);
-        add("mekanism:ingot_osmium", 512);
-        add("mekanism:ingot_copper", 85);
-        add("mekanism:ingot_tin", 256);
-        add("mekanism:ingot_lead", 512);
-        add("mekanism:ingot_uranium", 2048);
-        add("mekanism:ingot_bronze", 597);
-        add("mekanism:ingot_steel", 1280);
-        add("mekanism:ingot_refined_obsidian", 4096);
-        add("mekanism:alloy_infused", 320);
-        add("mekanism:alloy_reinforced", 2048);
-        add("mekanism:alloy_atomic", 8192);
-        add("mekanism:control_circuit", 1280);
-        add("mekanism:advanced_control_circuit", 5120);
-        add("mekanism:elite_control_circuit", 20480);
-        add("mekanism:ultimate_control_circuit", 81920);
-        add("mekanism:teleportation_core", 16384);
-        add("mekanism:quantum_entangloporter", 73728);
+        loadPreset();
+    }
+
+    /**
+     * Loads all SV preset files shipped with the mod. Component-specific entries are skipped
+     * because SV values are keyed by item id only.
+     */
+    private static void loadPreset() {
+        for (String file : PRESET_FILES) {
+            try (InputStream in = MeksValues.class.getResourceAsStream("/data/meks/sv/" + file)) {
+                if (in == null) {
+                    continue;
+                }
+                try (Reader reader = new InputStreamReader(in, StandardCharsets.UTF_8)) {
+                    JsonArray entries = JsonParser.parseReader(reader).getAsJsonArray();
+                    for (JsonElement element : entries) {
+                        JsonObject entry = element.getAsJsonObject();
+                        if (entry.has("data")) {
+                            continue;
+                        }
+                        ResourceLocation key = ResourceLocation.tryParse(entry.get("item").getAsString());
+                        long value = entry.get("emc").getAsLong();
+                        if (key != null && value > 0) {
+                            BASE_VALUES.put(key, value);
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                throw new IllegalStateException("Failed to load SV preset: " + file, e);
+            }
+        }
         MAPPED_ITEMS.addAll(BASE_VALUES.keySet());
     }
-
-    private static void add(String id, long value) {
-        ResourceLocation key = ResourceLocation.tryParse(id);
-        if (key != null) {
-            BASE_VALUES.put(key, value);
-        }
-    }
-
 
     public static long getValue(ItemLike item) {
         ResourceLocation key = BuiltInRegistries.ITEM.getKey(item.asItem());

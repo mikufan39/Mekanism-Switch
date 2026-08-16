@@ -5,7 +5,6 @@ import net.neoforged.neoforge.event.enchanting.EnchantmentLevelSetEvent;
 
 public final class MekaSuitEnchantmentHandler {
 
-    public static final int MEKA_SUIT_ENCHANT_COST = 30;
     public static final int MEKA_SUIT_ENCHANT_ROW = 2;
 
     private MekaSuitEnchantmentHandler() {
@@ -13,7 +12,7 @@ public final class MekaSuitEnchantmentHandler {
 
     public static void onEnchantmentLevelSet(EnchantmentLevelSetEvent event) {
         if (Config.MEKA_SUIT_ENCHANTMENT.get() && event.getItem().getItem() instanceof ItemMekaSuitArmor) {
-            event.setEnchantLevel(event.getEnchantRow() == MEKA_SUIT_ENCHANT_ROW ? MEKA_SUIT_ENCHANT_COST : 0);
+            event.setEnchantLevel(event.getEnchantRow() == MEKA_SUIT_ENCHANT_ROW ? Config.MEKA_SUIT_ENCHANT_COST.get() : 0);
         }
     }
 }

@@ -1,5 +1,23 @@
 # 更新日志
 
+## [0.2.1] - 2026-08-16
+
+### 新增
+
+- SV 预设表：基础值完整采用 ProjectE EMC 值，并新增 L_Ender's Cataclysm、The Twilight Forest、Ice and Fire 三个附属模组预设。
+- SV 值工具提示：悬停有值的物品时在工具提示中显示金色 SV 值。
+- 管理员命令：新增 `/mek sv get/value/set/add` 与 `/mek knowledge list/add/remove/clear/unlock-all`。
+- 复位机可在 GUI 中右键物品格取消当前修复，取消状态随机器存档。
+
+### 变更
+
+- 配置拆分为 `Mekanism/meks-common.toml` 与 `Mekanism/meks-client.toml`，机器能耗/耗时、MekaSuit 附魔经验与飞行能量消耗均可配置。
+- 交换机任务进行中锁定物品格，避免上传/下载被误操作打断。
+
+### 修复
+
+- 交换机下载输出被取出时不再误判为上传并中断任务。
+
 ## [0.2.0] - 2026-08-16
 
 ### 新增

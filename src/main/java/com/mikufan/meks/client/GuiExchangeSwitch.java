@@ -65,7 +65,6 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
     @Override
     protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         super.renderBg(guiGraphics, partialTick, mouseX, mouseY);
-        renderProcessFill(guiGraphics);
     }
 
     @Override
@@ -79,6 +78,7 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
     @Override
     public void render(@NotNull GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
         super.render(guiGraphics, mouseX, mouseY, partialTick);
+        renderProcessFill(guiGraphics);
         if (dragSource == null) {
             return;
         }
@@ -168,14 +168,14 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
 
     private void renderSlotProgress(GuiGraphics guiGraphics, int slotX, int slotY, ExchangeOperation operation,
           ItemStack targetStack, int operatingTicks, int ticksRequired, ItemStack displayStack) {
-        if (operation == ExchangeOperation.NONE || targetStack.isEmpty()) {
+        if (operation == ExchangeOperation.NONE || (operation != ExchangeOperation.UPLOAD && targetStack.isEmpty())) {
             return;
         }
         int x = getGuiLeft() + slotX;
         int y = getGuiTop() + slotY;
         RenderSystem.enableBlend();
         RenderSystem.disableDepthTest();
-        if (operation != ExchangeOperation.UPLOAD) {
+        if (operation != ExchangeOperation.UPLOAD && displayStack.isEmpty()) {
             guiGraphics.renderItem(targetStack, x, y);
         }
         if (ticksRequired > 0) {
@@ -191,7 +191,11 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
                 guiGraphics.disableScissor();
             }
         }
-        guiGraphics.renderItemDecorations(font, displayStack, x, y);
+        if (!displayStack.isEmpty()) {
+            guiGraphics.renderItemDecorations(font, displayStack, x, y);
+        } else if (operation != ExchangeOperation.UPLOAD) {
+            guiGraphics.renderItemDecorations(font, targetStack, x, y);
+        }
         RenderSystem.enableDepthTest();
         RenderSystem.disableBlend();
     }

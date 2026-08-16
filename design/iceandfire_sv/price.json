@@ -1,0 +1,416 @@
+{
+  "iceandfire:silver_ingot": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "锚点：8×铁锭(256)；银矿/粗银熔炼，银线基础材料。",
+    "note": ""
+  },
+  "iceandfire:silver_nugget": {
+    "sv": 227,
+    "cat": "材料",
+    "logic": "银锭 2048 ÷ 9 ≈ 227。",
+    "note": ""
+  },
+  "iceandfire:raw_silver": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "与银锭同价，避免熔炉造币。",
+    "note": ""
+  },
+  "iceandfire:sapphire_gem": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "蓝宝石矿产物；锚点 16×铁锭，低于钻石。",
+    "note": ""
+  },
+  "iceandfire:dragonbone": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "龙掉落龙骨；锚点 16×铁锭，龙武器基础材料。",
+    "note": ""
+  },
+  "iceandfire:dragonscales_amethyst": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞（各色同价）；锚点 2×钻石。", "note": "龙鳞块由 9 片合成，自动推导。"},
+  "iceandfire:dragonscales_black": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_blue": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_bronze": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_copper": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_electric": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_gray": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_green": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_red": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_sapphire": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_silver": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonscales_white": {"sv": 16384, "cat": "材料", "logic": "龙掉落龙鳞；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonegg_amethyst": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；孵化/收藏，锚点 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_black": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_blue": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_bronze": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_copper": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_electric": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_gray": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_green": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_red": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_sapphire": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_silver": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonegg_white": {"sv": 32768, "cat": "生物蛋", "logic": "龙蛋；同档 4×钻石。", "note": ""},
+  "iceandfire:shiny_scales": {
+    "sv": 32768,
+    "cat": "材料",
+    "logic": "稀有闪光鳞片；锚点 4×钻石。",
+    "note": ""
+  },
+  "iceandfire:fire_dragon_blood": {
+    "sv": 16384,
+    "cat": "材料",
+    "logic": "龙锻产物：火鳞+玻璃瓶；锚点 2×钻石。",
+    "note": "与冰/电龙血同价。"
+  },
+  "iceandfire:ice_dragon_blood": {
+    "sv": 16384,
+    "cat": "材料",
+    "logic": "龙锻产物：冰鳞+玻璃瓶；同档 2×钻石。",
+    "note": ""
+  },
+  "iceandfire:lightning_dragon_blood": {
+    "sv": 16384,
+    "cat": "材料",
+    "logic": "龙锻产物：电鳞+玻璃瓶；同档 2×钻石。",
+    "note": ""
+  },
+  "iceandfire:dragonsteel_fire_ingot": {
+    "sv": 16640,
+    "cat": "材料",
+    "logic": "龙锻：铁锭(256) + 火龙血(16384) = 16640。",
+    "note": "龙锻为自定义配方，需显式预设。"
+  },
+  "iceandfire:dragonsteel_ice_ingot": {
+    "sv": 16640,
+    "cat": "材料",
+    "logic": "龙锻：铁锭(256) + 冰龙血(16384) = 16640。",
+    "note": ""
+  },
+  "iceandfire:dragonsteel_lightning_ingot": {
+    "sv": 16640,
+    "cat": "材料",
+    "logic": "龙锻：铁锭(256) + 电龙血(16384) = 16640。",
+    "note": ""
+  },
+  "iceandfire:fire_dragon_heart": {
+    "sv": 32768,
+    "cat": "材料",
+    "logic": "火龙心脏掉落；BOSS 材料档 = 4×钻石。",
+    "note": ""
+  },
+  "iceandfire:ice_dragon_heart": {
+    "sv": 32768,
+    "cat": "材料",
+    "logic": "冰龙心脏掉落；同档 4×钻石。",
+    "note": ""
+  },
+  "iceandfire:lightning_dragon_heart": {
+    "sv": 32768,
+    "cat": "材料",
+    "logic": "电龙心脏掉落；同档 4×钻石。",
+    "note": ""
+  },
+  "iceandfire:fire_dragon_flesh": {
+    "sv": 1024,
+    "cat": "食物",
+    "logic": "火龙肉；锚点 4×铁锭。",
+    "note": ""
+  },
+  "iceandfire:ice_dragon_flesh": {
+    "sv": 1024,
+    "cat": "食物",
+    "logic": "冰龙肉；同档 4×铁锭。",
+    "note": ""
+  },
+  "iceandfire:lightning_dragon_flesh": {
+    "sv": 1024,
+    "cat": "食物",
+    "logic": "电龙肉；同档 4×铁锭。",
+    "note": ""
+  },
+  "iceandfire:hydra_fang": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "九头蛇毒牙；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:hydra_heart": {
+    "sv": 24576,
+    "cat": "材料",
+    "logic": "九头蛇心脏；BOSS 档 = 3×钻石。",
+    "note": ""
+  },
+  "iceandfire:hydra_skull": {
+    "sv": 8192,
+    "cat": "战利品",
+    "logic": "九头蛇颅骨；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:cyclops_eye": {
+    "sv": 16384,
+    "cat": "材料",
+    "logic": "独眼巨人独眼；锚点 2×钻石。",
+    "note": ""
+  },
+  "iceandfire:cyclops_skull": {
+    "sv": 8192,
+    "cat": "战利品",
+    "logic": "独眼巨人颅骨；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:cockatrice_eye": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "鸡蛇之眼；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:cockatrice_skull": {
+    "sv": 4096,
+    "cat": "战利品",
+    "logic": "鸡蛇颅骨；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_chitin_red": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "血红死亡蠕虫甲壳；锚点 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_chitin_white": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "苍白死亡蠕虫甲壳；同档 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_chitin_yellow": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "沙褐死亡蠕虫甲壳；同档 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_tounge": {
+    "sv": 1024,
+    "cat": "材料",
+    "logic": "死亡蠕虫长舌；锚点 4×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_egg": {
+    "sv": 4096,
+    "cat": "生物蛋",
+    "logic": "死亡蠕虫卵；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:deathworm_egg_giant": {
+    "sv": 8192,
+    "cat": "生物蛋",
+    "logic": "巨型死亡蠕虫卵；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:troll_leather_forest": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "森林食人妖毛皮；锚点 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:troll_leather_frost": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "雪地食人妖毛皮；同档 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:troll_leather_mountain": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "山地食人妖毛皮；同档 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:troll_tusk": {
+    "sv": 1024,
+    "cat": "材料",
+    "logic": "食人妖长牙；锚点 4×铁锭。",
+    "note": ""
+  },
+  "iceandfire:troll_skull": {
+    "sv": 4096,
+    "cat": "战利品",
+    "logic": "食人妖颅骨；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:troll_weapon_axe": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖大斧；锚点 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_column": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖石柱；同档 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_column_forest": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖苔石柱；同档 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_column_frost": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖霜冻石柱；同档 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_hammer": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖大锤；同档 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_trunk": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖树干；同档 1×钻石。", "note": ""},
+  "iceandfire:troll_weapon_trunk_frost": {"sv": 8192, "cat": "武器/工具", "logic": "食人妖霜冻树干；同档 1×钻石。", "note": ""},
+  "iceandfire:pixie_dust": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "精灵尘；锚点 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:pixie_wings": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "精灵之翼；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:siren_tear": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "塞壬之泪；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:sea_serpent_fang": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "海蟒长牙；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:sea_serpent_scales_blue": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；锚点 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_bronze": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_deepblue": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_green": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_purple": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_red": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:sea_serpent_scales_teal": {"sv": 4096, "cat": "材料", "logic": "海蟒鳞片；同档 16×铁锭。", "note": ""},
+  "iceandfire:hippogryph_talon": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "骏鹰利爪；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:hippogryph_skull": {
+    "sv": 8192,
+    "cat": "战利品",
+    "logic": "骏鹰颅骨；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:hippogryph_egg": {
+    "sv": 8192,
+    "cat": "生物蛋",
+    "logic": "骏鹰蛋；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:amphithere_feather": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "翼蚺翎羽；锚点 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:amphithere_skull": {
+    "sv": 8192,
+    "cat": "战利品",
+    "logic": "翼蚺颅骨；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:stymphalian_bird_feather": {
+    "sv": 2048,
+    "cat": "材料",
+    "logic": "铜羽泽鹗羽毛；锚点 8×铁锭。",
+    "note": ""
+  },
+  "iceandfire:stymphalian_skull": {
+    "sv": 8192,
+    "cat": "战利品",
+    "logic": "铜羽泽鹗颅骨；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:gorgon_head": {
+    "sv": 16384,
+    "cat": "战利品",
+    "logic": "蛇发女妖首级；锚点 2×钻石。",
+    "note": ""
+  },
+  "iceandfire:ghost_ingot": {
+    "sv": 16384,
+    "cat": "材料",
+    "logic": "灵锭；锚点 2×钻石。",
+    "note": ""
+  },
+  "iceandfire:witherbone": {
+    "sv": 4096,
+    "cat": "材料",
+    "logic": "凋灵之骨；锚点 16×铁锭。",
+    "note": ""
+  },
+  "iceandfire:wither_shard": {
+    "sv": 512,
+    "cat": "材料",
+    "logic": "凋灵骨片；由凋灵之骨转化，低价值。",
+    "note": ""
+  },
+  "iceandfire:dread_shard": {
+    "sv": 8192,
+    "cat": "材料",
+    "logic": "悚怖碎片；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:dread_key": {
+    "sv": 8192,
+    "cat": "功能物品",
+    "logic": "陵主之钥；锚点 1×钻石。",
+    "note": ""
+  },
+  "iceandfire:dread_sword": {"sv": 16384, "cat": "武器/工具", "logic": "悚怖尸奴之剑；锚点 2×钻石。", "note": ""},
+  "iceandfire:dread_knight_sword": {"sv": 24576, "cat": "武器/工具", "logic": "悚怖尸骑之剑；锚点 3×钻石。", "note": ""},
+  "iceandfire:dread_queen_staff": {"sv": 32768, "cat": "武器/工具", "logic": "悚怖女皇权杖；锚点 4×钻石。", "note": ""},
+  "iceandfire:dread_queen_sword": {"sv": 32768, "cat": "武器/工具", "logic": "悚怖女皇魔剑；锚点 4×钻石。", "note": ""},
+  "iceandfire:dragon_skull_fire": {"sv": 8192, "cat": "战利品", "logic": "火龙颅骨；锚点 1×钻石。", "note": ""},
+  "iceandfire:dragon_skull_ice": {"sv": 8192, "cat": "战利品", "logic": "冰龙颅骨；同档 1×钻石。", "note": ""},
+  "iceandfire:dragon_skull_lightning": {"sv": 8192, "cat": "战利品", "logic": "电龙颅骨；同档 1×钻石。", "note": ""},
+  "iceandfire:dragon_horn_fire": {"sv": 24576, "cat": "武器/工具", "logic": "火属性龙角；锚点 3×钻石。", "note": ""},
+  "iceandfire:dragon_horn_ice": {"sv": 24576, "cat": "武器/工具", "logic": "冰属性龙角；同档 3×钻石。", "note": ""},
+  "iceandfire:dragon_horn_lightning": {"sv": 24576, "cat": "武器/工具", "logic": "电属性龙角；同档 3×钻石。", "note": ""},
+  "iceandfire:dragonarmor_copper_head": {"sv": 8192, "cat": "龙铠", "logic": "赤铜龙铠·头；锚点 1×钻石。", "note": ""},
+  "iceandfire:dragonarmor_copper_neck": {"sv": 8192, "cat": "龙铠", "logic": "赤铜龙铠·颈；同档 1×钻石。", "note": ""},
+  "iceandfire:dragonarmor_copper_body": {"sv": 8192, "cat": "龙铠", "logic": "赤铜龙铠·身；同档 1×钻石。", "note": ""},
+  "iceandfire:dragonarmor_copper_tail": {"sv": 8192, "cat": "龙铠", "logic": "赤铜龙铠·尾；同档 1×钻石。", "note": ""},
+  "iceandfire:dragonarmor_iron_head": {"sv": 16384, "cat": "龙铠", "logic": "锻铁龙铠·头；锚点 2×钻石。", "note": ""},
+  "iceandfire:dragonarmor_iron_neck": {"sv": 16384, "cat": "龙铠", "logic": "锻铁龙铠·颈；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonarmor_iron_body": {"sv": 16384, "cat": "龙铠", "logic": "锻铁龙铠·身；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonarmor_iron_tail": {"sv": 16384, "cat": "龙铠", "logic": "锻铁龙铠·尾；同档 2×钻石。", "note": ""},
+  "iceandfire:dragonarmor_silver_head": {"sv": 24576, "cat": "龙铠", "logic": "白银龙铠·头；锚点 3×钻石。", "note": ""},
+  "iceandfire:dragonarmor_silver_neck": {"sv": 24576, "cat": "龙铠", "logic": "白银龙铠·颈；同档 3×钻石。", "note": ""},
+  "iceandfire:dragonarmor_silver_body": {"sv": 24576, "cat": "龙铠", "logic": "白银龙铠·身；同档 3×钻石。", "note": ""},
+  "iceandfire:dragonarmor_silver_tail": {"sv": 24576, "cat": "龙铠", "logic": "白银龙铠·尾；同档 3×钻石。", "note": ""},
+  "iceandfire:dragonarmor_gold_head": {"sv": 32768, "cat": "龙铠", "logic": "黄金龙铠·头；锚点 4×钻石。", "note": ""},
+  "iceandfire:dragonarmor_gold_neck": {"sv": 32768, "cat": "龙铠", "logic": "黄金龙铠·颈；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonarmor_gold_body": {"sv": 32768, "cat": "龙铠", "logic": "黄金龙铠·身；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonarmor_gold_tail": {"sv": 32768, "cat": "龙铠", "logic": "黄金龙铠·尾；同档 4×钻石。", "note": ""},
+  "iceandfire:dragonarmor_diamond_head": {"sv": 49152, "cat": "龙铠", "logic": "钻石龙铠·头；锚点 6×钻石。", "note": ""},
+  "iceandfire:dragonarmor_diamond_neck": {"sv": 49152, "cat": "龙铠", "logic": "钻石龙铠·颈；同档 6×钻石。", "note": ""},
+  "iceandfire:dragonarmor_diamond_body": {"sv": 49152, "cat": "龙铠", "logic": "钻石龙铠·身；同档 6×钻石。", "note": ""},
+  "iceandfire:dragonarmor_diamond_tail": {"sv": 49152, "cat": "龙铠", "logic": "钻石龙铠·尾；同档 6×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_fire_head": {"sv": 65536, "cat": "龙铠", "logic": "炎钢龙铠·头；龙锻终级 = 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_fire_neck": {"sv": 65536, "cat": "龙铠", "logic": "炎钢龙铠·颈；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_fire_body": {"sv": 65536, "cat": "龙铠", "logic": "炎钢龙铠·身；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_fire_tail": {"sv": 65536, "cat": "龙铠", "logic": "炎钢龙铠·尾；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_ice_head": {"sv": 65536, "cat": "龙铠", "logic": "霜钢龙铠·头；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_ice_neck": {"sv": 65536, "cat": "龙铠", "logic": "霜钢龙铠·颈；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_ice_body": {"sv": 65536, "cat": "龙铠", "logic": "霜钢龙铠·身；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_ice_tail": {"sv": 65536, "cat": "龙铠", "logic": "霜钢龙铠·尾；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_lightning_head": {"sv": 65536, "cat": "龙铠", "logic": "霆钢龙铠·头；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_lightning_neck": {"sv": 65536, "cat": "龙铠", "logic": "霆钢龙铠·颈；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_lightning_body": {"sv": 65536, "cat": "龙铠", "logic": "霆钢龙铠·身；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_dragon_steel_lightning_tail": {"sv": 65536, "cat": "龙铠", "logic": "霆钢龙铠·尾；同档 8×钻石。", "note": ""},
+  "iceandfire:dragonarmor_netherite_head": {"sv": 508017, "cat": "龙铠", "logic": "锻造：钻石龙铠·头 49152 + 下界合金块 451368 + 模板 7497。", "note": "运行时不会推导锻造配方，需显式预设。"},
+  "iceandfire:dragonarmor_netherite_neck": {"sv": 508017, "cat": "龙铠", "logic": "锻造：钻石龙铠·颈 49152 + 下界合金块 451368 + 模板 7497。", "note": ""},
+  "iceandfire:dragonarmor_netherite_body": {"sv": 508017, "cat": "龙铠", "logic": "锻造：钻石龙铠·身 49152 + 下界合金块 451368 + 模板 7497。", "note": ""},
+  "iceandfire:dragonarmor_netherite_tail": {"sv": 508017, "cat": "龙铠", "logic": "锻造：钻石龙铠·尾 49152 + 下界合金块 451368 + 模板 7497。", "note": ""},
+  "iceandfire:epic_dragon_seeker": {
+    "sv": 255257,
+    "cat": "武器/工具",
+    "logic": "锻造：寻龙杖 108496 + 下界之星 139264 + 模板 7497。",
+    "note": ""
+  },
+  "iceandfire:godly_dragon_seeker": {
+    "sv": 327680,
+    "cat": "武器/工具",
+    "logic": "神话级寻龙杖；锚点 40×钻石。",
+    "note": "当前版本未见稳定配方/掉落，占位价。"
+  }
+}

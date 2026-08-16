@@ -1,0 +1,1526 @@
+[
+  {
+    "item": "iceandfire:ambrosia",
+    "emc": 2054
+  },
+  {
+    "item": "iceandfire:amphithere_arrow",
+    "emc": 514
+  },
+  {
+    "item": "iceandfire:amphithere_feather",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:amphithere_macuahuitl",
+    "emc": 4372
+  },
+  {
+    "item": "iceandfire:amphithere_skull",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:armor_amethyst_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_amethyst_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_amethyst_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_amethyst_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_black_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_black_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_black_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_black_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_blue_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_blue_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_blue_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_blue_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_bronze_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_bronze_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_bronze_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_bronze_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_copper_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_copper_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_copper_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_copper_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_copper_metal_boots",
+    "emc": 512
+  },
+  {
+    "item": "iceandfire:armor_copper_metal_chestplate",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:armor_copper_metal_helmet",
+    "emc": 640
+  },
+  {
+    "item": "iceandfire:armor_copper_metal_leggings",
+    "emc": 896
+  },
+  {
+    "item": "iceandfire:armor_electric_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_electric_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_electric_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_electric_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_gray_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_gray_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_gray_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_gray_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_green_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_green_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_green_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_green_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_red_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_red_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_red_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_red_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_sapphire_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_sapphire_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_sapphire_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_sapphire_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_silver_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_silver_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_silver_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_silver_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:armor_silver_metal_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:armor_silver_metal_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:armor_silver_metal_helmet",
+    "emc": 10240
+  },
+  {
+    "item": "iceandfire:armor_silver_metal_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:armor_white_boots",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:armor_white_chestplate",
+    "emc": 131072
+  },
+  {
+    "item": "iceandfire:armor_white_helmet",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:armor_white_leggings",
+    "emc": 114688
+  },
+  {
+    "item": "iceandfire:banner_pattern_amphithere",
+    "emc": 2080
+  },
+  {
+    "item": "iceandfire:banner_pattern_bird",
+    "emc": 2080
+  },
+  {
+    "item": "iceandfire:banner_pattern_dread",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_eye",
+    "emc": 16416
+  },
+  {
+    "item": "iceandfire:banner_pattern_fae",
+    "emc": 4128
+  },
+  {
+    "item": "iceandfire:banner_pattern_feather",
+    "emc": 80
+  },
+  {
+    "item": "iceandfire:banner_pattern_fire",
+    "emc": 32800
+  },
+  {
+    "item": "iceandfire:banner_pattern_fire_head",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_gorgon",
+    "emc": 16416
+  },
+  {
+    "item": "iceandfire:banner_pattern_hippogryph_head",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_ice",
+    "emc": 32800
+  },
+  {
+    "item": "iceandfire:banner_pattern_ice_head",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_lightning",
+    "emc": 32800
+  },
+  {
+    "item": "iceandfire:banner_pattern_lightning_head",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_mermaid",
+    "emc": 4128
+  },
+  {
+    "item": "iceandfire:banner_pattern_sea_serpent",
+    "emc": 8224
+  },
+  {
+    "item": "iceandfire:banner_pattern_troll",
+    "emc": 1056
+  },
+  {
+    "item": "iceandfire:blindfold",
+    "emc": 88
+  },
+  {
+    "item": "iceandfire:chain",
+    "emc": 936
+  },
+  {
+    "item": "iceandfire:chain_sticky",
+    "emc": 968
+  },
+  {
+    "item": "iceandfire:cockatrice_eye",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:cockatrice_scepter",
+    "emc": 12800
+  },
+  {
+    "item": "iceandfire:cockatrice_skull",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:copper_axe",
+    "emc": 392
+  },
+  {
+    "item": "iceandfire:copper_hoe",
+    "emc": 264
+  },
+  {
+    "item": "iceandfire:copper_nugget",
+    "emc": 14
+  },
+  {
+    "item": "iceandfire:copper_pickaxe",
+    "emc": 392
+  },
+  {
+    "item": "iceandfire:copper_shovel",
+    "emc": 136
+  },
+  {
+    "item": "iceandfire:copper_sword",
+    "emc": 260
+  },
+  {
+    "item": "iceandfire:cyclops_eye",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:cyclops_skull",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:deathworm_chitin_red",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:deathworm_chitin_white",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:deathworm_chitin_yellow",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:deathworm_egg",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:deathworm_egg_giant",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:deathworm_gauntlet_red",
+    "emc": 12200
+  },
+  {
+    "item": "iceandfire:deathworm_gauntlet_white",
+    "emc": 12200
+  },
+  {
+    "item": "iceandfire:deathworm_gauntlet_yellow",
+    "emc": 12200
+  },
+  {
+    "item": "iceandfire:deathworm_red_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:deathworm_red_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:deathworm_red_helmet",
+    "emc": 10240
+  },
+  {
+    "item": "iceandfire:deathworm_red_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:deathworm_tounge",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:deathworm_white_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:deathworm_white_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:deathworm_white_helmet",
+    "emc": 10240
+  },
+  {
+    "item": "iceandfire:deathworm_white_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:deathworm_yellow_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:deathworm_yellow_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:deathworm_yellow_helmet",
+    "emc": 10240
+  },
+  {
+    "item": "iceandfire:deathworm_yellow_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:diamond_hippogryph_armor",
+    "emc": 65632
+  },
+  {
+    "item": "iceandfire:dragon_bone_block",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:dragon_bone_wall",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragon_flute",
+    "emc": 8448
+  },
+  {
+    "item": "iceandfire:dragon_horn",
+    "emc": 16388
+  },
+  {
+    "item": "iceandfire:dragon_horn_fire",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragon_horn_ice",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragon_horn_lightning",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragon_seeker",
+    "emc": 108496
+  },
+  {
+    "item": "iceandfire:dragon_skull_fire",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragon_skull_ice",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragon_skull_lightning",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragon_stick",
+    "emc": 8200
+  },
+  {
+    "item": "iceandfire:dragonarmor_copper_body",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragonarmor_copper_head",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragonarmor_copper_neck",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragonarmor_copper_tail",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dragonarmor_diamond_body",
+    "emc": 49152
+  },
+  {
+    "item": "iceandfire:dragonarmor_diamond_head",
+    "emc": 49152
+  },
+  {
+    "item": "iceandfire:dragonarmor_diamond_neck",
+    "emc": 49152
+  },
+  {
+    "item": "iceandfire:dragonarmor_diamond_tail",
+    "emc": 49152
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_fire_body",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_fire_head",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_fire_neck",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_fire_tail",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_ice_body",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_ice_head",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_ice_neck",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_ice_tail",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_lightning_body",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_lightning_head",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_lightning_neck",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_dragon_steel_lightning_tail",
+    "emc": 65536
+  },
+  {
+    "item": "iceandfire:dragonarmor_gold_body",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonarmor_gold_head",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonarmor_gold_neck",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonarmor_gold_tail",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonarmor_iron_body",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonarmor_iron_head",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonarmor_iron_neck",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonarmor_iron_tail",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonarmor_netherite_body",
+    "emc": 508017
+  },
+  {
+    "item": "iceandfire:dragonarmor_netherite_head",
+    "emc": 508017
+  },
+  {
+    "item": "iceandfire:dragonarmor_netherite_neck",
+    "emc": 508017
+  },
+  {
+    "item": "iceandfire:dragonarmor_netherite_tail",
+    "emc": 508017
+  },
+  {
+    "item": "iceandfire:dragonarmor_silver_body",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragonarmor_silver_head",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragonarmor_silver_neck",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragonarmor_silver_tail",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dragonbone",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:dragonbone_arrow",
+    "emc": 921
+  },
+  {
+    "item": "iceandfire:dragonbone_axe",
+    "emc": 20480
+  },
+  {
+    "item": "iceandfire:dragonbone_bow",
+    "emc": 12324
+  },
+  {
+    "item": "iceandfire:dragonbone_hoe",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonbone_pickaxe",
+    "emc": 20480
+  },
+  {
+    "item": "iceandfire:dragonbone_shovel",
+    "emc": 12288
+  },
+  {
+    "item": "iceandfire:dragonbone_sword",
+    "emc": 12288
+  },
+  {
+    "item": "iceandfire:dragonbone_sword_fire",
+    "emc": 28672
+  },
+  {
+    "item": "iceandfire:dragonbone_sword_ice",
+    "emc": 28672
+  },
+  {
+    "item": "iceandfire:dragonbone_sword_lightning",
+    "emc": 28672
+  },
+  {
+    "item": "iceandfire:dragonegg_amethyst",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_black",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_blue",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_bronze",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_copper",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_electric",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_gray",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_green",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_red",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_sapphire",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_silver",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonegg_white",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dragonscale_amethyst",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_black",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_blue",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_bronze",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_copper",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_electric",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_gray",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_green",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_red",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_sapphire",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_silver",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscale_white",
+    "emc": 147456
+  },
+  {
+    "item": "iceandfire:dragonscales_amethyst",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_black",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_blue",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_bronze",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_copper",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_electric",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_gray",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_green",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_red",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_sapphire",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_silver",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonscales_white",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_axe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_block",
+    "emc": 149760
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_boots",
+    "emc": 66560
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_chestplate",
+    "emc": 133120
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_helmet",
+    "emc": 83200
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_hoe",
+    "emc": 41472
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_ingot",
+    "emc": 16640
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_leggings",
+    "emc": 116480
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_pickaxe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_shovel",
+    "emc": 24832
+  },
+  {
+    "item": "iceandfire:dragonsteel_fire_sword",
+    "emc": 37376
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_axe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_block",
+    "emc": 149760
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_boots",
+    "emc": 66560
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_chestplate",
+    "emc": 133120
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_helmet",
+    "emc": 83200
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_hoe",
+    "emc": 41472
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_ingot",
+    "emc": 16640
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_leggings",
+    "emc": 116480
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_pickaxe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_shovel",
+    "emc": 24832
+  },
+  {
+    "item": "iceandfire:dragonsteel_ice_sword",
+    "emc": 37376
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_axe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_block",
+    "emc": 149760
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_boots",
+    "emc": 66560
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_chestplate",
+    "emc": 133120
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_helmet",
+    "emc": 83200
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_hoe",
+    "emc": 41472
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_ingot",
+    "emc": 16640
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_leggings",
+    "emc": 116480
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_pickaxe",
+    "emc": 58112
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_shovel",
+    "emc": 24832
+  },
+  {
+    "item": "iceandfire:dragonsteel_lightning_sword",
+    "emc": 37376
+  },
+  {
+    "item": "iceandfire:dread_key",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dread_knight_sword",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:dread_queen_staff",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dread_queen_sword",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:dread_shard",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:dread_sword",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:dread_torch",
+    "emc": 2049
+  },
+  {
+    "item": "iceandfire:earplugs",
+    "emc": 16
+  },
+  {
+    "item": "iceandfire:epic_dragon_seeker",
+    "emc": 255257
+  },
+  {
+    "item": "iceandfire:fire_dragon_blood",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:fire_dragon_flesh",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:fire_dragon_heart",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:forest_troll_leather_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:forest_troll_leather_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:forest_troll_leather_helmet",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:forest_troll_leather_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:frost_troll_leather_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:frost_troll_leather_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:frost_troll_leather_helmet",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:frost_troll_leather_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:ghost_ingot",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:ghost_sword",
+    "emc": 28672
+  },
+  {
+    "item": "iceandfire:godly_dragon_seeker",
+    "emc": 327680
+  },
+  {
+    "item": "iceandfire:gold_hippogryph_armor",
+    "emc": 16480
+  },
+  {
+    "item": "iceandfire:gold_pile",
+    "emc": 454
+  },
+  {
+    "item": "iceandfire:gorgon_head",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:hippogryph_egg",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:hippogryph_skull",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:hippogryph_sword",
+    "emc": 4452
+  },
+  {
+    "item": "iceandfire:hippogryph_talon",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:hydra_arrow",
+    "emc": 2053
+  },
+  {
+    "item": "iceandfire:hydra_fang",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:hydra_heart",
+    "emc": 24576
+  },
+  {
+    "item": "iceandfire:hydra_skull",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:ice_dragon_blood",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:ice_dragon_flesh",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:ice_dragon_heart",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:iron_hippogryph_armor",
+    "emc": 2144
+  },
+  {
+    "item": "iceandfire:lightning_dragon_blood",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:lightning_dragon_flesh",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:lightning_dragon_heart",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:mountain_troll_leather_boots",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:mountain_troll_leather_chestplate",
+    "emc": 16384
+  },
+  {
+    "item": "iceandfire:mountain_troll_leather_helmet",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:mountain_troll_leather_leggings",
+    "emc": 14336
+  },
+  {
+    "item": "iceandfire:nest",
+    "emc": 728
+  },
+  {
+    "item": "iceandfire:pixie_dust",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:pixie_wand",
+    "emc": 13824
+  },
+  {
+    "item": "iceandfire:pixie_wings",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:podium_acacia",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:podium_birch",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:podium_dark_oak",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:podium_jungle",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:podium_oak",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:podium_spruce",
+    "emc": 40
+  },
+  {
+    "item": "iceandfire:raw_silver",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:raw_silver_block",
+    "emc": 18432
+  },
+  {
+    "item": "iceandfire:sapphire_block",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sapphire_gem",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_fang",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_blue",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_bronze",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_deepblue",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_green",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_purple",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_red",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scale_block_teal",
+    "emc": 36864
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_blue",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_bronze",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_deepblue",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_green",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_purple",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_red",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sea_serpent_scales_teal",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:sheep_boots",
+    "emc": 448
+  },
+  {
+    "item": "iceandfire:sheep_chestplate",
+    "emc": 848
+  },
+  {
+    "item": "iceandfire:sheep_helmet",
+    "emc": 560
+  },
+  {
+    "item": "iceandfire:sheep_leggings",
+    "emc": 784
+  },
+  {
+    "item": "iceandfire:shiny_scales",
+    "emc": 32768
+  },
+  {
+    "item": "iceandfire:silver_axe",
+    "emc": 6152
+  },
+  {
+    "item": "iceandfire:silver_block",
+    "emc": 18432
+  },
+  {
+    "item": "iceandfire:silver_hoe",
+    "emc": 4104
+  },
+  {
+    "item": "iceandfire:silver_ingot",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:silver_nugget",
+    "emc": 227
+  },
+  {
+    "item": "iceandfire:silver_pickaxe",
+    "emc": 6152
+  },
+  {
+    "item": "iceandfire:silver_shovel",
+    "emc": 2056
+  },
+  {
+    "item": "iceandfire:silver_sword",
+    "emc": 4100
+  },
+  {
+    "item": "iceandfire:siren_flute",
+    "emc": 241920
+  },
+  {
+    "item": "iceandfire:siren_tear",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:stymphalian_arrow",
+    "emc": 514
+  },
+  {
+    "item": "iceandfire:stymphalian_bird_dagger",
+    "emc": 4100
+  },
+  {
+    "item": "iceandfire:stymphalian_bird_feather",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:stymphalian_feather_bundle",
+    "emc": 16396
+  },
+  {
+    "item": "iceandfire:stymphalian_skull",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:summoning_crystal_fire",
+    "emc": 41984
+  },
+  {
+    "item": "iceandfire:summoning_crystal_ice",
+    "emc": 41984
+  },
+  {
+    "item": "iceandfire:summoning_crystal_lightning",
+    "emc": 41984
+  },
+  {
+    "item": "iceandfire:tide_blue_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_blue_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_blue_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_blue_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_bronze_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_bronze_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_bronze_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_bronze_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_deepblue_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_deepblue_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_deepblue_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_deepblue_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_green_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_green_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_green_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_green_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_purple_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_purple_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_purple_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_purple_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_red_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_red_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_red_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_red_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_teal_boots",
+    "emc": 81920
+  },
+  {
+    "item": "iceandfire:tide_teal_chestplate",
+    "emc": 90112
+  },
+  {
+    "item": "iceandfire:tide_teal_helmet",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:tide_teal_leggings",
+    "emc": 86016
+  },
+  {
+    "item": "iceandfire:troll_leather_forest",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:troll_leather_frost",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:troll_leather_mountain",
+    "emc": 2048
+  },
+  {
+    "item": "iceandfire:troll_skull",
+    "emc": 4096
+  },
+  {
+    "item": "iceandfire:troll_tusk",
+    "emc": 1024
+  },
+  {
+    "item": "iceandfire:troll_weapon_axe",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_column",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_column_forest",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_column_frost",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_hammer",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_trunk",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:troll_weapon_trunk_frost",
+    "emc": 8192
+  },
+  {
+    "item": "iceandfire:wither_shard",
+    "emc": 512
+  },
+  {
+    "item": "iceandfire:witherbone",
+    "emc": 4096
+  }
+]

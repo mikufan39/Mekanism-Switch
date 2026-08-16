@@ -20,8 +20,6 @@ import net.minecraft.world.item.ItemStack;
  */
 public final class MeksFlightController {
 
-    /** Energy drained from the MekaSuit chestplate every tick while the controls are active. */
-    public static final long ENERGY_PER_TICK = 100L;
 
     /** Roll sensitivity multiplier, matching the fixed feel used by the reference flight mod. */
     private static final float ROLL_SENSITIVITY = 1.0F;
@@ -46,7 +44,7 @@ public final class MeksFlightController {
               && player.isFallFlying()
               && isMekaSuitChest(player);
         state.meks$setPrevRoll(state.meks$getRoll());
-        if (active && drainEnergy(player, ENERGY_PER_TICK)) {
+        if (active && drainEnergy(player, Config.FLIGHT_ENERGY_PER_TICK.get())) {
             state.meks$setRolling(true);
             float target = state.meks$getTargetRoll();
             float roll = state.meks$getRoll();
