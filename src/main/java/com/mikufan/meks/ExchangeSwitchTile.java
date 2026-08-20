@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.IContentsListener;
@@ -79,12 +81,12 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         processJob = new ChannelJob();
         channelJob = new ChannelJob();
         forgetJob = new ChannelJob();
-        holder.addSlot(processSlot = BasicInventorySlot.at(
+        holder.addSlot(processSlot = new ChannelInventorySlot(
               (stack, type) -> canExchangeExtract(processJob, processSlot, stack, type),
               (stack, type) -> canExchangeInsert(processJob, processSlot, stack, type),
               this::canProcessItem, processContentsListener(listener, processJob), 29, 117));
         processSlot.setSlotType(ContainerSlotType.INPUT);
-        holder.addSlot(channelSlot = BasicInventorySlot.at(
+        holder.addSlot(channelSlot = new ChannelInventorySlot(
               (stack, type) -> canExchangeExtract(channelJob, channelSlot, stack, type),
               (stack, type) -> canExchangeInsert(channelJob, channelSlot, stack, type),
               this::canProcessItem, processContentsListener(listener, channelJob), 50, 117));
@@ -649,6 +651,28 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
     public void handleUpdateTag(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider provider) {
         super.handleUpdateTag(tag, provider);
         channelUpgrade = tag.getBoolean("channelUpgrade");
+    }
+
+    private static class ChannelInventorySlot extends BasicInventorySlot {
+
+        private ChannelInventorySlot(BiPredicate<ItemStack, AutomationType> canExtract, BiPredicate<ItemStack, AutomationType> canInsert,
+              Predicate<ItemStack> validator, IContentsListener listener, int x, int y) {
+            super(canExtract, canInsert, validator, listener, x, y);
+        }
+
+        @Override
+        public ItemStack insertItem(ItemStack stack, Action action, AutomationType automationType) {
+            if (automationType != AutomationType.INTERNAL && stack.getCount() > 1) {
+                // Each channel only accepts one item at a time from automation/manual input so the surplus
+                // is routed to the other open channel instead of entirely filling the first slot.
+                ItemStack single = stack.copyWithCount(1);
+                if (super.insertItem(single, action, automationType).isEmpty()) {
+                    return stack.copyWithCount(stack.getCount() - 1);
+                }
+                return stack;
+            }
+            return super.insertItem(stack, action, automationType);
+        }
     }
 
     private static class ChannelJob {
