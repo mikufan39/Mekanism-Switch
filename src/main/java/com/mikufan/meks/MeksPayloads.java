@@ -1,6 +1,7 @@
 package com.mikufan.meks;
 
 import java.util.List;
+import com.mikufan.meks.flight.api.RollEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
@@ -8,6 +9,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
 import net.neoforged.neoforge.network.PacketDistributor;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
@@ -103,13 +105,50 @@ public final class MeksPayloads {
         }
     }
 
+    public record RollSyncPayload(boolean rolling, float roll) implements CustomPacketPayload {
+
+        public static final Type<RollSyncPayload> TYPE =
+                new Type<>(ResourceLocation.fromNamespaceAndPath(MekanismSwitch.MODID, "roll_sync"));
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, RollSyncPayload> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.BOOL, RollSyncPayload::rolling,
+                ByteBufCodecs.FLOAT, RollSyncPayload::roll,
+                RollSyncPayload::new
+        );
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
+    public record RollSyncS2CPayload(int entityId, boolean rolling, float roll) implements CustomPacketPayload {
+
+        public static final Type<RollSyncS2CPayload> TYPE =
+                new Type<>(ResourceLocation.fromNamespaceAndPath(MekanismSwitch.MODID, "roll_sync_s2c"));
+
+        public static final StreamCodec<RegistryFriendlyByteBuf, RollSyncS2CPayload> STREAM_CODEC = StreamCodec.composite(
+                ByteBufCodecs.VAR_INT, RollSyncS2CPayload::entityId,
+                ByteBufCodecs.BOOL, RollSyncS2CPayload::rolling,
+                ByteBufCodecs.FLOAT, RollSyncS2CPayload::roll,
+                RollSyncS2CPayload::new
+        );
+
+        @Override
+        public Type<? extends CustomPacketPayload> type() {
+            return TYPE;
+        }
+    }
+
     public static void registerPayloadHandlers(RegisterPayloadHandlersEvent event) {
         PayloadRegistrar registrar = event.registrar(MekanismSwitch.MODID).versioned("1").optional();
         registrar.playToServer(StartExchangePayload.TYPE, StartExchangePayload.STREAM_CODEC, MeksPayloads::handleStartExchange);
         registrar.playToServer(RequestExchangeSyncPayload.TYPE, RequestExchangeSyncPayload.STREAM_CODEC, MeksPayloads::handleRequestSync);
         registrar.playToServer(CancelExchangePayload.TYPE, CancelExchangePayload.STREAM_CODEC, MeksPayloads::handleCancelExchange);
         registrar.playToServer(CancelRepairPayload.TYPE, CancelRepairPayload.STREAM_CODEC, MeksPayloads::handleCancelRepair);
+        registrar.playToServer(RollSyncPayload.TYPE, RollSyncPayload.STREAM_CODEC, MeksPayloads::handleRollSync);
         registrar.playToClient(SyncExchangePayload.TYPE, SyncExchangePayload.STREAM_CODEC, MeksPayloads::handleSyncExchange);
+        registrar.playToClient(RollSyncS2CPayload.TYPE, RollSyncS2CPayload.STREAM_CODEC, MeksPayloads::handleRollSyncS2C);
     }
 
     private static void handleStartExchange(StartExchangePayload payload, IPayloadContext context) {
@@ -152,6 +191,27 @@ public final class MeksPayloads {
             if (context.player() instanceof ServerPlayer player
                   && player.level().getBlockEntity(payload.pos()) instanceof RestorationSwitchTile tile) {
                 tile.cancelRepair();
+            }
+        });
+    }
+
+    private static void handleRollSync(RollSyncPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (context.player() instanceof ServerPlayer player && player instanceof RollEntity rollPlayer) {
+                rollPlayer.meksFlight$setRolling(payload.rolling());
+                rollPlayer.meksFlight$setRoll(payload.rolling() ? Mth.wrapDegrees(payload.roll()) : 0.0F);
+            }
+        });
+    }
+
+    private static void handleRollSyncS2C(RollSyncS2CPayload payload, IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (context.player() != null) {
+                var entity = context.player().level().getEntity(payload.entityId());
+                if (entity instanceof RollEntity rollEntity) {
+                    rollEntity.meksFlight$setRolling(payload.rolling());
+                    rollEntity.meksFlight$setRoll(payload.rolling() ? Mth.wrapDegrees(payload.roll()) : 0.0F);
+                }
             }
         });
     }

@@ -13,7 +13,7 @@ Mekanism-Switch 是 Minecraft 1.21.1 / NeoForge 的 Mekanism 附属模组，新�
 - 知识列表：带搜索与滚动的物品知识面板，支持单件或整组拖拽操作。
 - 通道升级：潜行右键交换机安装后增加一个上传/下载通道。
 - MekaSuit 附魔：附魔台第三格可对 MekaSuit 附魔保护 V，消耗 30 级经验。
-- MekaSuit 飞行控制：穿着 MekaSuit 胸甲鞘翅飞行时启用三轴飞行控制（俯仰/偏航/横滚），消耗胸甲能量。详见 [飞行控制说明](docs/flight-controls.md)。
+- MekaSuit 飞行控制：穿着 MekaSuit 胸甲鞘翅飞行时启用三轴飞行控制（俯仰/偏航/横滚），消耗胸甲能量，多人服务器可见横滚。基于 Do a Barrel Roll 的飞行代码集成实现。详见 [飞行控制说明](docs/flight-controls.md)。
 - 灵魂出窍：穿戴 MekaSuit 头盔时按 F4 让灵魂离开身体，相机可穿墙自由飞行；能量消耗随时间指数增长，受伤或能量耗尽自动回体。详见 [灵魂出窍说明](docs/soul-out.md)。
 - 苦力怕保护：默认开启，苦力怕爆炸不破坏方块（实体伤害保留）。
 
@@ -36,7 +36,7 @@ Mekanism-Switch 是 Minecraft 1.21.1 / NeoForge 的 Mekanism 附属模组，新�
 - 打开交换机界面，从知识列表拖动物品到上传/下载格即可交换。
 - 潜行右键交换机使用通道升级，可安装一次。
 - 穿戴 MekaSuit 头盔后按 F4（可在控制设置中改键）切换灵魂出窍；WASD/空格/Shift 控制灵魂飞行。
-- MekaSuit 胸甲进入鞘翅飞行后，鼠标 X 控制横滚，鼠标 Y 控制俯仰，A/D 控制偏航；能量耗尽或未穿胸甲时自动回到原版操控。
+- MekaSuit 胸甲进入鞘翅飞行后，鼠标 X 控制横滚，鼠标 Y 控制俯仰，A/D 控制偏航；能量耗尽或未穿胸甲时自动回到原版操控。按 I（可在控制设置中改键）可随时开关飞行控制。
 - 附魔台与 MekaSuit 相关的配置见 `config/Mekanism/meks-common.toml`。
 
 ## 配置
@@ -44,7 +44,8 @@ Mekanism-Switch 是 Minecraft 1.21.1 / NeoForge 的 Mekanism 附属模组，新�
 配置文件位于 `run/config/Mekanism/`：
 
 - `meks-common.toml`：通用（服务端逻辑）与机器参数。
-- `meks-client.toml`：客户端功能参数。
+- `meks-client.toml`：客户端功能参数（灵魂出窍）。
+- `meks-flight-client.toml`：飞行控制参数（灵敏度/平滑/倾斜补偿/表达式公式等，详见 [飞行控制说明](docs/flight-controls.md)）。
 
 `meks-common.toml`：
 
@@ -73,10 +74,6 @@ maxTicks = 600
 `meks-client.toml`：
 
 ```toml
-[client]
-mekaSuitFlightControls = true
-flightEnergyPerTick = 100
-
 [soulOut]
 enabled = true
 baseCostPerTick = 500
@@ -87,6 +84,8 @@ freezeBody = true
 showBody = true
 disableOnDamage = true
 ```
+
+飞行控制参数在 `meks-flight-client.toml` 的 `[flight]` 段（`enabled`、`flightEnergyPerTick`、灵敏度/平滑/公式等，见 [飞行控制说明](docs/flight-controls.md)）。
 
 机器参数用于调整交换机与复位机的能耗、耗时和复位机对无 SV 值物品的兜底成本；客户端配置只影响本机体验。修改后需要重启游戏生效。
 
@@ -108,7 +107,7 @@ disableOnDamage = true
 
 - 预览版 SV 数值与配方未最终平衡。
 - 部分物品可能因配方结构无法推导出价值。
-- 飞行控制仅影响本地视角：其他玩家看不到你的模型滚转，第三人称视角下玩家模型本身也不随镜头滚转。
+- 飞行控制需要服务器安装本模组才能让其他玩家看到你的滚转；仅客户端安装时功能退化为本地视角效果。
 - 灵魂出窍为纯客户端功能：其他玩家看不到灵魂；`freezeBody` 在部分服务器上可能被服务端位置校正拉回。
 
 ## 许可
