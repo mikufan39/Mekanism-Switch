@@ -41,6 +41,8 @@ public final class MeksRegistries {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(Registries.ITEM, MekanismSwitch.MODID);
     public static final DeferredHolder<Item, ChannelUpgradeItem> CHANNEL_UPGRADE =
             ITEMS.register("channel_upgrade", ChannelUpgradeItem::new);
+    public static final DeferredHolder<Item, PortableExchangeSwitchItem> PORTABLE_EXCHANGE_SWITCH =
+            ITEMS.register("portable_exchange_switch", PortableExchangeSwitchItem::new);
 
     public static final BlockRegistryObject<BlockExchangeSwitch, BlockItem> EXCHANGE_SWITCH_BLOCK =
             BLOCKS.register("exchange_switch", () -> new BlockExchangeSwitch(getExchangeSwitchType()),
@@ -71,6 +73,8 @@ public final class MeksRegistries {
                   .build();
 
     public static final ContainerTypeRegistryObject<RestorationSwitchContainer> RESTORATION_SWITCH_CONTAINER = registerRestorationSwitchContainer();
+
+    public static final ContainerTypeRegistryObject<PortableExchangeSwitchContainer> PORTABLE_EXCHANGE_SWITCH_CONTAINER = registerPortableContainer();
 
     private static Machine<ExchangeSwitchTile> exchangeSwitchType;
 
@@ -118,6 +122,14 @@ public final class MeksRegistries {
         return registryObject;
     }
 
+    private static ContainerTypeRegistryObject<PortableExchangeSwitchContainer> registerPortableContainer() {
+        ContainerTypeRegistryObject<PortableExchangeSwitchContainer> registryObject =
+                new ContainerTypeRegistryObject<>(ResourceLocation.fromNamespaceAndPath(MekanismSwitch.MODID, "portable_exchange_switch"));
+        CONTAINER_TYPES.register("portable_exchange_switch",
+              (id, inv) -> new PortableExchangeSwitchContainer(registryObject, id, inv));
+        return registryObject;
+    }
+
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.meks.main"))
             .withTabsBefore(CreativeModeTabs.FUNCTIONAL_BLOCKS)
@@ -126,6 +138,7 @@ public final class MeksRegistries {
                 output.accept(EXCHANGE_SWITCH_BLOCK.asItem());
                 output.accept(CHANNEL_UPGRADE.get());
                 output.accept(RESTORATION_SWITCH_BLOCK.asItem());
+                output.accept(PORTABLE_EXCHANGE_SWITCH.get());
             })
             .build());
 

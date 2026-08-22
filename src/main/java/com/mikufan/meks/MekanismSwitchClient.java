@@ -1,6 +1,7 @@
 package com.mikufan.meks;
 
 import com.mikufan.meks.client.GuiExchangeSwitch;
+import com.mikufan.meks.client.GuiPortableExchangeSwitch;
 import com.mikufan.meks.client.GuiRestorationSwitch;
 import com.mikufan.meks.flight.EventCallbacksClient;
 import com.mikufan.meks.flight.MeksFlightClient;
@@ -41,6 +42,7 @@ public class MekanismSwitchClient {
     private static void onRegisterScreens(RegisterMenuScreensEvent event) {
         event.register(MeksRegistries.EXCHANGE_SWITCH_CONTAINER.get(), GuiExchangeSwitch::new);
         event.register(MeksRegistries.RESTORATION_SWITCH_CONTAINER.get(), GuiRestorationSwitch::new);
+        event.register(MeksRegistries.PORTABLE_EXCHANGE_SWITCH_CONTAINER.get(), GuiPortableExchangeSwitch::new);
     }
 
     private static void onItemTooltip(ItemTooltipEvent event) {

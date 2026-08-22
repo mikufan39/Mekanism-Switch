@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "TCT",
+    "ARA",
+    "TCT"
+  ],
+  "key": {
+    "T": { "item": "mekanism:teleportation_core" },
+    "C": { "item": "mekanism:pellet_polonium" },
+    "A": { "item": "mekanism:pellet_antimatter" },
+    "R": { "item": "meks:exchange_switch" }
+  },
+  "result": {
+    "id": "meks:portable_exchange_switch",
+    "count": 1
+  }
+}

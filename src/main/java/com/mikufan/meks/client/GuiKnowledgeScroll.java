@@ -1,6 +1,6 @@
 package com.mikufan.meks.client;
 
-import com.mikufan.meks.ExchangeSwitchContainer.KnowledgeEntry;
+import com.mikufan.meks.KnowledgeEntry;
 import com.mikufan.meks.MeksValues;
 import java.util.HashMap;
 import java.util.List;

@@ -1,9 +1,9 @@
 package com.mikufan.meks.client;
 
 import com.mikufan.meks.ExchangeOperation;
+import com.mikufan.meks.KnowledgeEntry;
 import com.mikufan.meks.MeksValues;
 import com.mikufan.meks.ExchangeSwitchContainer;
-import com.mikufan.meks.ExchangeSwitchContainer.KnowledgeEntry;
 import com.mikufan.meks.ExchangeSwitchTile;
 import com.mojang.blaze3d.systems.RenderSystem;
 import mekanism.client.gui.GuiConfigurableTile;
