@@ -145,6 +145,9 @@ dependencies {
     compileOnly "net.fabricmc:sponge-mixin:0.15.2+mixin.0.8.7"
     annotationProcessor "net.fabricmc:sponge-mixin:0.15.2+mixin.0.8.7"
 
+    // MixinExtras is bundled with NeoForge at runtime; declare it only for compilation (flight mixins use WrapWithCondition/@Local/@Share).
+    compileOnly "io.github.llamalad7:mixinextras-neoforge:0.4.1"
+
     compileOnly "mekanism:Mekanism:${mekanism_version}"
 
     localRuntime "mekanism:Mekanism:${mekanism_version}"

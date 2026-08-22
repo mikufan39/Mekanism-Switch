@@ -5,7 +5,11 @@
   "mixins": [
     "EnchantmentMenuMixin",
     "ItemSpecialArmorMixin",
-    "PlayerMixin"
+    "PlayerMixin",
+    "flight.ServerEntityMixin",
+    "flight.roll.entity.EntityMixin",
+    "flight.roll.entity.LivingEntityMixin",
+    "flight.roll.entity.PlayerEntityMixin"
   ],
   "client": [
     "client.BlockStateBaseMixin",
@@ -18,9 +22,17 @@
     "client.LivingEntityMixin",
     "client.LocalPlayerMixin",
     "client.MinecraftMixin",
-    "client.MouseHandlerMixin",
     "client.MultiPlayerGameModeMixin",
-    "client.OptionsMixin"
+    "client.OptionsMixin",
+    "flight.client.GuiMixin",
+    "flight.client.key.KeyBindingAccessor",
+    "flight.client.key.KeyBindingEntryMixin",
+    "flight.client.key.KeyBindingMixin",
+    "flight.client.roll.CameraMixin",
+    "flight.client.roll.DebugHudMixin",
+    "flight.client.roll.MouseMixin",
+    "flight.client.roll.PlayerEntityRendererMixin",
+    "flight.client.roll.entity.ClientPlayerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

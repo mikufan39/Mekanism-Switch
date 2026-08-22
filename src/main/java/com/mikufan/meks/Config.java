@@ -89,19 +89,6 @@ public final class Config {
     public static final ModConfigSpec COMMON_SPEC = COMMON_BUILDER.build();
 
     static {
-        CLIENT_BUILDER.push("client");
-    }
-
-    public static final ModConfigSpec.BooleanValue MEKA_SUIT_FLIGHT_CONTROLS = CLIENT_BUILDER
-            .comment("Enable three-axis flight controls (pitch/yaw/roll) while elytra-flying with a MekaSuit chestplate.")
-            .define("mekaSuitFlightControls", true);
-
-    public static final ModConfigSpec.LongValue FLIGHT_ENERGY_PER_TICK = CLIENT_BUILDER
-            .comment("Energy in J drained from the MekaSuit chestplate every tick while the flight controls are active.")
-            .defineInRange("flightEnergyPerTick", 100L, 1L, Long.MAX_VALUE);
-
-    static {
-        CLIENT_BUILDER.pop();
         CLIENT_BUILDER.push("soulOut");
     }
 
