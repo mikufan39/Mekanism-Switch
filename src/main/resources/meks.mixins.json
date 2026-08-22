@@ -18,7 +18,6 @@
     "client.LivingEntityMixin",
     "client.LocalPlayerMixin",
     "client.MinecraftMixin",
-    "client.MouseHandlerMixin",
     "client.MultiPlayerGameModeMixin",
     "client.OptionsMixin"
   ],
