@@ -71,13 +71,14 @@ public final class MeksPayloads {
         }
     }
 
-    public record CancelExchangePayload(BlockPos pos) implements CustomPacketPayload {
+    public record CancelExchangePayload(BlockPos pos, int slot) implements CustomPacketPayload {
 
         public static final Type<CancelExchangePayload> TYPE =
                 new Type<>(ResourceLocation.fromNamespaceAndPath(MekanismSwitch.MODID, "cancel_exchange"));
 
         public static final StreamCodec<RegistryFriendlyByteBuf, CancelExchangePayload> STREAM_CODEC = StreamCodec.composite(
                 BlockPos.STREAM_CODEC, CancelExchangePayload::pos,
+                ByteBufCodecs.VAR_INT, CancelExchangePayload::slot,
                 CancelExchangePayload::new
         );
 
@@ -104,7 +105,7 @@ public final class MeksPayloads {
     }
 
     public static void registerPayloadHandlers(RegisterPayloadHandlersEvent event) {
-        PayloadRegistrar registrar = event.registrar(MekanismSwitch.MODID).versioned("1").optional();
+        PayloadRegistrar registrar = event.registrar(MekanismSwitch.MODID).versioned("2").optional();
         registrar.playToServer(StartExchangePayload.TYPE, StartExchangePayload.STREAM_CODEC, MeksPayloads::handleStartExchange);
         registrar.playToServer(RequestExchangeSyncPayload.TYPE, RequestExchangeSyncPayload.STREAM_CODEC, MeksPayloads::handleRequestSync);
         registrar.playToServer(CancelExchangePayload.TYPE, CancelExchangePayload.STREAM_CODEC, MeksPayloads::handleCancelExchange);
@@ -142,7 +143,7 @@ public final class MeksPayloads {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player
                   && player.level().getBlockEntity(payload.pos()) instanceof ExchangeSwitchTile tile) {
-                tile.cancelOperation();
+                tile.cancelOperation(player, payload.slot());
             }
         });
     }
@@ -164,8 +165,8 @@ public final class MeksPayloads {
         PacketDistributor.sendToServer(new RequestExchangeSyncPayload(pos));
     }
 
-    public static void sendCancelExchange(BlockPos pos) {
-        PacketDistributor.sendToServer(new CancelExchangePayload(pos));
+    public static void sendCancelExchange(BlockPos pos, int slot) {
+        PacketDistributor.sendToServer(new CancelExchangePayload(pos, slot));
     }
 
     public static void sendCancelRepair(BlockPos pos) {

@@ -372,10 +372,33 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
         }
     }
 
-    public void cancelOperation() {
-        cancelJob(processJob, processSlot);
-        cancelJob(channelJob, channelSlot);
-        cancelJob(forgetJob, forgetSlot);
+    /**
+     * Cancels only the job of the item slot the player right-clicked, so the two channels
+     * (and the forget slot) stay independent: interrupting one never touches the others.
+     * Slot ids mirror {@link #startExchange}: 0 = process slot, 1 = channel slot,
+     * 2 = forget slot (the forget slot has no dedicated start payload, so it uses a distinct id).
+     */
+    public void cancelOperation(Player player, int slot) {
+        if (level == null || level.isClientSide) {
+            return;
+        }
+        TileComponentSecurity security = getSecurity();
+        if (security == null || !Objects.equals(security.getOwnerUUID(), player.getUUID())) {
+            return;
+        }
+        ChannelJob job = processJob;
+        BasicInventorySlot physicalSlot = processSlot;
+        if (slot == 1) {
+            if (!channelUpgrade) {
+                return;
+            }
+            job = channelJob;
+            physicalSlot = channelSlot;
+        } else if (slot == 2) {
+            job = forgetJob;
+            physicalSlot = forgetSlot;
+        }
+        cancelJob(job, physicalSlot);
         markForSave();
     }
 
@@ -611,11 +634,16 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
 
     @Override
     public void loadAdditional(@NotNull CompoundTag tag, @NotNull HolderLookup.Provider provider) {
+        // MUST be read before super.loadAdditional(): the item container attachment (ContainerType.ITEM)
+        // saves/restores slots through getInventorySlots(null), whose membership depends on channelUpgrade
+        // (ExchangeInventoryHolder.isSlotActive). If the flag is still false here, the loaded slot list
+        // is one entry shorter than the saved one (channel slot missing), every subsequent slot index
+        // shifts, and the energy-slot item (last index) is silently dropped by DataHandlerUtils.readContents.
+        channelUpgrade = tag.getBoolean("channelUpgrade");
         super.loadAdditional(tag, provider);
         loadJob(tag, "", processJob);
         loadJob(tag, "channel", channelJob);
         loadJob(tag, "forget", forgetJob);
-        channelUpgrade = tag.getBoolean("channelUpgrade");
         if (processJob.operation != ExchangeOperation.NONE) {
             recalculateRequirements(processJob);
         }

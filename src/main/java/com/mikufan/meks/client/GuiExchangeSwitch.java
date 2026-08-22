@@ -115,11 +115,21 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
             dragSource = null;
             return true;
         }
-        if (button == GLFW.GLFW_MOUSE_BUTTON_RIGHT
-              && (isOverSlot(mouseX, mouseY, PROCESS_SLOT_X, PROCESS_SLOT_Y)
-                  || (tile.hasChannelUpgrade() && isOverSlot(mouseX, mouseY, CHANNEL_SLOT_X, CHANNEL_SLOT_Y)))) {
-            menu.cancelExchange();
-            return true;
+        if (button == GLFW.GLFW_MOUSE_BUTTON_RIGHT) {
+            // Right-click interrupts only the processing of the slot that was clicked:
+            // the two item slots stay independent from each other (and from the forget slot).
+            if (isOverSlot(mouseX, mouseY, PROCESS_SLOT_X, PROCESS_SLOT_Y)) {
+                menu.cancelExchange(0);
+                return true;
+            }
+            if (tile.hasChannelUpgrade() && isOverSlot(mouseX, mouseY, CHANNEL_SLOT_X, CHANNEL_SLOT_Y)) {
+                menu.cancelExchange(1);
+                return true;
+            }
+            if (tile.getForgetOperation() != ExchangeOperation.NONE && isOverSlot(mouseX, mouseY, FORGET_SLOT_X, FORGET_SLOT_Y)) {
+                menu.cancelExchange(2);
+                return true;
+            }
         }
         if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
             KnowledgeEntry entry = knowledgeScroll.getEntryAt(mouseX, mouseY);

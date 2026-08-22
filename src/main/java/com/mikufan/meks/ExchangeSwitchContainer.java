@@ -51,8 +51,8 @@ public class ExchangeSwitchContainer extends MekanismTileContainer<ExchangeSwitc
         MeksPayloads.sendRequestSync(tile.getBlockPos());
     }
 
-    public void cancelExchange() {
-        MeksPayloads.sendCancelExchange(tile.getBlockPos());
+    public void cancelExchange(int slot) {
+        MeksPayloads.sendCancelExchange(tile.getBlockPos(), slot);
     }
 
     public record KnowledgeEntry(ResourceLocation key) implements IScrollableSlot {
