@@ -1,5 +1,20 @@
 # 更新日志
 
+## [0.3.2] - 2026-08-23
+
+### 变更
+
+- 配置统一为**单个服务端权威配置文件** `config/Mekanism/meks-common.toml`：原 `meks-client.toml`（`[soulOut]`）并入，客户端不再读取本地配置，连接服务器后直接使用服务端同步的值。
+- 移除 `mekaSuitEnchantCost` 配置项：MekaSuit 附魔费用固定为 30 级。
+- 默认值调整：`mekaSuitEnchantment`、`creeperNoBlockDamage`、`[flight] enabled` 默认**关闭**。
+- 交换机上传/下载能耗一致（均为 2 FE/SV），耗时一致（均为 0.1 tick/SV）。
+- 飞行控制：服务端 `[flight] enabled` 作为滚转同步中继主开关；新追踪者建立配对时立即推送当前横滚状态（中途加入的玩家无需等待下一次变化即可看到滚转）。
+- 移除飞行 HUD 组件（人工地平线、动量准星）及相关代码/键位。
+
+### 修复
+
+- 修复启动后主菜单崩溃（`Cannot get config value before config is loaded`）：服务端权威配置在未加载（主菜单）阶段按默认值处理，不再对配置取值。
+
 ## [0.3.1] - 2026-08-22
 
 ### 新增
