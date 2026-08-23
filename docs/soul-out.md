@@ -13,7 +13,7 @@
 
 ## 配置
 
-`config/Mekanism/meks-client.toml` 中 `soulOut` 分组：
+`config/Mekanism/meks-common.toml` 中 `soulOut` 分组（原 `meks-client.toml` 已并入；本配置为**服务端权威**，客户端行为遵循服务端值）：
 
 | 配置项 | 默认值 | 说明 |
 |---|---|---|

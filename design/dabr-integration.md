@@ -100,3 +100,12 @@ com.mikufan.meks.flight
 - L5 构建修复 + 文档 + 提交
 
 每层完成后 `gradlew compileJava` 验证。
+
+## 9. 后续 meks 调整（相对本设计文档）
+
+- **移除 I 键运行时开关**：`TOGGLE_ENABLED`、`clientTick` 切换逻辑、`setModEnabled` 与启用/禁用消息删除，`enabled` 仅读配置。
+- **移除飞行能量消耗**：`flightEnergyPerTick` 配置、`MeksFlightClient.updateFlightState/drainEnergy` 删除；激活判定不再含能量检查。
+- **配置并入通用文件**：全部飞行选项移入 `Config.java` 的 COMMON spec（`meks-common.toml [flight]`），`meks-flight-client.toml` 注册与文件删除；`MeksFlightConfig` 变为取值门面（双端必装，单一配置文件）。
+- **移除 HUD 组件**：`HorizonLineWidget`/`MomentumCrosshairWidget`/`RenderHelper`/`ModMath`/`GuiMixin` 删除，`showMomentumWidget`/`showHorizon` 配置删除，`RollMouse.meksFlight$getMouseTurnVec` 移除。
+- **新增 `activationMode`**（默认 `ELYTRA_UNIT`）：仅 MekaSuit 胸甲+鞘翅单元激活；`GLOBAL` 时任意鞘翅飞行玩家（含原版鞘翅）激活，胸甲检查跳过。
+- **roll 同步加固**：服务端中继受自身 `[flight] enabled` 门控（`handleRollSync` 拒收 + `ServerEntity.sendChanges` 不广播；客户端本地行为仍随客户端配置）；`ServerEntity.addPairing` TAIL 注入首帧推送，中途加入的追踪者立即获得当前 roll 状态（弥补"仅变化时广播"造成的初始态缺失）。

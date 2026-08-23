@@ -24,7 +24,6 @@
     "client.MinecraftMixin",
     "client.MultiPlayerGameModeMixin",
     "client.OptionsMixin",
-    "flight.client.GuiMixin",
     "flight.client.key.KeyBindingAccessor",
     "flight.client.key.KeyBindingEntryMixin",
     "flight.client.key.KeyBindingMixin",

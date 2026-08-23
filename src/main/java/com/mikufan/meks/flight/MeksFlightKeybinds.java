@@ -2,11 +2,8 @@ package com.mikufan.meks.flight;
 
 import com.mikufan.meks.MekanismSwitch;
 import com.mikufan.meks.flight.api.key.InputContext;
-import com.mikufan.meks.flight.config.MeksFlightConfig;
 import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
@@ -14,13 +11,6 @@ import org.lwjgl.glfw.GLFW;
 import java.util.List;
 
 public final class MeksFlightKeybinds {
-
-    public static final KeyMapping TOGGLE_ENABLED = new KeyMapping(
-            "key.meks.flight.toggle",
-            InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_I,
-            "key.categories.meks"
-    );
 
     public static final KeyMapping PITCH_UP = new KeyMapping(
             "key.meks.flight.pitch_up",
@@ -60,7 +50,6 @@ public final class MeksFlightKeybinds {
     );
 
     public static final List<KeyMapping> ALL = List.of(
-            TOGGLE_ENABLED,
             PITCH_UP,
             PITCH_DOWN,
             YAW_LEFT,
@@ -88,21 +77,5 @@ public final class MeksFlightKeybinds {
 
     public static void register(RegisterKeyMappingsEvent event) {
         ALL.forEach(event::register);
-    }
-
-    public static void clientTick(Minecraft client) {
-        while (TOGGLE_ENABLED.consumeClick()) {
-            MeksFlightConfig.setModEnabled(!MeksFlightConfig.getModEnabled());
-
-            if (client.player != null) {
-                client.player.displayClientMessage(
-                        Component.translatable(
-                                "msg.meks.flight." +
-                                        (MeksFlightConfig.getModEnabled() ? "enabled" : "disabled")
-                        ),
-                        true
-                );
-            }
-        }
     }
 }

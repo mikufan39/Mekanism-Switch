@@ -4,7 +4,6 @@ import com.mikufan.meks.flight.api.event.RollContext;
 import com.mikufan.meks.flight.api.event.RollEvents;
 import com.mikufan.meks.flight.api.rotation.RotationInstant;
 import com.mikufan.meks.flight.config.Sensitivity;
-import com.mikufan.meks.flight.MeksFlightClient;
 import com.mikufan.meks.flight.RotationModifiers;
 import com.mikufan.meks.flight.math.MagicNumbers;
 import com.mikufan.meks.flight.net.FlightNetworking;
@@ -49,10 +48,7 @@ public abstract class ClientPlayerEntityMixin extends PlayerEntityMixin {
     @Override
     @Unique
     protected void meksFlight$baseTickTail2() {
-        // Evaluate the flight state (including the per-tick energy drain) before the roll check,
-        // so the controls deactivate the moment the chestplate runs out of energy.
-        var canFly = MeksFlightClient.updateFlightState();
-        meksFlight$setRolling(canFly && RollEvents.shouldRoll());
+        meksFlight$setRolling(RollEvents.shouldRoll());
     }
 
     @Override

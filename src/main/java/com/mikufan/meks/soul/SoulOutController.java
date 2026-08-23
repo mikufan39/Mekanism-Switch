@@ -56,7 +56,7 @@ public final class SoulOutController {
             return;
         }
 
-        if (!Config.SOUL_OUT_ENABLED.get() || MC.player == null || MC.level == null) {
+        if (!Config.isLoaded() || !Config.SOUL_OUT_ENABLED.get() || MC.player == null || MC.level == null) {
             disable(Component.translatable("msg.meks.soul.auto_return"));
             return;
         }
@@ -103,7 +103,7 @@ public final class SoulOutController {
     }
 
     private static void enable() {
-        if (!Config.SOUL_OUT_ENABLED.get() || MC.player == null || MC.level == null) {
+        if (!Config.isLoaded() || !Config.SOUL_OUT_ENABLED.get() || MC.player == null || MC.level == null) {
             return;
         }
 

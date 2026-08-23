@@ -1,15 +1,17 @@
-# MekaSuit 飞行控制说明
+# 飞行控制说明
 
-本文档介绍 Mekanism-Switch 的 MekaSuit 飞行控制功能：启用条件、操作方式、能量消耗、实现原理与已知限制。
+本文档介绍 Mekanism-Switch 的飞行控制功能：启用条件、操作方式、配置、实现原理与已知限制。
+
+> 本模组要求**服务端与客户端都安装**。飞行控制是客户端行为，但正因为双端必装，飞行参数直接放在通用配置文件（`meks-common.toml`）的 `[flight]` 段，不再需要单独的客户端飞行配置文件。
 
 ## 1. 功能简介
 
-MekaSuit 飞行控制在“穿着 MekaSuit 胸甲 + 鞘翅单元”滑翔时为玩家提供完整的三轴飞行控制：
+飞行控制在玩家鞘翅飞行（`isFallFlying()`）时提供完整的三轴飞行控制：
 
 - 俯仰（Pitch）：上下看，控制爬升/俯冲。
 - 偏航（Yaw）：左右转向。
 - 横滚（Roll）：围绕飞行方向旋转视角，可做出翻滚、盘旋等机动。
-- 附带：方向舵平滑、倾斜补偿（banking）、自动回正、可选动量鼠标与人工地平线 HUD。
+- 附带：方向舵平滑、倾斜补偿（banking）、自动回正、可选动量鼠标模式。
 
 飞行实现代码集成自 [Do a Barrel Roll](https://github.com/enjarai/do-a-barrel-roll)（tag `3.7.3+1.21-neoforge`，GPL-3.0），按本模组需要做了裁剪与改造，详见第 6 节。
 
@@ -17,12 +19,14 @@ MekaSuit 飞行控制在“穿着 MekaSuit 胸甲 + 鞘翅单元”滑翔时为�
 
 同时满足以下条件时飞行控制激活：
 
-1. 配置项 `enabled` 为 `true`（默认开启）。
-2. 玩家身穿 MekaSuit 胸甲，且已安装并启用鞘翅单元（进入滑翔由 Mekanism 判定）。
-3. 玩家处于鞘翅飞行状态（`isFallFlying()`）。
-4. MekaSuit 胸甲能量容器中有足够能量（见第 4 节）。
+1. 配置项 `enabled` 为 `true`（**默认关闭**，需在服务端配置中开启）。**该开关只从配置文件读取，没有游戏内切换键。**
+2. 玩家处于鞘翅飞行状态（`isFallFlying()`）。
+3. 默认模式下（配置 `activationMode = "ELYTRA_UNIT"`）：玩家身穿 MekaSuit 胸甲，且已安装并启用鞘翅单元（进入滑翔由 Mekanism 判定）。
+4. 默认配置下入水会临时禁用飞行控制（`disableWhenSubmerged`）。
 
-任一条件不满足（例如脱下胸甲、停止飞行、能量耗尽）时，横滚角度会自动回正。默认模式下入水也会临时禁用飞行控制（`disableWhenSubmerged`）。
+如果配置 `activationMode = "GLOBAL"`，则**不检查胸甲**：任意鞘翅飞行玩家（包括原版鞘翅）都能使用飞行控制。
+
+任一条件不满足（例如停止飞行、脱下胸甲）时，横滚角度会自动回正，鼠标交还原版操控。
 
 ## 3. 操作方式
 
@@ -31,31 +35,28 @@ MekaSuit 飞行控制在“穿着 MekaSuit 胸甲 + 鞘翅单元”滑翔时为�
 | 鼠标 X（左右移动） | 横滚（可与偏航互换，见配置 `switchRollAndYaw`） |
 | 鼠标 Y（上下移动） | 俯仰（沿用原版灵敏度与“反转鼠标”设置） |
 | A / D | 偏航转向 |
-| I（默认，可在控制设置中改键） | 切换飞行控制开关 |
 
-默认按键与移动键（A/D）不冲突：NeoForge 的 `KeyMappingLookup` 会把按键同时派发给原版移动键与飞行键，飞行键只在滑翔时被读取。
+默认按键与移动键（A/D）不冲突：NeoForge 的 `KeyMappingLookup` 会把按键同时派发给原版移动键与飞行键，飞行键只在滑翔时被读取。俯仰与横滚键（`pitch_up/pitch_down/roll_left/roll_right`）可在控制设置中绑定，默认未绑定。
 
-## 4. 能量消耗
+## 4. 能量与激活范围
 
-- 飞行控制激活时，每个游戏刻从 MekaSuit 胸甲的能量容器抽取 `flightEnergyPerTick` 配置值（默认 100 J），即默认约 2000 J/秒。
-- 能量不足一个 tick 的消耗量时，本次 tick 不扣能量，并立即退回原版操控。
-- 消耗使用 Mekanism 的 `IEnergyContainer.extract`（`Action.EXECUTE`），先通过 `Action.SIMULATE` 预检。
+- **不消耗能量**。旧版本每游戏刻从 MekaSuit 胸甲能量容器扣除 `flightEnergyPerTick`（默认 100 J），该机制已整体移除。
+- `activationMode`（默认 `"ELYTRA_UNIT"`）：见第 2 节——只限 MekaSuit 胸甲鞘翅单元；`"GLOBAL"` 时任意鞘翅飞行玩家可用。控制本身不改动飞行物理（速度/升力仍由鞘翅与 Mekanism 的 Elytra Unit 模块决定）。
 
 ## 5. 配置文件
 
-配置文件路径：`config/Mekanism/meks-flight-client.toml`。
+配置文件路径：`config/Mekanism/meks-common.toml`，段 `[flight]`。配置为**服务端权威**（`ModConfig.Type.SERVER`）：客户端连接服务器后使用服务端的值，本地无飞行配置文件。
 
 常用配置：
 
 ```toml
 [flight]
-enabled = true
-flightEnergyPerTick = 100
+enabled = false
+activationMode = "ELYTRA_UNIT"
 switchRollAndYaw = false
 invertPitch = false
 momentumBasedMouse = false
 momentumMouseDeadzone = 0.2
-showMomentumWidget = true
 disableWhenSubmerged = true
 sensitivityPitch = 1.0
 sensitivityYaw = 0.4
@@ -68,7 +69,6 @@ bankingStrength = 20.0
 simulateControlSurfaceEfficacy = false
 automaticRighting = false
 rightingStrength = 50.0
-showHorizon = false
 bankingXFormula = "sin($roll * TO_RAD) * cos($pitch * TO_RAD) * 10 * $banking_strength"
 bankingYFormula = "(-1 + cos($roll * TO_RAD)) * cos($pitch * TO_RAD) * 10 * $banking_strength"
 elevatorEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $velocity_z * $look_z"
@@ -76,10 +76,10 @@ aileronEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $veloc
 rudderEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $velocity_z * $look_z"
 ```
 
-- `enabled`：是否启用飞行控制；也可在游戏中按 I 切换。
-- `flightEnergyPerTick`：飞行控制激活时每游戏刻消耗的胸甲能量（J/t）。
+- `enabled`：是否启用飞行控制（**默认关闭**）；**仅配置文件生效**（无 I 键开关，`key.meks.flight.toggle` 与开关消息已移除）。
+- `activationMode`：`"ELYTRA_UNIT"`（默认）仅 MekaSuit 胸甲+鞘翅单元；`"GLOBAL"` 任意鞘翅飞行玩家可用。
 - 表达式支持 `$pitch/$yaw/$roll/$velocity_x/...` 等变量与 `sin/cos/sqrt/...` 函数，语法与 Do a Barrel Roll 一致。
-- 客户端配置在游戏启动时加载，修改后需要重启游戏。
+- 已移除项：`flightEnergyPerTick`（能量）、`showMomentumWidget`/`showHorizon`（HUD 开关）。配置在启动时加载，修改后需要重启游戏生效。
 
 ## 6. 实现原理与代码来源
 
@@ -91,17 +91,20 @@ rudderEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $veloci
 - **输入接线**（`mixin/flight/client/roll/MouseMixin.java`、`entity/ClientPlayerEntityMixin.java`）：滚转时把鼠标增量改道进修饰器管线；`ClientPlayerEntityMixin` 覆写 `changeElytraLook` 完成真正的三轴旋转数学。
 - **渲染**（`mixin/flight/client/roll/CameraMixin.java`、`PlayerEntityRendererMixin.java`）：相机滚转与第三人称模型滚转；F3 面板显示 roll 值。
 - **键位**（`flight/MeksFlightKeybinds.java`、`mixin/flight/client/key/*`）：NeoForge `KeyMapping` + 键位上下文（`InputContext`）。
-- **网络**（`flight/net/FlightNetworking.java` + `MeksPayloads` 的 `RollSyncPayload/RollSyncS2CPayload`）：本地玩家的滚转状态上报服务器并转发给追踪者，**其他玩家可以看到你的模型滚转**（与旧实现不同）。
-- **配置**（`flight/config/MeksFlightConfig.java`）：NeoForge `ModConfigSpec`。
+- **网络**（`flight/net/FlightNetworking.java` + `MeksPayloads` 的 `RollSyncPayload/RollSyncS2CPayload`）：本地玩家的滚转状态上报服务器并转发给追踪者，**其他玩家可以看到你的模型滚转**。服务端的中继受**服务端自身** `[flight] enabled` 门控（服务端关闭则不接收/不转发）；**新追踪者建立配对时（`ServerEntity.addPairing`）会立即收到当前 roll 状态**，中途加入的玩家不用等对方 roll 变化就能看到当前横滚。
+- **配置**（`Config.java` 的 `[flight]` 段 + `flight/config/MeksFlightConfig.java` 取值门面）：NeoForge `ModConfigSpec`（SERVER 类型，服务端权威——客户端遵循服务端值，写入服务端 `meks-common.toml`）。
 
 代码由 Do a Barrel Roll（tag `3.7.3+1.21-neoforge`，GPL-3.0）的飞行实现移植改造而来。集成时做了以下裁剪：删除服务端配置同步/握手与权限系统（改为纯客户端配置）、删除 thrust（火箭加速）功能、删除 YACL 配置界面与兼容层（ModMenu/Controlify/Cicada）、删除激活模式（固定为 VANILLA）、删除动能伤害与彩蛋；所有 Fabric API 依赖改写为 NeoForge 原生 API（网络、键位、事件）；Yarn 映射全量重映射为 Mojang 官方映射。方法前缀改为 `meksFlight$`，与 DABR 本体共存时不冲突。
 
+后续 meks 本体调整：移除 I 键运行时开关（仅配置文件）；移除飞行能量消耗；配置并入 `meks-common.toml [flight]`（双端必装）；移除 HUD 组件（人工地平线/动量准星及其开关）；新增 `activationMode` 全局启用选项。
+
 ## 7. 已知限制
 
-- 需要服务器安装本模组才能看到其他玩家的滚转；仅客户端安装时功能退化为纯本地视角效果（与本模组旧实现相同）。
+- 本模组要求服务端与客户端都安装；`RollSync` 网络同步让其他玩家可以看到你的滚转，中途加入的玩家也会立即看到当前滚转角（配对时首帧推送）。配置为**服务端权威**：若服务端的 `[flight] enabled = false`（默认），服务端停止接收/转发滚转状态（他人不可见），且客户端本地飞行控制同样关闭（客户端读取的是服务端同步下来的值）。
 - 若同时安装 Do a Barrel Roll 本体，两者的飞行控制会同时接管输入，建议二选一。
 - 灵魂出窍激活期间身体被冻结，飞行控制不会响应（与灵魂出窍的设计一致）。
 - thrust（火箭推进加速）功能未集成，使用原版烟花火箭即可。
+- `GLOBAL` 模式下飞行控制对任意鞘翅生效，但飞行本身（进入/维持滑翔）仍需对应的鞘翅来源（原版鞘翅烟花或 Mekanism 鞘翅单元）。
 
 ## 8. 开发信息
 
@@ -109,6 +112,7 @@ rudderEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $veloci
 
 - `src/main/java/com/mikufan/meks/flight/`（全部飞行代码）
 - `src/main/java/com/mikufan/meks/mixin/flight/`（飞行 mixin）
+- `src/main/java/com/mikufan/meks/Config.java`（`[flight]` 配置定义）
 - `src/main/java/com/mikufan/meks/MeksPayloads.java`（roll 同步网络包）
 - `src/main/resources/meks.mixins.json`（`mixins`/`client` 段注册）
 - `design/dabr-integration.md`（集成设计文档）

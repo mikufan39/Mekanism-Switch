@@ -89,9 +89,4 @@ public abstract class MouseMixin implements RollMouse {
         mouseTurnVec.zero();
         return false;
     }
-
-    @Override
-    public Vector2d meksFlight$getMouseTurnVec() {
-        return mouseTurnVec;
-    }
 }

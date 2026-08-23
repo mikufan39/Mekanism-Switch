@@ -3,6 +3,7 @@ package com.mikufan.meks;
 import java.util.ArrayList;
 import java.util.List;
 import com.mikufan.meks.flight.api.RollEntity;
+import com.mikufan.meks.flight.config.MeksFlightConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -373,6 +374,11 @@ public final class MeksPayloads {
     private static void handleRollSync(RollSyncPayload payload, IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player && player instanceof RollEntity rollPlayer) {
+                // Server-side master switch: while the server's own [flight] enabled is false,
+                // roll state is not accepted, so nothing is relayed to other players.
+                if (!MeksFlightConfig.getModEnabled()) {
+                    return;
+                }
                 rollPlayer.meksFlight$setRolling(payload.rolling());
                 rollPlayer.meksFlight$setRoll(payload.rolling() ? Mth.wrapDegrees(payload.roll()) : 0.0F);
             }

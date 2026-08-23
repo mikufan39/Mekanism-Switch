@@ -4,29 +4,24 @@ import com.mikufan.meks.MekanismSwitch;
 import com.mikufan.meks.flight.api.event.RollEvents;
 import com.mikufan.meks.flight.api.event.RollGroup;
 import com.mikufan.meks.flight.config.MeksFlightConfig;
-import mekanism.api.Action;
-import mekanism.api.AutomationType;
-import mekanism.api.energy.IEnergyContainer;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
-import mekanism.common.util.StorageUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.SmoothDouble;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ItemStack;
 
 /**
- * Client-side init and activation gating for the MekaSuit flight controls.
+ * Client-side init and activation gating for the flight controls.
  *
  * <p>The camera modifier pipeline comes from the reference flight mod (Do a Barrel Roll):
  * keyboard controls and the configured mouse sensitivity run as EARLY_CAMERA_MODIFIERS, and
  * control-surface efficacy, smoothing, banking and automatic righting run as
  * LATE_CAMERA_MODIFIERS, all gated on {@link #isFallFlying()}.
  *
- * <p>On top of the reference behaviour, the controls only activate while wearing a MekaSuit
- * chestplate (the elytra flight itself is provided by Mekanism's Elytra Unit), and the
- * chestplate is drained of {@code flightEnergyPerTick} J every game tick while gliding.
+ * <p>On top of the reference behaviour there is no energy cost: activating the controls is
+ * free, and with {@code activationMode = GLOBAL} in the config anyone who is fall-flying
+ * (not just MekaSuit Elytra Unit users) gets the controls. The enabled flag is read from the
+ * config file only — there is no in-game toggle key.
  */
 public final class MeksFlightClient {
 
@@ -71,26 +66,11 @@ public final class MeksFlightClient {
     }
 
     /**
-     * Called once per player tick from the flight mixin chain; drains the chestplate energy and
-     * reports whether the flight controls may be active this tick.
-     */
-    public static boolean updateFlightState() {
-        var player = Minecraft.getInstance().player;
-        if (player == null) {
-            return false;
-        }
-        if (!(player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ItemMekaSuitArmor)) {
-            return false;
-        }
-        if (!player.isFallFlying()) {
-            return false;
-        }
-        return drainEnergy(player, MeksFlightConfig.getFlightEnergyPerTick());
-    }
-
-    /**
      * Whether the flight control modifier pipeline is enabled: config enabled, not submerged,
-     * fall flying and wearing a MekaSuit chestplate.
+     * fall flying, and — in the default {@code activationMode = ELYTRA_UNIT} — wearing a
+     * MekaSuit chestplate (the elytra flight itself is provided by Mekanism's Elytra Unit).
+     * In {@code activationMode = GLOBAL} the chestplate is not required, so any fall-flying
+     * player (e.g. vanilla elytra) gets the controls.
      */
     public static boolean isFallFlying() {
         if (!MeksFlightConfig.getModEnabled()) {
@@ -107,16 +87,7 @@ public final class MeksFlightClient {
         if (!player.isFallFlying()) {
             return false;
         }
-        return player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ItemMekaSuitArmor;
-    }
-
-    private static boolean drainEnergy(LocalPlayer player, long amount) {
-        ItemStack chest = player.getItemBySlot(EquipmentSlot.CHEST);
-        IEnergyContainer container = StorageUtils.getEnergyContainer(chest, 0);
-        if (container == null || container.extract(amount, Action.SIMULATE, AutomationType.MANUAL) < amount) {
-            return false;
-        }
-        container.extract(amount, Action.EXECUTE, AutomationType.MANUAL);
-        return true;
+        return MeksFlightConfig.getActivationMode() == MeksFlightConfig.ActivationMode.GLOBAL
+                || player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof ItemMekaSuitArmor;
     }
 }

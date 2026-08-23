@@ -1,7 +1,6 @@
 package com.mikufan.meks;
 
 import com.mojang.logging.LogUtils;
-import com.mikufan.meks.flight.config.MeksFlightConfig;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.ModContainer;
@@ -17,9 +16,9 @@ public class MekanismSwitch {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public MekanismSwitch(IEventBus modEventBus, ModContainer modContainer) {
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.COMMON_SPEC, Config.COMMON_FILE);
-        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC, Config.CLIENT_FILE);
-        modContainer.registerConfig(ModConfig.Type.CLIENT, MeksFlightConfig.CLIENT_SPEC, "Mekanism/meks-flight-client.toml");
+        // Single server-authoritative config: the server's values are synced to connecting
+        // clients, so all gameplay/client features follow the server's settings.
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.COMMON_SPEC, Config.COMMON_FILE);
         MeksRegistries.register(modEventBus);
         modEventBus.addListener(MeksPayloads::registerPayloadHandlers);
         NeoForge.EVENT_BUS.addListener(MeksCommands::register);
