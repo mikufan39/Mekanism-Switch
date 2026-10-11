@@ -28,7 +28,7 @@ Mekanism-Switch 是 Minecraft 1.21.1 / NeoForge 的 Mekanism 附属模组，新�
 
 1. 安装 NeoForge 1.21.1 并启动一次游戏。
 2. 将 Mekanism 1.21.1 放入 `mods` 目录。
-3. 将 `meks-0.3.2.jar` 放入 `mods` 目录。
+3. 将 `meks-0.4.0.jar` 放入 `mods` 目录。
 4. 启动游戏，创意模式物品栏“Mekanism 交换”分类中可找到交换机、通道升级与便携式交换机。
 
 ## 使用
