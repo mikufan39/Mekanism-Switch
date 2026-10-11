@@ -209,4 +209,4 @@ MekaSuit 附魔台功能总开关（**默认关闭**）。开启后 MekaSuit 护
 | 修未知物品降价 / 涨价 | `[machine.restorationSwitch]` `fallbackSvCost` |
 | 修已知物品更便宜 | 提高物品 SV 值（`data/meks/sv/*.json`）或调 `[machine.restorationSwitch]` `energyPerSv`/`ticksPerSv` |
 
-> 本模组另有两类"配置"不在 toml 里：**SV 预设表**（`data/meks/sv/*.json`，见 `docs/sv-values.md`）与**命令**（`/mek sv`、`/mek knowledge`，见 `PROJECT_OVERVIEW.md` §8）。
+> 本模组另有两类"配置"不在 toml 里：**SV 预设表**（`data/meks/sv/*.json`，见 `docs/sv-values.md`）与**命令**（`/mek sv get|value|set|add`、`/mek knowledge list|add|remove|clear|unlock-all`；`<item>` 用物品 ID，操作他人需权限等级 2）。

@@ -38,3 +38,10 @@ run/
 **/src/generated/**/.cache/
 repo/
 !**/src/**/repo/
+
+### AI collaboration docs & design spreadsheets (local only) ###
+/AI_TOOLS.md
+/PROJECT_OVERVIEW.md
+/CODE_REVIEW_REPORT.md
+/AUDIT_REPORT.md
+/docs/*.xlsx
