@@ -28,7 +28,7 @@ public abstract class DebugHudMixin {
     )
     private String meksFlight$modifyDebugHudText(String format) {
         var cameraEntity = minecraft.getCameraEntity();
-        if (cameraEntity == null) return null;
+        if (cameraEntity == null) return format;
 
         // Carefully insert a new number format specifier into the facing string
         var firstHalf = format.substring(0, format.length() - 1);

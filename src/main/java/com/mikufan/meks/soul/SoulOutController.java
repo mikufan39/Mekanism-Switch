@@ -1,10 +1,6 @@
 package com.mikufan.meks.soul;
 
 import com.mikufan.meks.Config;
-import mekanism.api.Action;
-import mekanism.api.AutomationType;
-import mekanism.api.energy.IEnergyContainer;
-import mekanism.common.util.StorageUtils;
 import mekanism.common.item.gear.ItemMekaSuitArmor;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
@@ -26,7 +22,6 @@ public final class SoulOutController {
     private static SoulCamera camera;
     private static boolean active;
     private static boolean disableNextTick;
-    private static long elapsedTicks;
     private static CameraType rememberedCameraType;
 
     private SoulOutController() {
@@ -67,12 +62,6 @@ public final class SoulOutController {
             return;
         }
 
-        if (!MC.player.isCreative() && !drainEnergy(helmet)) {
-            disable(Component.translatable("msg.meks.soul.no_energy"));
-            return;
-        }
-
-        elapsedTicks++;
         MC.player.input = new Input();
     }
 
@@ -112,10 +101,6 @@ public final class SoulOutController {
             sendMessage("msg.meks.soul.requires_helmet");
             return;
         }
-        if (!MC.player.isCreative() && !canAfford(helmet)) {
-            sendMessage("msg.meks.soul.no_energy");
-            return;
-        }
 
         camera = new SoulCamera();
         camera.moveToPlayer();
@@ -130,7 +115,6 @@ public final class SoulOutController {
 
         MC.player.input = new Input();
         active = true;
-        elapsedTicks = 0;
         sendMessage("msg.meks.soul.enabled");
     }
 
@@ -150,40 +134,9 @@ public final class SoulOutController {
             MC.options.setCameraType(rememberedCameraType);
             rememberedCameraType = null;
         }
-        elapsedTicks = 0;
         if (message != null && MC.player != null) {
             MC.player.displayClientMessage(message, true);
         }
-    }
-
-    private static boolean canAfford(ItemStack helmet) {
-        IEnergyContainer container = StorageUtils.getEnergyContainer(helmet, 0);
-        long cost = currentCost();
-        return container != null && container.extract(cost, Action.SIMULATE, AutomationType.MANUAL) >= cost;
-    }
-
-    private static boolean drainEnergy(ItemStack helmet) {
-        IEnergyContainer container = StorageUtils.getEnergyContainer(helmet, 0);
-        if (container == null) {
-            return false;
-        }
-        long cost = currentCost();
-        if (container.extract(cost, Action.SIMULATE, AutomationType.MANUAL) < cost) {
-            return false;
-        }
-        container.extract(cost, Action.EXECUTE, AutomationType.MANUAL);
-        return true;
-    }
-
-    private static long currentCost() {
-        long base = Config.SOUL_BASE_COST_PER_TICK.get();
-        int doublingSeconds = Config.SOUL_COST_DOUBLING_SECONDS.get();
-        if (doublingSeconds <= 0) {
-            return Math.max(1L, base);
-        }
-        double seconds = elapsedTicks / 20.0;
-        double cost = base * Math.pow(2.0, seconds / doublingSeconds);
-        return Math.max(1L, (long) Math.ceil(cost));
     }
 
     private static void sendMessage(String key) {

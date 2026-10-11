@@ -68,12 +68,22 @@ public class RotationModifiers {
         var vars = getVars(context);
         vars.put("banking_strength", MeksFlightConfig.getBankingStrength());
 
-        var dX = xExpression.eval(vars);
-        var dY = yExpression.eval(vars);
+        double dX;
+        double dY;
+        try {
+            dX = xExpression.eval(vars);
+            dY = yExpression.eval(vars);
+        } catch (Throwable t) {
+            // Last line of defense: a user-supplied formula must never crash the render thread.
+            logEvalFailureOnce("banking", t);
+            dX = 0;
+            dY = 0;
+        }
 
-        // check if we accidentally got NaN, for some reason this happens sometimes
-        if (Double.isNaN(dX)) dX = 0;
-        if (Double.isNaN(dY)) dY = 0;
+        // Reject NaN and Infinity alike (e.g. 1/$velocity_length at standstill) — an infinite
+        // delta would wrap to NaN downstream and permanently corrupt the view angles.
+        if (!Double.isFinite(dX)) dX = 0;
+        if (!Double.isFinite(dY)) dY = 0;
 
         return rotationInstant.addAbsolute(dX * delta, dY * delta, currentRoll);
     }
@@ -94,17 +104,17 @@ public class RotationModifiers {
 
     public static RollContext.ConfiguresRotation fixNaN(String name) {
         return (rotationInstant, context) -> {
-            if (Double.isNaN(rotationInstant.pitch())) {
+            if (!Double.isFinite(rotationInstant.pitch())) {
                 rotationInstant = RotationInstant.of(0, rotationInstant.yaw(), rotationInstant.roll());
-                LOGGER.warn("NaN found in pitch for {}, setting to 0 as fallback", name);
+                LOGGER.warn("Non-finite pitch found for {}, setting to 0 as fallback", name);
             }
-            if (Double.isNaN(rotationInstant.yaw())) {
+            if (!Double.isFinite(rotationInstant.yaw())) {
                 rotationInstant = RotationInstant.of(rotationInstant.pitch(), 0, rotationInstant.roll());
-                LOGGER.warn("NaN found in yaw for {}, setting to 0 as fallback", name);
+                LOGGER.warn("Non-finite yaw found for {}, setting to 0 as fallback", name);
             }
-            if (Double.isNaN(rotationInstant.roll())) {
+            if (!Double.isFinite(rotationInstant.roll())) {
                 rotationInstant = RotationInstant.of(rotationInstant.pitch(), rotationInstant.yaw(), 0);
-                LOGGER.warn("NaN found in roll for {}, setting to 0 as fallback", name);
+                LOGGER.warn("Non-finite roll found for {}, setting to 0 as fallback", name);
             }
             return rotationInstant;
         };
@@ -116,7 +126,30 @@ public class RotationModifiers {
         var rudderExpression = MeksFlightConfig.getRudderEfficacyFormula().getCompiledOrDefaulting(1);
 
         var vars = getVars(context);
-        return rotationInstant.multiply(elevatorExpression.eval(vars), rudderExpression.eval(vars), aileronExpression.eval(vars));
+        double elevator;
+        double rudder;
+        double aileron;
+        try {
+            elevator = elevatorExpression.eval(vars);
+            rudder = rudderExpression.eval(vars);
+            aileron = aileronExpression.eval(vars);
+        } catch (Throwable t) {
+            // Same fallback as getCompiledOrDefaulting(1): full efficacy, never crash.
+            logEvalFailureOnce("control surface efficacy", t);
+            elevator = 1;
+            rudder = 1;
+            aileron = 1;
+        }
+        return rotationInstant.multiply(elevator, rudder, aileron);
+    }
+
+    private static volatile boolean evalFailureLogged;
+
+    private static void logEvalFailureOnce(String name, Throwable t) {
+        if (!evalFailureLogged) {
+            evalFailureLogged = true;
+            LOGGER.warn("Flight formula evaluation failed for {}, falling back to defaults (further occurrences suppressed)", name, t);
+        }
     }
 
     private static Map<String, Double> getVars(RollContext context) {

@@ -159,13 +159,11 @@ MekaSuit 附魔台功能总开关（**默认关闭**）。开启后 MekaSuit 护
 
 ### 1.5 `[soulOut]` 灵魂出窍（纯客户端，并入通用配置）
 
-> 功能前提：配置 `enabled=true` + 佩戴 MekaSuit 头盔 + 按 **F4** 开关（`soul/SoulOutKeybinds`）。服务端不可见，纯客户端自嗨；`MekaSuit` 头盔能量耗尽或受伤（`disableOnDamage`）自动回体。**虽然行为在客户端，但本段配置同样遵循服务端值**（原 `meks-client.toml` 已并入本文件）。
+> 功能前提：配置 `enabled=true` + 佩戴 MekaSuit 头盔 + 按 **F4** 开关（`soul/SoulOutKeybinds`）。服务端不可见，纯客户端自嗨；**不消耗能量**（0.3.2 之后移除了仅作用于客户端视觉的能量扣除）。受伤（`disableOnDamage`）自动回体。**虽然行为在客户端，但本段配置同样遵循服务端值**（原 `meks-client.toml` 已并入本文件）。
 
 | 键 | 类型/默认 | 范围 | 说明 |
 |---|---|---|---|
 | `enabled` | 布尔 `true` | — | 灵魂出窍功能总开关（仍可在游戏内按 F4 切换状态，但功能被禁用时无反应）。 |
-| `baseCostPerTick` | 长整数 `500` | 1–2^63−1 | 出窍后头盔**每 tick 基础能量消耗**（J/tick，500 J = 每秒 1 万 J）。**创造模式不扣能量**。 |
-| `costDoublingSeconds` | 整数 `45` | 0–3600 | 单 tick 消耗翻倍周期（秒）：`消耗 = base × 2^(出窍秒数/45)`，指数增长。设为 `0` 则**关闭增长**，恒定基础消耗。 |
 | `horizontalSpeed` | 浮点 `1.0` | 0.01–10 | 灵魂相机水平移动速度倍率。 |
 | `verticalSpeed` | 浮点 `1.0` | 0.01–10 | 灵魂相机垂直移动速度倍率。 |
 | `freezeBody` | 布尔 `true` | — | 出窍时冻结本体（不可移动）。纯客户端表现，部分服务器可能把本体拉回原位（已知限制）。 |
@@ -210,6 +208,5 @@ MekaSuit 附魔台功能总开关（**默认关闭**）。开启后 MekaSuit 护
 | 控制交换速度上限 | `[machine.exchangeSwitch]` `maxTicks`（600 = 30 秒） |
 | 修未知物品降价 / 涨价 | `[machine.restorationSwitch]` `fallbackSvCost` |
 | 修已知物品更便宜 | 提高物品 SV 值（`data/meks/sv/*.json`）或调 `[machine.restorationSwitch]` `energyPerSv`/`ticksPerSv` |
-| 关闭灵魂能量增长 | `[soulOut]` `costDoublingSeconds = 0` |
 
 > 本模组另有两类"配置"不在 toml 里：**SV 预设表**（`data/meks/sv/*.json`，见 `docs/sv-values.md`）与**命令**（`/mek sv`、`/mek knowledge`，见 `PROJECT_OVERVIEW.md` §8）。

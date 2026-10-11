@@ -1,6 +1,5 @@
 package com.mikufan.meks.flight.api.key;
 
-import com.mojang.blaze3d.platform.InputConstants;
 import com.mikufan.meks.flight.impl.key.InputContextImpl;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.resources.ResourceLocation;
@@ -20,8 +19,4 @@ public interface InputContext {
     void addKeyBinding(KeyMapping keyMapping);
 
     List<KeyMapping> getKeyBindings();
-
-    KeyMapping getKeyBinding(InputConstants.Key key);
-
-    void updateKeysByCode();
 }

@@ -13,6 +13,7 @@ public class ExchangeSwitchContainer extends MekanismTileContainer<ExchangeSwitc
 
     private final List<KnowledgeEntry> knowledgeList = new ArrayList<>();
     private long sv;
+    private int syncVersion;
 
     public ExchangeSwitchContainer(ContainerTypeRegistryObject<?> type, int id, Inventory inv, ExchangeSwitchTile tile) {
         super(type, id, inv, tile);
@@ -31,8 +32,13 @@ public class ExchangeSwitchContainer extends MekanismTileContainer<ExchangeSwitc
         return sv;
     }
 
+    public int getKnowledgeVersion() {
+        return syncVersion;
+    }
+
     public void receiveSync(List<ResourceLocation> knowledge, long sv) {
         this.sv = sv;
+        syncVersion++;
         knowledgeList.clear();
         for (ResourceLocation key : knowledge) {
             knowledgeList.add(new KnowledgeEntry(key));

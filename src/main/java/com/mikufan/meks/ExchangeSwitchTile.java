@@ -57,6 +57,7 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
     private ChannelJob channelJob;
     private ChannelJob forgetJob;
     private boolean channelUpgrade;
+    private int saveThrottle;
 
     public ExchangeSwitchTile(BlockPos pos, BlockState state) {
         super(MeksRegistries.EXCHANGE_SWITCH_BLOCK, pos, state);
@@ -154,17 +155,28 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
             active |= tickJob(forgetJob, forgetSlot, owner);
         }
         setActive(active);
-        markForSave();
+        // Throttle chunk dirtying while a job is active: start/complete/cancel already mark for
+        // save explicitly, so a crash loses at most 1 second of operatingTicks progress.
+        if (++saveThrottle >= 20) {
+            saveThrottle = 0;
+            markForSave();
+        }
     }
 
     private boolean tickJob(ChannelJob job, BasicInventorySlot slot, Player owner) {
         long value = getTargetValue(job, slot);
         if (value <= 0 || (job.operation != ExchangeOperation.UPLOAD && job.pendingCount <= 0)) {
+            // Abnormal reset (target lost its value / stale pending count): suppress auto-upload so
+            // items left in the slot are not silently recycled back into SV.
             resetJob(job, slot);
+            job.suppressAutoStart = true;
             return false;
         }
         if (job.operation != ExchangeOperation.UPLOAD && getData(owner).getSv() < value) {
+            // Batch interrupted by insufficient SV: keep the already-produced items in the slot
+            // instead of letting autoStartUpload eat them back (mirrors cancel/interrupt paths).
             resetJob(job, slot);
+            job.suppressAutoStart = true;
             return false;
         }
         if (job.operation != ExchangeOperation.UPLOAD
@@ -328,7 +340,7 @@ public class ExchangeSwitchTile extends TileEntityConfigurableMachine {
     private long getTargetValue(ChannelJob job, BasicInventorySlot slot) {
         if (job.operation == ExchangeOperation.UPLOAD) {
             ItemStack stack = slot.getStack();
-            return stack.isEmpty() ? 0 : MeksValues.getValue(stack.getItem());
+            return stack.isEmpty() ? 0 : MeksValues.getValue(stack);
         }
         return job.target == null ? 0 : MeksValues.getValue(BuiltInRegistries.ITEM.get(job.target));
     }

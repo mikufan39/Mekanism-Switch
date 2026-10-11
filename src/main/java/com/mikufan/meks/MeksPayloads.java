@@ -1,7 +1,10 @@
 package com.mikufan.meks;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import com.mikufan.meks.flight.api.RollEntity;
 import com.mikufan.meks.flight.config.MeksFlightConfig;
 import net.minecraft.core.BlockPos;
@@ -26,6 +29,10 @@ public final class MeksPayloads {
 
     private MeksPayloads() {
     }
+
+    // All payload handlers run via enqueueWork on the server main thread, so a plain HashMap
+    // is safe here (no cross-thread access).
+    private static final Map<UUID, Long> SYNC_COOLDOWNS = new HashMap<>();
 
     public record StartExchangePayload(BlockPos pos, ResourceLocation target, int count, boolean forget, int slot) implements CustomPacketPayload {
 
@@ -251,7 +258,7 @@ public final class MeksPayloads {
                 int count = Math.max(1, Math.min(payload.count(), stack.getCount()));
                 PlayerExchangeData data = player.getData(MeksAttachments.EXCHANGE_DATA);
                 Item item = stack.getItem();
-                long value = MeksValues.getValue(item);
+                long value = MeksValues.getValue(stack);
                 if (value <= 0) {
                     player.displayClientMessage(Component.translatable("gui.meks.portable.no_value"), true);
                     return;
@@ -310,6 +317,14 @@ public final class MeksPayloads {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player
                   && player.containerMenu instanceof PortableExchangeSwitchContainer container) {
+                // Cooldown only the client-initiated full sync requests (bandwidth amplification
+                // guard); syncs triggered by actual operations are not throttled.
+                long now = player.level().getGameTime();
+                Long last = SYNC_COOLDOWNS.get(player.getUUID());
+                if (last != null && now - last < 10) {
+                    return;
+                }
+                SYNC_COOLDOWNS.put(player.getUUID(), now);
                 syncPortableToOwner(player, container);
             }
         });
@@ -348,6 +363,14 @@ public final class MeksPayloads {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player
                   && player.level().getBlockEntity(payload.pos()) instanceof ExchangeSwitchTile tile) {
+                // Cooldown only the client-initiated full sync requests (bandwidth amplification
+                // guard); syncs triggered by actual operations are not throttled.
+                long now = player.level().getGameTime();
+                Long last = SYNC_COOLDOWNS.get(player.getUUID());
+                if (last != null && now - last < 10) {
+                    return;
+                }
+                SYNC_COOLDOWNS.put(player.getUUID(), now);
                 tile.syncToOwner(player);
             }
         });
@@ -366,7 +389,7 @@ public final class MeksPayloads {
         context.enqueueWork(() -> {
             if (context.player() instanceof ServerPlayer player
                   && player.level().getBlockEntity(payload.pos()) instanceof RestorationSwitchTile tile) {
-                tile.cancelRepair();
+                tile.cancelRepair(player);
             }
         });
     }
@@ -379,8 +402,10 @@ public final class MeksPayloads {
                 if (!MeksFlightConfig.getModEnabled()) {
                     return;
                 }
+                // Reject non-finite roll values: NaN != lastRoll is always true, so a malicious
+                // NaN packet would force a per-tick rebroadcast storm and poison observers' cameras.
                 rollPlayer.meksFlight$setRolling(payload.rolling());
-                rollPlayer.meksFlight$setRoll(payload.rolling() ? Mth.wrapDegrees(payload.roll()) : 0.0F);
+                rollPlayer.meksFlight$setRoll(payload.rolling() && Float.isFinite(payload.roll()) ? Mth.wrapDegrees(payload.roll()) : 0.0F);
             }
         });
     }
@@ -395,6 +420,10 @@ public final class MeksPayloads {
                 }
             }
         });
+    }
+
+    public static void onPlayerLogout(UUID playerId) {
+        SYNC_COOLDOWNS.remove(playerId);
     }
 
     public static void sendStartExchange(BlockPos pos, ResourceLocation target, int count, boolean forget, int slot) {

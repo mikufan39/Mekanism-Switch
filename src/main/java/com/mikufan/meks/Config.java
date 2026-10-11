@@ -192,14 +192,6 @@ public final class Config {
             .comment("Enable the soul out-of-body feature: press the keybind while wearing a MekaSuit helmet.")
             .define("enabled", true);
 
-    public static final ModConfigSpec.LongValue SOUL_BASE_COST_PER_TICK = COMMON_BUILDER
-            .comment("Starting energy drained from the MekaSuit helmet every tick while outside the body. Creative mode does not drain energy.")
-            .defineInRange("baseCostPerTick", 500L, 1L, Long.MAX_VALUE);
-
-    public static final ModConfigSpec.IntValue SOUL_COST_DOUBLING_SECONDS = COMMON_BUILDER
-            .comment("Seconds for the per-tick energy cost to double. 0 disables growth and keeps the base cost constant.")
-            .defineInRange("costDoublingSeconds", 45, 0, 3600);
-
     public static final ModConfigSpec.DoubleValue SOUL_HORIZONTAL_SPEED = COMMON_BUILDER
             .comment("Horizontal movement speed of the soul camera.")
             .defineInRange("horizontalSpeed", 1.0D, 0.01D, 10.0D);

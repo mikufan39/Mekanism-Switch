@@ -50,6 +50,7 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
     private final RepairJob job = new RepairJob();
     private ItemStack lastSeenStack = ItemStack.EMPTY;
     private boolean repairCancelled;
+    private int saveThrottle;
 
     public RestorationSwitchTile(BlockPos pos, BlockState state) {
         super(MeksRegistries.RESTORATION_SWITCH_BLOCK, pos, state);
@@ -177,7 +178,12 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
         if (job.operatingTicks >= job.ticksRequired) {
             completeAttempt(owner);
         }
-        markForSave();
+        // Throttle chunk dirtying while a repair is active: start/complete/cancel already mark
+        // for save explicitly, so a crash loses at most 1 second of operatingTicks progress.
+        if (++saveThrottle >= 20) {
+            saveThrottle = 0;
+            markForSave();
+        }
     }
 
     private void completeAttempt(Player owner) {
@@ -381,8 +387,14 @@ public class RestorationSwitchTile extends TileEntityConfigurableMachine {
         return job.active;
     }
 
-    public void cancelRepair() {
+    public void cancelRepair(Player player) {
         if (level == null || level.isClientSide) {
+            return;
+        }
+        // Ownership check mirrors ExchangeSwitchTile#cancelOperation: without it any player could
+        // send CancelRepairPayload for an arbitrary position and freeze someone else's machine.
+        TileComponentSecurity security = getSecurity();
+        if (security == null || !Objects.equals(security.getOwnerUUID(), player.getUUID())) {
             return;
         }
         resetJob();

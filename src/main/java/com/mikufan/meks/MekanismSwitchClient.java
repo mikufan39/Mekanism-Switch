@@ -53,7 +53,8 @@ public class MekanismSwitchClient {
         if (event.getContext().level() != null) {
             MeksValues.ensureInitialized(event.getContext().level());
         }
-        long value = MeksValues.getValue(stack.getItem());
+        // Stack-aware value: damaged items show the depreciated value they would actually upload for.
+        long value = MeksValues.getValue(stack);
         if (value <= 0) {
             return;
         }

@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import mekanism.client.gui.IGuiWrapper;
@@ -36,14 +37,24 @@ public class GuiKnowledgeScroll extends GuiElement {
     private final int xSlots;
     private final int ySlots;
     private final Supplier<List<KnowledgeEntry>> slotList;
+    private final IntSupplier knowledgeVersion;
     private final Map<ResourceLocation, SearchData> searchCache = new HashMap<>();
     private String filter = "";
+    // Cached filter result; keyed by filter text and container knowledge version, as the
+    // backing list is mutated in place and cannot be compared by reference.
+    @Nullable
+    private String cachedFilter;
+    private int cachedVersion = -1;
+    @Nullable
+    private List<KnowledgeEntry> cachedList;
 
-    public GuiKnowledgeScroll(IGuiWrapper gui, int x, int y, int xSlots, int ySlots, Supplier<List<KnowledgeEntry>> slotList) {
+    public GuiKnowledgeScroll(IGuiWrapper gui, int x, int y, int xSlots, int ySlots, Supplier<List<KnowledgeEntry>> slotList,
+          IntSupplier knowledgeVersion) {
         super(gui, x, y, xSlots * 18 + 18, ySlots * 18);
         this.xSlots = xSlots;
         this.ySlots = ySlots;
         this.slotList = slotList;
+        this.knowledgeVersion = knowledgeVersion;
         scrollBar = addChild(new GuiScrollBar(gui, relativeX + xSlots * 18 + 4, y, ySlots * 18,
               () -> Mth.ceil((double) getFilteredList().size() / xSlots), () -> ySlots));
     }
@@ -130,14 +141,24 @@ public class GuiKnowledgeScroll extends GuiElement {
     }
 
     private List<KnowledgeEntry> getFilteredList() {
-        List<KnowledgeEntry> list = slotList.get();
-        if (filter.isBlank()) {
-            return list;
+        int version = knowledgeVersion.getAsInt();
+        if (cachedList != null && filter.equals(cachedFilter) && version == cachedVersion) {
+            return cachedList;
         }
-        String[] tokens = filter.trim().split("\\s+");
-        return list.stream()
-              .filter(entry -> matches(entry, tokens))
-              .toList();
+        List<KnowledgeEntry> list = slotList.get();
+        List<KnowledgeEntry> result;
+        if (filter.isBlank()) {
+            result = list;
+        } else {
+            String[] tokens = filter.trim().split("\\s+");
+            result = list.stream()
+                  .filter(entry -> matches(entry, tokens))
+                  .toList();
+        }
+        cachedFilter = filter;
+        cachedVersion = version;
+        cachedList = result;
+        return result;
     }
 
     private boolean matches(KnowledgeEntry entry, String[] tokens) {
@@ -167,11 +188,11 @@ public class GuiKnowledgeScroll extends GuiElement {
         if (term.isEmpty()) {
             return true;
         }
-        String lower = text.toLowerCase(Locale.ROOT);
+        // text is already lowercased by SearchData construction.
         int termIndex = 0;
         int termLength = term.length();
-        for (int i = 0; i < lower.length() && termIndex < termLength; i++) {
-            if (lower.charAt(i) == term.charAt(termIndex)) {
+        for (int i = 0; i < text.length() && termIndex < termLength; i++) {
+            if (text.charAt(i) == term.charAt(termIndex)) {
                 termIndex++;
             }
         }
@@ -193,7 +214,9 @@ public class GuiKnowledgeScroll extends GuiElement {
                 tooltip = stack.getTooltipLines(Item.TooltipContext.of(minecraft.level), minecraft.player, TooltipFlag.NORMAL)
                       .stream().map(Component::getString).collect(Collectors.joining(" "));
             }
-            return new SearchData(stack.getHoverName().getString(), modId, modName, tags, tooltip);
+            // Pre-lowercased so fuzzyMatches does not lowercase per call each frame.
+            return new SearchData(stack.getHoverName().getString().toLowerCase(Locale.ROOT), modId,
+                  modName.toLowerCase(Locale.ROOT), tags.toLowerCase(Locale.ROOT), tooltip.toLowerCase(Locale.ROOT));
         });
     }
 

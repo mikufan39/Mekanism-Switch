@@ -94,6 +94,24 @@ public final class MeksValues {
         return derived == null ? 0L : derived;
     }
 
+    /**
+     * Value of a concrete stack, depreciated by durability loss: a damaged item uploads for
+     * {@code base * remainingDurability / maxDamage} (floored, at least 1). Downloads still
+     * cost the full base value and yield a fresh item, so uploading a worn item can never
+     * fund a brand-new one (no free repairs). Non-damageable stacks are unaffected.
+     */
+    public static long getValue(ItemStack stack) {
+        long base = getValue(stack.getItem());
+        if (base <= 0 || !stack.isDamaged()) {
+            return base;
+        }
+        int maxDamage = stack.getMaxDamage();
+        int remaining = maxDamage - stack.getDamageValue();
+        // Split the multiplication so a near-Long.MAX base cannot overflow.
+        long depreciated = base / maxDamage * remaining + base % maxDamage * remaining / maxDamage;
+        return Math.max(1, depreciated);
+    }
+
     public static boolean hasValue(ItemLike item) {
         return getValue(item) > 0;
     }

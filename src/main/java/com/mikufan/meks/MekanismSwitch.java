@@ -7,6 +7,7 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import org.slf4j.Logger;
 
 @Mod(MekanismSwitch.MODID)
@@ -26,5 +27,7 @@ public class MekanismSwitch {
         NeoForge.EVENT_BUS.addListener(MeksValues::onServerStopping);
         NeoForge.EVENT_BUS.addListener(MekaSuitEnchantmentHandler::onEnchantmentLevelSet);
         NeoForge.EVENT_BUS.addListener(CreeperExplosionHandler::onExplosionDetonate);
+        NeoForge.EVENT_BUS.addListener((PlayerEvent.PlayerLoggedOutEvent event) ->
+              MeksPayloads.onPlayerLogout(event.getEntity().getUUID()));
     }
 }

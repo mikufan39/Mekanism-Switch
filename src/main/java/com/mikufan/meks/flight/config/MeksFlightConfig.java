@@ -5,6 +5,9 @@ import com.mikufan.meks.flight.api.event.RollContext;
 import com.mikufan.meks.flight.api.rotation.RotationInstant;
 import com.mikufan.meks.flight.math.ExpressionParser;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * Accessors for the flight controls configuration.
  *
@@ -121,26 +124,31 @@ public final class MeksFlightConfig {
         return new Sensitivity(getSmoothingPitch(), getSmoothingYaw(), getSmoothingRoll());
     }
 
-    // ExpressionParser construction is lazy (parsing happens on first build()/eval), so creating one from
-    // a config string can never fail here; invalid formulas surface as eval-time errors inside ExpressionParser.
+    // Parsers are cached per config string so mouse events don't rebuild the AST every frame.
+    // Changing a config string naturally produces a new cache entry; stale entries for old
+    // strings are bounded by how often the config is edited and are intentionally left in place.
+    private static final Map<String, ExpressionParser> FORMULA_CACHE = new ConcurrentHashMap<>();
+
+    // Parsing happens lazily on first build()/eval, so creating a parser from a config string can
+    // never fail here; invalid formulas surface as eval-time errors inside ExpressionParser.
     public static ExpressionParser getBankingXFormula() {
-        return new ExpressionParser(Config.FLIGHT_BANKING_X_FORMULA.get());
+        return FORMULA_CACHE.computeIfAbsent(Config.FLIGHT_BANKING_X_FORMULA.get(), ExpressionParser::new);
     }
 
     public static ExpressionParser getBankingYFormula() {
-        return new ExpressionParser(Config.FLIGHT_BANKING_Y_FORMULA.get());
+        return FORMULA_CACHE.computeIfAbsent(Config.FLIGHT_BANKING_Y_FORMULA.get(), ExpressionParser::new);
     }
 
     public static ExpressionParser getElevatorEfficacyFormula() {
-        return new ExpressionParser(Config.FLIGHT_ELEVATOR_EFFICACY_FORMULA.get());
+        return FORMULA_CACHE.computeIfAbsent(Config.FLIGHT_ELEVATOR_EFFICACY_FORMULA.get(), ExpressionParser::new);
     }
 
     public static ExpressionParser getAileronEfficacyFormula() {
-        return new ExpressionParser(Config.FLIGHT_AILERON_EFFICACY_FORMULA.get());
+        return FORMULA_CACHE.computeIfAbsent(Config.FLIGHT_AILERON_EFFICACY_FORMULA.get(), ExpressionParser::new);
     }
 
     public static ExpressionParser getRudderEfficacyFormula() {
-        return new ExpressionParser(Config.FLIGHT_RUDDER_EFFICACY_FORMULA.get());
+        return FORMULA_CACHE.computeIfAbsent(Config.FLIGHT_RUDDER_EFFICACY_FORMULA.get(), ExpressionParser::new);
     }
 
     // Copied from DABR ModConfig.configureRotation. The context parameter is unused there and kept

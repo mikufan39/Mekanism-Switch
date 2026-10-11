@@ -45,6 +45,7 @@
   "msg.meks.soul.enabled": "灵魂已离开身体。",
   "msg.meks.soul.disabled": "灵魂已回到身体。",
   "msg.meks.soul.requires_helmet": "需要穿戴 MekaSuit 头盔才能灵魂出窍。",
-  "msg.meks.soul.no_energy": "能量不足，灵魂已回到身体。",
-  "msg.meks.soul.auto_return": "灵魂已自动回到身体。"
+  "msg.meks.soul.auto_return": "灵魂已自动回到身体。",
+  "gui.meks.restoration.success_count": "成功 %s 次",
+  "gui.meks.restoration.fail_count": "失败 %s 次"
 }

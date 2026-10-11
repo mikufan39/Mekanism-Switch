@@ -11,36 +11,47 @@ import java.util.function.Supplier;
 public class EventImpl<T> implements Event<T> {
     private final List<Entry> listeners = new ArrayList<>();
 
+    // Keeps listeners sorted by priority at all times so getListeners() needs no per-call sort.
+    private void sortListeners() {
+        listeners.sort(null);
+    }
+
     @Override
     public void register(T listener) {
         listeners.add(new Entry(listener, 0, () -> true));
+        sortListeners();
     }
 
     @Override
     public void register(T listener, int priority) {
         listeners.add(new Entry(listener, priority, () -> true));
+        sortListeners();
     }
 
     @Override
     public void register(T listener, Supplier<Boolean> enabled) {
         listeners.add(new Entry(listener, 0, enabled));
+        sortListeners();
     }
 
     @Override
     public void register(T listener, int priority, Supplier<Boolean> enabled) {
         listeners.add(new Entry(listener, priority, enabled));
+        sortListeners();
     }
 
     @Override
     public void unregister(T listener) {
         listeners.removeIf(entry -> entry.listener == listener);
+        sortListeners();
     }
 
     @Override
     public List<T> getListeners() {
         var result = ImmutableList.<T>builder();
 
-        listeners.sort(null);
+        // The condition is a dynamic supplier and must be evaluated on every call; the list
+        // itself is already kept sorted by register/unregister.
         for (var entry : listeners) {
             if (entry.condition.get()) {
                 result.add(entry.listener);

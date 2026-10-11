@@ -27,7 +27,7 @@ public abstract class Parser {
     }
 
     protected boolean isVariableChar() {
-        return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '-' || ch == '_' || ch == ':';
+        return (ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || ch == '_' || ch == ':';
     }
 
     public String getString() {

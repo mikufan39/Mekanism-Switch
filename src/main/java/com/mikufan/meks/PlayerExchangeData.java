@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -16,10 +17,21 @@ public class PlayerExchangeData {
     public static final Codec<PlayerExchangeData> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             Codec.LONG.fieldOf("sv").forGetter(data -> data.sv),
             ResourceLocation.CODEC.listOf()
-                  .xmap(list -> (Set<ResourceLocation>) new HashSet<>(list), ArrayList::new)
+                  .xmap(PlayerExchangeData::filterRegisteredItems, ArrayList::new)
                   .fieldOf("knowledge")
                   .forGetter(data -> data.knowledge)
     ).apply(instance, PlayerExchangeData::new));
+
+    /**
+     * Drops knowledge entries whose item no longer exists (e.g. the providing mod was
+     * uninstalled). Keeping them would NPE the knowledge commands and GUI, since
+     * {@code BuiltInRegistries.ITEM.get} yields null for unregistered ids.
+     */
+    private static Set<ResourceLocation> filterRegisteredItems(List<ResourceLocation> list) {
+        Set<ResourceLocation> set = new HashSet<>(list);
+        set.removeIf(key -> !BuiltInRegistries.ITEM.containsKey(key));
+        return set;
+    }
 
     public static final StreamCodec<RegistryFriendlyByteBuf, PlayerExchangeData> STREAM_CODEC = StreamCodec.composite(
             ByteBufCodecs.VAR_LONG, PlayerExchangeData::getSv,

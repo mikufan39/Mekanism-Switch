@@ -15,7 +15,7 @@ Mekanism-Switch 是 Minecraft 1.21.1 / NeoForge 的 Mekanism 附属模组，新�
 - 通道升级：潜行右键交换机安装后增加一个上传/下载通道。
 - MekaSuit 附魔：附魔台第三格可对 MekaSuit 附魔保护 V，消耗 30 级经验。
 - MekaSuit 飞行控制：鞘翅飞行时启用三轴飞行控制（俯仰/偏航/横滚），无能量消耗；默认仅 MekaSuit 胸甲+鞘翅单元激活，可配置为全局（任意鞘翅飞行玩家）激活。多人服务器可见横滚。基于 Do a Barrel Roll 的飞行代码集成实现。详见 [飞行控制说明](docs/flight-controls.md)。
-- 灵魂出窍：穿戴 MekaSuit 头盔时按 F4 让灵魂离开身体，相机可穿墙自由飞行；能量消耗随时间指数增长，受伤或能量耗尽自动回体。详见 [灵魂出窍说明](docs/soul-out.md)。
+- 灵魂出窍：穿戴 MekaSuit 头盔时按 F4 让灵魂离开身体，相机可穿墙自由飞行；不消耗能量，受伤自动回体。详见 [灵魂出窍说明](docs/soul-out.md)。
 - 苦力怕保护：默认开启，苦力怕爆炸不破坏方块（实体伤害保留）。
 
 ## 依赖
@@ -92,8 +92,6 @@ rudderEfficacyFormula = "$velocity_x * $look_x + $velocity_y * $look_y + $veloci
 
 [soulOut]
 enabled = true
-baseCostPerTick = 500
-costDoublingSeconds = 45
 horizontalSpeed = 1.0
 verticalSpeed = 1.0
 freezeBody = true

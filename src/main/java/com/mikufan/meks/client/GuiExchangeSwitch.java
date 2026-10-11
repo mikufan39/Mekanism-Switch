@@ -48,7 +48,8 @@ public class GuiExchangeSwitch extends GuiConfigurableTile<ExchangeSwitchTile, E
         super.addGuiElements();
         renderables.removeIf(element -> element instanceof GuiSecurityTab);
         children().removeIf(element -> element instanceof GuiSecurityTab);
-        knowledgeScroll = addRenderableWidget(new GuiKnowledgeScroll(this, 8, 30, 8, 4, () -> menu.getKnowledgeList()));
+        knowledgeScroll = addRenderableWidget(new GuiKnowledgeScroll(this, 8, 30, 8, 4, () -> menu.getKnowledgeList(),
+              () -> menu.getKnowledgeVersion()));
         MeksValues.ensureInitialized(Minecraft.getInstance().level);
         searchField = addRenderableWidget(new GuiTextField(this, knowledgeScroll.getRelativeX(), 18,
               knowledgeScroll.getScrollBarRightEdge() - knowledgeScroll.getRelativeX(), 10));

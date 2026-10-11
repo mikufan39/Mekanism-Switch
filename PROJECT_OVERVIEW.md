@@ -123,7 +123,7 @@ meks/                      核心（2235 行）：注册、Config、命令、SV�
 ### 5.8 灵魂出窍（纯客户端，`soul/`）
 
 - F4 开关（`SoulOutKeybinds`）；要求戴 MekaSuit 头盔、配置开启；`SoulCamera` 是本地假实体（`BlockStateBaseMixin` 让其无碰撞），相机穿墙自由飞行。
-- 能量：基础 500 J/tick，每 45 秒翻倍（指数增长 `base×2^(秒/45)`），创意免能；受伤或能量耗尽自动回体（`disableOnDamage`）。
+- **不消耗能量**（0.3.2 之后移除——原头盔扣能只作用于客户端视觉、服务端从不结算）；受伤自动回体（`disableOnDamage`）。
 - **服务器不可见**（客户端自嗨）；`freezeBody` 冻结本体但部分服务器会拉回。相关客户端 mixin 12 个（camera/渲染/输入/HUD/发包拦截等）。
 
 ### 5.9 飞行控制（`flight/`，DABR 集成）
@@ -150,7 +150,7 @@ registrar `versioned("2").optional()`（v1→v2：`CancelExchange` 增加 slot �
 | `[machine.exchangeSwitch]` | upload/downloadFePerSv=2, upload/downloadTicksPerSv=0.1, min/maxTicks=20/600 |
 | `[machine.restorationSwitch]` | fallbackSvCost=616, energyPerSv=2, ticksPerSv=0.1, min/maxTicks=20/600 |
 | `[flight]` | enabled=**false**, activationMode=ELYTRA_UNIT/GLOBAL, 三轴灵敏度/平滑、banking、自动回正、3 组公式字符串（无能量/HUD 项；原 `meks-flight-client.toml` 已并入） |
-| `[soulOut]` | enabled, baseCostPerTick=500, costDoublingSeconds=45, 速度/本体/伤害回体选项（原 `meks-client.toml` 并入） |
+| `[soulOut]` | enabled、速度/本体/伤害回体选项（原 `meks-client.toml` 并入；能量项已移除） |
 
 ⚠️ **`run/config/Mekanism/` 目前只有 `startup.toml`**——meks 配置文件要首次 `runClient` 进世界才会生成，别在 run/config 里找不到就以为没注册。
 

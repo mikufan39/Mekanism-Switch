@@ -57,7 +57,7 @@ public class GuiPortableExchangeSwitch extends GuiMekanism<PortableExchangeSwitc
     protected void addGuiElements() {
         super.addGuiElements();
         knowledgeScroll = addRenderableWidget(new GuiKnowledgeScroll(this, LIBRARY_X, LIBRARY_Y, LIBRARY_COLUMNS, LIBRARY_ROWS,
-              () -> menu.getKnowledgeList()));
+              () -> menu.getKnowledgeList(), () -> menu.getKnowledgeVersion()));
         MeksValues.ensureInitialized(Minecraft.getInstance().level);
         searchField = addRenderableWidget(new GuiTextField(this, knowledgeScroll.getRelativeX(), 18,
               knowledgeScroll.getScrollBarRightEdge() - knowledgeScroll.getRelativeX(), 10));
@@ -72,8 +72,8 @@ public class GuiPortableExchangeSwitch extends GuiMekanism<PortableExchangeSwitc
 
     @Override
     protected void renderBg(@NotNull GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
-        // The GUI is 280 px tall (8-row library), taller than Mekanism's 256 px
-        // base background, so a dedicated background texture is drawn directly.
+        // The GUI has a non-standard height (212 px, 5-row library), so a dedicated
+        // background texture is drawn directly instead of Mekanism's base background.
         mekanism.client.render.MekanismRenderer.resetColor(guiGraphics);
         guiGraphics.blit(BACKGROUND, leftPos, topPos, 0, 0, imageWidth, imageHeight, imageWidth, imageHeight);
     }

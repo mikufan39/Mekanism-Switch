@@ -125,10 +125,10 @@ public class GuiRestorationSwitch extends GuiConfigurableTile<RestorationSwitchT
 
     private void drawStats(GuiGraphics guiGraphics) {
         int centerX = PROGRESS_X + PROGRESS_WIDTH + (imageWidth - (PROGRESS_X + PROGRESS_WIDTH)) / 2;
-        String success = "成功" + tile.getSuccessCount() + "次";
-        String fail = "失败" + tile.getFailCount() + "次";
-        guiGraphics.drawString(font(), Component.literal(success), centerX - font.width(success) / 2, PROGRESS_Y, 0x000000, false);
-        guiGraphics.drawString(font(), Component.literal(fail), centerX - font.width(fail) / 2, PROGRESS_Y + 9, 0x000000, false);
+        Component success = Component.translatable("gui.meks.restoration.success_count", tile.getSuccessCount());
+        Component fail = Component.translatable("gui.meks.restoration.fail_count", tile.getFailCount());
+        guiGraphics.drawString(font(), success, centerX - font.width(success) / 2, PROGRESS_Y, 0x000000, false);
+        guiGraphics.drawString(font(), fail, centerX - font.width(fail) / 2, PROGRESS_Y + 9, 0x000000, false);
     }
 
     private static long computeSvCost(ItemStack stack) {

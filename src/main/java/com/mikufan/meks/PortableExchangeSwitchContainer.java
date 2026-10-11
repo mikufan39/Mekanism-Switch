@@ -19,6 +19,7 @@ public class PortableExchangeSwitchContainer extends MekanismContainer {
 
     private final List<KnowledgeEntry> knowledgeList = new ArrayList<>();
     private long sv;
+    private int syncVersion;
 
     public PortableExchangeSwitchContainer(ContainerTypeRegistryObject<?> type, int id, Inventory inv) {
         super(type, id, inv);
@@ -38,8 +39,13 @@ public class PortableExchangeSwitchContainer extends MekanismContainer {
         return sv;
     }
 
+    public int getKnowledgeVersion() {
+        return syncVersion;
+    }
+
     public void receiveSync(List<ResourceLocation> knowledge, long sv) {
         this.sv = sv;
+        syncVersion++;
         knowledgeList.clear();
         for (ResourceLocation key : knowledge) {
             knowledgeList.add(new KnowledgeEntry(key));
